@@ -184,12 +184,6 @@
     <Compile Include="ora\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpreadsheetForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SpreadsheetForm.Designer.cs">
-      <DependentUpon>SpreadsheetForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ora\frmDatabaseInfo.resx">
       <DependentUpon>frmDatabaseInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,9 +206,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="SpreadsheetForm.resx">
-      <DependentUpon>SpreadsheetForm.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
