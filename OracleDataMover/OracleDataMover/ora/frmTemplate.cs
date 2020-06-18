@@ -115,6 +115,9 @@ namespace OracleDataMover.ora
             Template T = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.RestoreDirectory = true;
+
             saveFileDialog1.Filter = "par files (*.par)|*.par|All files (*.*)|*.*";
             saveFileDialog1.Title = "Save par file";
             saveFileDialog1.FileName = T.Name;
@@ -156,6 +159,7 @@ namespace OracleDataMover.ora
                 }
 
                 Process.Start("notepad.exe", saveFileDialog1.FileName);
+                Process.Start(@"C:\Users\tstba\OneDrive\Documents\ODM\RUN_EXPDP.bat");
             }
 
 
@@ -168,7 +172,7 @@ namespace OracleDataMover.ora
             List<TemplateParm> lstTemplateParm = Context.TemplateParmRepository.FindBy(x => x.TemplateId == strTemplateID).ToList();
             foreach (TemplateParm TP in lstTemplateParm)
             {
-                String str = TP.PARM.ParmName.ToString().Trim() + "=" + TP.ParmValue.ToString().Trim();
+                String str = TP.PARM.ParmName.ToString().Trim() + " = " + TP.ParmValue.ToString().Trim();
                 lstString.Add(str);
             }
             return lstString;
