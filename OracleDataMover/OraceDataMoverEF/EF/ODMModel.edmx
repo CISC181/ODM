@@ -11,7 +11,7 @@
           </Key>
           <Property Name="DATABASE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="DATABASE_NAME" Type="varchar2" MaxLength="50" />
-          <Property Name="TNSNAME" Type="varchar2" MaxLength="50" />
+          <Property Name="TNSNAME" Type="varchar2" MaxLength="200" />
           <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
           <Property Name="CREATEDDATE" Type="date" />
           <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
@@ -78,6 +78,7 @@
           <Property Name="PAR_FILENAME" Type="varchar2" MaxLength="50" />
           <Property Name="BAT_FILENAME" Type="varchar2" MaxLength="50" />
           <Property Name="ORA_UTILITY_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="DMP_FILENAME" Type="varchar2" MaxLength="50" />
         </EntityType>
         <EntityType Name="TEMPLATE_PARM">
           <Key>
@@ -337,6 +338,7 @@
           <Property Name="BATFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ORA_UTILITY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ORA_UTILITY" Relationship="ODMModel.TEMPLATE_FK2" FromRole="Template" ToRole="ORA_UTILITY" />
+          <Property Name="DMPFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PARM">
           <Key>
@@ -356,7 +358,7 @@
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TnsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TnsName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" />
           <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -566,6 +568,7 @@
           <EntitySetMapping Name="Templates1">
             <EntityTypeMapping TypeName="ODMModel.Template">
               <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="DMPFileName" ColumnName="DMP_FILENAME" />
                 <ScalarProperty Name="ORA_UTILITY_ID" ColumnName="ORA_UTILITY_ID" />
                 <ScalarProperty Name="BATFileName" ColumnName="BAT_FILENAME" />
                 <ScalarProperty Name="PARFileName" ColumnName="PAR_FILENAME" />

@@ -14,11 +14,8 @@ namespace OracleDataMover.Common
 
         public static void GeneratePARFile(string strFileName, string strTemplateID)
         {
-
-
-
             using (System.IO.StreamWriter file =
-    new System.IO.StreamWriter(strFileName))
+                 new System.IO.StreamWriter(strFileName))
             {
                 file.WriteLine("#     OracleDataMover EXPDP written " + DateTime.Now.ToString("dddd, dd MMMM yyyy"));
                 file.WriteLine("");
@@ -50,6 +47,43 @@ namespace OracleDataMover.Common
                 }
             }
         }
+
+
+        public static void GenerateBATFile(string strFileName, string strTemplateID)
+        {
+            using (System.IO.StreamWriter file =
+                 new System.IO.StreamWriter(strFileName))
+            {
+                foreach (string str in GetBATInfo(strTemplateID))
+                {
+                    file.WriteLine(str.ToString());
+                }
+            }
+        }
+
+
+        private static List<String> GetBATInfo(string strTemplateID)
+        {
+            List<String> lstString = new List<String>();
+            Template t = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
+
+            lstString.Add("SET /P UID=UserID");
+            lstString.Add("SET /P PW=Password");
+            lstString.Add("SET SID=" + t.DATABASE_INFO.TnsName.ToString());
+
+            String str = t.ORA_UTILITY.UtilityName 
+                + " '"
+                + "%UID%/"
+                + "%PW%"                
+                + "@%SID%' dumpfile=" + t.DMPFileName
+                + " parfile=" + t.PARFileName;
+
+            lstString.Add(str);
+            lstString.Add("pause");
+
+            return lstString;
+        }
+
         private static List<String> GetTemplateParmInfo(string strTemplateID)
         {
             List<String> lstString = new List<String>();
@@ -57,7 +91,7 @@ namespace OracleDataMover.Common
             List<TemplateParm> lstTemplateParm = Context.TemplateParmRepository.FindBy(x => x.TemplateId == strTemplateID).ToList();
             foreach (TemplateParm TP in lstTemplateParm)
             {
-                String str = TP.PARM.ParmName.ToString().Trim() + " = " + TP.ParmValue.ToString().Trim();
+                String str = TP.PARM.ParmName.ToString().Trim() + "=" + TP.ParmValue.ToString().Trim();
                 lstString.Add(str);
             }
             return lstString;

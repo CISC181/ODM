@@ -51,7 +51,6 @@ namespace OracleDataMoverOraEF.UnitOfWork
     	private ALL_TAB_COLSRepository aLL_TAB_COLSRepository;
     	private ALL_TABLESRepository aLL_TABLESRepository;
     	private ALL_USERSRepository aLL_USERSRepository;
-    	private DBA_DATAPUMP_JOBSRepository dBA_DATAPUMP_JOBSRepository;
     	public virtual ALL_CONS_COLUMNSRepository ALL_CONS_COLUMNSRepository
     	{
     		get 
@@ -114,19 +113,6 @@ namespace OracleDataMoverOraEF.UnitOfWork
     			}
     
     			return this.aLL_USERSRepository;
-    		}
-    	}
-    
-    	public virtual DBA_DATAPUMP_JOBSRepository DBA_DATAPUMP_JOBSRepository
-    	{
-    		get 
-    		{
-    			if (this.dBA_DATAPUMP_JOBSRepository == null)
-    			{
-    				this.dBA_DATAPUMP_JOBSRepository = new DBA_DATAPUMP_JOBSRepository(this);
-    			}
-    
-    			return this.dBA_DATAPUMP_JOBSRepository;
     		}
     	}
     

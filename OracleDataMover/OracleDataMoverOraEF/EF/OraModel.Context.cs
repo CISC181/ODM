@@ -35,11 +35,10 @@ namespace OracleDataMoverOraEF.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public IDbSet<DBA_DATAPUMP_JOBS> DBA_DATAPUMP_JOBS { get; set; }
+        public IDbSet<ALL_CONS_COLUMNS> ALL_CONS_COLUMNS { get; set; }
+        public IDbSet<ALL_CONSTRAINTS> ALL_CONSTRAINTS { get; set; }
         public IDbSet<ALL_TAB_COLS> ALL_TAB_COLS { get; set; }
         public IDbSet<ALL_TABLES> ALL_TABLES { get; set; }
         public IDbSet<ALL_USERS> ALL_USERS { get; set; }
-        public IDbSet<ALL_CONS_COLUMNS> ALL_CONS_COLUMNS { get; set; }
-        public IDbSet<ALL_CONSTRAINTS> ALL_CONSTRAINTS { get; set; }
     }
 }

@@ -55,7 +55,7 @@
             this.radPanel2.Controls.Add(this.rgvTemplate);
             this.radPanel2.Location = new System.Drawing.Point(12, 12);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(909, 284);
+            this.radPanel2.Size = new System.Drawing.Size(1023, 284);
             this.radPanel2.TabIndex = 4;
             // 
             // rlblGridLabel
@@ -83,7 +83,7 @@
             this.rgvTemplate.Name = "rgvTemplate";
             this.rgvTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rgvTemplate.ShowGroupPanel = false;
-            this.rgvTemplate.Size = new System.Drawing.Size(903, 251);
+            this.rgvTemplate.Size = new System.Drawing.Size(1017, 251);
             this.rgvTemplate.TabIndex = 0;
             this.rgvTemplate.ThemeName = "TelerikMetroBlue";
             this.rgvTemplate.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_CellValueChanged);
@@ -95,12 +95,12 @@
             this.radPanel1.Controls.Add(this.rbUndo);
             this.radPanel1.Location = new System.Drawing.Point(9, 302);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(912, 52);
+            this.radPanel1.Size = new System.Drawing.Size(1026, 52);
             this.radPanel1.TabIndex = 3;
             // 
             // rbClose
             // 
-            this.rbClose.Location = new System.Drawing.Point(799, 13);
+            this.rbClose.Location = new System.Drawing.Point(913, 13);
             this.rbClose.Name = "rbClose";
             this.rbClose.Size = new System.Drawing.Size(110, 24);
             this.rbClose.TabIndex = 2;
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 366);
+            this.ClientSize = new System.Drawing.Size(1066, 366);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
             this.Name = "frmTemplate";

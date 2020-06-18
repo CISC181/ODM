@@ -31,7 +31,6 @@ namespace OracleDataMoverOraEF.UnitOfWork
     	ALL_TAB_COLSRepository ALL_TAB_COLSRepository { get; }
     	ALL_TABLESRepository ALL_TABLESRepository { get; }
     	ALL_USERSRepository ALL_USERSRepository { get; }
-    	DBA_DATAPUMP_JOBSRepository DBA_DATAPUMP_JOBSRepository { get; }
     	
     	
     

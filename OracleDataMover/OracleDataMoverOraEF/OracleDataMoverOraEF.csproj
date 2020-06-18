@@ -80,9 +80,6 @@
     <Compile Include="EF\ALL_USERS.cs">
       <DependentUpon>OraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\DBA_DATAPUMP_JOBS.cs">
-      <DependentUpon>OraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EF\InterfaceOraModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,9 +115,6 @@
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\ALL_USERSRepository.cs">
-      <DependentUpon>Repositories.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repositories\DBA_DATAPUMP_JOBSRepository.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\Repositories.cs">

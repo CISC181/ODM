@@ -14,6 +14,7 @@ using System.Drawing;
 using System.ComponentModel;
 using Telerik.WinControls;
 using OracleDataMover.Common;
+using System.Diagnostics;
 
 namespace OracleDataMover.ora
 {
@@ -65,17 +66,26 @@ namespace OracleDataMover.ora
 
         private void LoadGridLayout()
         {
-            rgvTemplate.Columns.Clear();
+
+            rgvTemplate.Columns.Clear();            
 
             GridViewCommandColumn cmdExecuteEXPDP = new GridViewCommandColumn();
             cmdExecuteEXPDP.Name = "colExecute";
             cmdExecuteEXPDP.UseDefaultText = true;
-            cmdExecuteEXPDP.DefaultText = "Execute EXPDP";
+            cmdExecuteEXPDP.DefaultText = "Execute";
             cmdExecuteEXPDP.FieldName = "Id";
-            cmdExecuteEXPDP.Width = 150;
+            cmdExecuteEXPDP.Width = 75;
             rgvTemplate.MasterTemplate.Columns.Add(cmdExecuteEXPDP);
             rgvTemplate.CommandCellClick += new
             CommandCellClickEventHandler(rgvTemplate_CommandCellClick);
+
+            GridViewTextBoxColumn gtbUtilityName = new GridViewTextBoxColumn();
+            gtbUtilityName.EnableExpressionEditor = false;
+            gtbUtilityName.FieldName = "ORA_UTILITY.UtilityName";
+            gtbUtilityName.HeaderText = "Utility Name";
+            gtbUtilityName.Name = "colUtilityName";
+            gtbUtilityName.Width = 75;
+            this.rgvTemplate.Columns.Add(gtbUtilityName);
 
             GridViewTextBoxColumn gtbTemplateID = new GridViewTextBoxColumn();
             gtbTemplateID.EnableExpressionEditor = false;
@@ -123,9 +133,10 @@ namespace OracleDataMover.ora
             Template tmpl = Context.TemplateRepository.FindBy(x => x.Id == args.Value.ToString()).FirstOrDefault();
 
             GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + tmpl.PARFileName.ToString(), args.Value.ToString());
+            GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString(), args.Value.ToString());
 
-
-
+            //Process.Start(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
+            Process.Start("CMD.EXE");
         }
 
 

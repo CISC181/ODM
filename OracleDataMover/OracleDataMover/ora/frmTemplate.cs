@@ -115,6 +115,14 @@ namespace OracleDataMover.ora
             colDatabase.Width = 200;
             this.rgvTemplate.Columns.Add(colDatabase);
 
+            GridViewTextBoxColumn gtbDMPFile = new GridViewTextBoxColumn();
+            gtbDMPFile.Name = "colDmpFileName";
+            gtbDMPFile.EnableExpressionEditor = false;
+            gtbDMPFile.FieldName = "DMPFileName";
+            gtbDMPFile.HeaderText = "DMP File Name";
+            gtbDMPFile.Width = 150;
+            this.rgvTemplate.Columns.Add(gtbDMPFile);
+
             GridViewTextBoxColumn gtbParFile = new GridViewTextBoxColumn();
             gtbParFile.EnableExpressionEditor = false;
             gtbParFile.FieldName = "PARFileName";
@@ -125,6 +133,7 @@ namespace OracleDataMover.ora
 
             GridViewTextBoxColumn gtbBatFileName = new GridViewTextBoxColumn();
             gtbBatFileName.EnableExpressionEditor = false;
+            gtbBatFileName.Name = "colBatFileName";
             gtbBatFileName.FieldName = "BATFileName";
             gtbBatFileName.HeaderText = "BAT File Name";
             gtbBatFileName.Name = "colBatFileName";
@@ -245,6 +254,7 @@ namespace OracleDataMover.ora
                     tmpl.PARFileName = dataRow.Cells["colParFileName"].Value.ToString();
                     tmpl.BATFileName = dataRow.Cells["colBatFileName"].Value.ToString();
                     tmpl.ORA_UTILITY_ID = dataRow.Cells["colUtilityID"].Value.ToString();
+                    tmpl.DMPFileName = dataRow.Cells["colDmpFileName"].Value.ToString(); 
                     Context.TemplateRepository.Save(tmpl);
                 }
                 if ((dataRow.Tag != null) && (dataRow.Tag.ToString() == "ThisRowIsDirty"))
@@ -257,6 +267,7 @@ namespace OracleDataMover.ora
                     tmpl.PARFileName = dataRow.Cells["colParFileName"].Value.ToString();
                     tmpl.BATFileName = dataRow.Cells["colBatFileName"].Value.ToString();
                     tmpl.ORA_UTILITY_ID = dataRow.Cells["colUtilityID"].Value.ToString();
+                    tmpl.DMPFileName = dataRow.Cells["colDmpFileName"].Value.ToString();
                     Context.TemplateRepository.Save(tmpl);
                 }
             }
