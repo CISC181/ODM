@@ -47,6 +47,8 @@ namespace OracleDataMoverEF.UnitOfWork
             }
     
     	private DATABASE_INFORepository dATABASE_INFORepository;
+    	private ODMSettingRepository oDMSettingRepository;
+    	private OraUtilityRepository oraUtilityRepository;
     	private PARMRepository pARMRepository;
     	private RemapFunctionRepository remapFunctionRepository;
     	private TemplateRepository templateRepository;
@@ -64,6 +66,32 @@ namespace OracleDataMoverEF.UnitOfWork
     			}
     
     			return this.dATABASE_INFORepository;
+    		}
+    	}
+    
+    	public virtual ODMSettingRepository ODMSettingRepository
+    	{
+    		get 
+    		{
+    			if (this.oDMSettingRepository == null)
+    			{
+    				this.oDMSettingRepository = new ODMSettingRepository(this);
+    			}
+    
+    			return this.oDMSettingRepository;
+    		}
+    	}
+    
+    	public virtual OraUtilityRepository OraUtilityRepository
+    	{
+    		get 
+    		{
+    			if (this.oraUtilityRepository == null)
+    			{
+    				this.oraUtilityRepository = new OraUtilityRepository(this);
+    			}
+    
+    			return this.oraUtilityRepository;
     		}
     	}
     

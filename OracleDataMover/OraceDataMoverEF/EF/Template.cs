@@ -23,9 +23,13 @@ namespace OracleDataMoverEF.EF
     
         public string Name { get; set; }
         public string DATABASE_ID { get; set; }
+        public string PARFileName { get; set; }
+        public string BATFileName { get; set; }
+        public string ORA_UTILITY_ID { get; set; }
     
         public virtual DATABASE_INFO DATABASE_INFO { get; set; }
         public virtual ICollection<TemplateSchema> TEMPLATE_SCHEMA { get; set; }
         public virtual ICollection<TemplateParm> TEMPLATE_PARM { get; set; }
+        public virtual OraUtility ORA_UTILITY { get; set; }
     }
 }

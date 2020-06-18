@@ -27,6 +27,8 @@ namespace OracleDataMoverEF.UnitOfWork
     
     
     	DATABASE_INFORepository DATABASE_INFORepository { get; }
+    	ODMSettingRepository ODMSettingRepository { get; }
+    	OraUtilityRepository OraUtilityRepository { get; }
     	PARMRepository PARMRepository { get; }
     	RemapFunctionRepository RemapFunctionRepository { get; }
     	TemplateRepository TemplateRepository { get; }

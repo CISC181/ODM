@@ -88,6 +88,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODMModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EF\ODMSetting.cs">
+      <DependentUpon>ODMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\OraUtility.cs">
+      <DependentUpon>ODMModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\PARM.cs">
       <DependentUpon>ODMModel.tt</DependentUpon>
     </Compile>
@@ -112,6 +118,12 @@
     <Compile Include="EntityExtensions\ODMEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DATABASE_INFORepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ODMSettingRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\OraUtilityRepository.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\PARMRepository.cs">

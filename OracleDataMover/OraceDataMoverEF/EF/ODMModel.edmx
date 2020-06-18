@@ -17,6 +17,29 @@
           <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
           <Property Name="UPDATEDDATE" Type="date" />
         </EntityType>
+        <EntityType Name="ODM_SETTING">
+          <Key>
+            <PropertyRef Name="ODM_SETTING_ID" />
+          </Key>
+          <Property Name="ODM_SETTING_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="SETTING_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="SETTING_VALUE" Type="varchar2" MaxLength="200" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="20" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="ORA_UTILITY">
+          <Key>
+            <PropertyRef Name="ORA_UTILITY_ID" />
+          </Key>
+          <Property Name="ORA_UTILITY_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="ORA_UTILITY_NAME" Type="varchar2" MaxLength="20" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
         <EntityType Name="PARM">
           <Key>
             <PropertyRef Name="PARM_ID" />
@@ -52,6 +75,9 @@
           <Property Name="CREATEDDATE" Type="date" />
           <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
           <Property Name="UPDATEDDATE" Type="date" />
+          <Property Name="PAR_FILENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="BAT_FILENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="ORA_UTILITY_ID" Type="varchar2" MaxLength="32" />
         </EntityType>
         <EntityType Name="TEMPLATE_PARM">
           <Key>
@@ -114,6 +140,18 @@
             </Principal>
             <Dependent Role="TEMPLATE">
               <PropertyRef Name="DATABASE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_FK2">
+          <End Role="ORA_UTILITY" Type="Self.ORA_UTILITY" Multiplicity="0..1" />
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORA_UTILITY">
+              <PropertyRef Name="ORA_UTILITY_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE">
+              <PropertyRef Name="ORA_UTILITY_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -191,6 +229,8 @@
         </Association>
         <EntityContainer Name="ODMModelStoreContainer">
           <EntitySet Name="DATABASE_INFO" EntityType="Self.DATABASE_INFO" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="ODM_SETTING" EntityType="Self.ODM_SETTING" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="ORA_UTILITY" EntityType="Self.ORA_UTILITY" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="PARM" EntityType="Self.PARM" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="REMAP_FUNCTION" EntityType="Self.REMAP_FUNCTION" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="ODM" store:Type="Tables" />
@@ -200,6 +240,10 @@
           <EntitySet Name="TEMPLATE_SCHEMA_TABLE" EntityType="Self.TEMPLATE_SCHEMA_TABLE" Schema="ODM" store:Type="Tables" />
           <AssociationSet Name="TEMPLATE_FK1" Association="Self.TEMPLATE_FK1">
             <End Role="DATABASE_INFO" EntitySet="DATABASE_INFO" />
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_FK2" Association="Self.TEMPLATE_FK2">
+            <End Role="ORA_UTILITY" EntitySet="ORA_UTILITY" />
             <End Role="TEMPLATE" EntitySet="TEMPLATE" />
           </AssociationSet>
           <AssociationSet Name="TEMPLATE_SCHEMA_FK1" Association="Self.TEMPLATE_SCHEMA_FK1">
@@ -268,6 +312,12 @@
             <End Role="Template" EntitySet="Templates1" />
             <End Role="TEMPLATE_PARM" EntitySet="TemplateParms" />
           </AssociationSet>
+          <EntitySet Name="ODMSettings" EntityType="ODMModel.ODMSetting" />
+          <EntitySet Name="OraUtilities" EntityType="ODMModel.OraUtility" />
+          <AssociationSet Name="TEMPLATE_FK2" Association="ODMModel.TEMPLATE_FK2">
+            <End Role="ORA_UTILITY" EntitySet="OraUtilities" />
+            <End Role="Template" EntitySet="Templates1" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Template">
           <Key>
@@ -283,6 +333,10 @@
           <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" />
           <NavigationProperty Name="TEMPLATE_PARM" Relationship="ODMModel.TEMPLATEPARM_FK2" FromRole="Template" ToRole="TEMPLATE_PARM" />
+          <Property Name="PARFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BATFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORA_UTILITY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORA_UTILITY" Relationship="ODMModel.TEMPLATE_FK2" FromRole="Template" ToRole="ORA_UTILITY" />
         </EntityType>
         <EntityType Name="PARM">
           <Key>
@@ -467,6 +521,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ODMSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SettingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="OraUtility">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UtilityName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATEs" Relationship="ODMModel.TEMPLATE_FK2" FromRole="ORA_UTILITY" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATE_FK2">
+          <End Type="ODMModel.OraUtility" Role="ORA_UTILITY" Multiplicity="0..1" />
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORA_UTILITY">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="ORA_UTILITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -476,6 +566,9 @@
           <EntitySetMapping Name="Templates1">
             <EntityTypeMapping TypeName="ODMModel.Template">
               <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="ORA_UTILITY_ID" ColumnName="ORA_UTILITY_ID" />
+                <ScalarProperty Name="BATFileName" ColumnName="BAT_FILENAME" />
+                <ScalarProperty Name="PARFileName" ColumnName="PAR_FILENAME" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
                 <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
@@ -578,6 +671,31 @@
                 <ScalarProperty Name="ParmId" ColumnName="PARM_ID" />
                 <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
                 <ScalarProperty Name="Id" ColumnName="TEMPLATE_PARM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ODMSettings">
+            <EntityTypeMapping TypeName="ODMModel.ODMSetting">
+              <MappingFragment StoreEntitySet="ODM_SETTING">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="SettingValue" ColumnName="SETTING_VALUE" />
+                <ScalarProperty Name="SettingName" ColumnName="SETTING_NAME" />
+                <ScalarProperty Name="Id" ColumnName="ODM_SETTING_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OraUtilities">
+            <EntityTypeMapping TypeName="ODMModel.OraUtility">
+              <MappingFragment StoreEntitySet="ORA_UTILITY">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="UtilityName" ColumnName="ORA_UTILITY_NAME" />
+                <ScalarProperty Name="Id" ColumnName="ORA_UTILITY_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

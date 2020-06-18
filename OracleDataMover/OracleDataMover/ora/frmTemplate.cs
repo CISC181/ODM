@@ -12,7 +12,7 @@ using OracleDataMoverEF.UnitOfWork;
 using System.Linq;
 using Telerik.WinControls.UI;
 using System.Diagnostics;
-
+using OracleDataMover.Common;
 
 namespace OracleDataMover.ora
 {
@@ -20,6 +20,7 @@ namespace OracleDataMover.ora
     {
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
         protected List<DATABASE_INFO> lstDatabase = Context.DATABASE_INFORepository.FindBy(x => true).ToList();
+        protected List<OraUtility> lstOraUtility = Context.OraUtilityRepository.FindBy(x => true).OrderBy(x => x.UtilityName).ToList();
 
         public frmTemplate()
         {
@@ -28,7 +29,7 @@ namespace OracleDataMover.ora
             LoadGrid();
         }
         #region CommonMethods
-        private  List<GridViewRowInfo> GetAllRows(GridViewTemplate template)
+        private List<GridViewRowInfo> GetAllRows(GridViewTemplate template)
         {
             List<GridViewRowInfo> allRows = new List<GridViewRowInfo>();
             allRows.AddRange(template.Rows);
@@ -78,8 +79,6 @@ namespace OracleDataMover.ora
             cmdGeneratePAR.Width = 100;
             rgvTemplate.MasterTemplate.Columns.Add(cmdGeneratePAR);
 
-
-
             GridViewTextBoxColumn gtbTemplateID = new GridViewTextBoxColumn();
             gtbTemplateID.EnableExpressionEditor = false;
             gtbTemplateID.FieldName = "ID";
@@ -87,6 +86,16 @@ namespace OracleDataMover.ora
             gtbTemplateID.Name = "colTemplateID";
             gtbTemplateID.IsVisible = false;
             this.rgvTemplate.Columns.Add(gtbTemplateID);
+
+            GridViewComboBoxColumn colOraUtility = new GridViewComboBoxColumn();
+            colOraUtility.Name = "colUtilityID";
+            colOraUtility.HeaderText = "Utility";
+            colOraUtility.DataSource = lstOraUtility;
+            colOraUtility.ValueMember = "ID";
+            colOraUtility.DisplayMember = "UtilityName";
+            colOraUtility.FieldName = "ORA_UTILITY_ID";
+            colOraUtility.Width = 75;
+            this.rgvTemplate.Columns.Add(colOraUtility);
 
             GridViewTextBoxColumn gtbTemplateName = new GridViewTextBoxColumn();
             gtbTemplateName.EnableExpressionEditor = false;
@@ -105,6 +114,23 @@ namespace OracleDataMover.ora
             colDatabase.FieldName = "Database_ID";
             colDatabase.Width = 200;
             this.rgvTemplate.Columns.Add(colDatabase);
+
+            GridViewTextBoxColumn gtbParFile = new GridViewTextBoxColumn();
+            gtbParFile.EnableExpressionEditor = false;
+            gtbParFile.FieldName = "PARFileName";
+            gtbParFile.HeaderText = "PAR File Name";
+            gtbParFile.Name = "colParFileName";
+            gtbParFile.Width = 150;
+            this.rgvTemplate.Columns.Add(gtbParFile);
+
+            GridViewTextBoxColumn gtbBatFileName = new GridViewTextBoxColumn();
+            gtbBatFileName.EnableExpressionEditor = false;
+            gtbBatFileName.FieldName = "BATFileName";
+            gtbBatFileName.HeaderText = "BAT File Name";
+            gtbBatFileName.Name = "colBatFileName";
+            gtbBatFileName.Width = 150;
+            this.rgvTemplate.Columns.Add(gtbBatFileName);
+
         }
 
         private void rgvTemplate_cmdGeneratePAR_CommandCellClick(object sender, EventArgs e)
@@ -125,140 +151,17 @@ namespace OracleDataMover.ora
 
             if (result == DialogResult.OK)
             {
-                using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(saveFileDialog1.FileName))
-                {
-                    file.WriteLine("#     OracleDataMover EXPDP written " + DateTime.Now.ToString("dddd, dd MMMM yyyy"));
-                    file.WriteLine("");
-                    file.WriteLine("#     Extract Parameters");
-                    foreach (string str in GetTemplateParmInfo(strTemplateID))
-                    {
-                        file.WriteLine(str.ToString());
-                    }
-                    file.WriteLine("");
-                    file.WriteLine("");
-                    file.WriteLine("#     Schemas to Extract");
-                    foreach (string str in GetTemplateSchemas(strTemplateID))
-                    {
-                        file.WriteLine(str.ToString());
-                    }
-                    file.WriteLine("");
-                    file.WriteLine("");
-                    file.WriteLine("#     Remap Parameters");
-                    foreach (string str in GetRemapSanitize(strTemplateID))
-                    {
-                        file.WriteLine(str.ToString());
-                    }
-                    file.WriteLine("");
-                    file.WriteLine("");
-                    file.WriteLine("#     Sample Size Parameters");
-                    foreach (string str in GetTableSampleSize(strTemplateID))
-                    {
-                        file.WriteLine(str.ToString());
-                    }
-                }
-
-                Process.Start("notepad.exe", saveFileDialog1.FileName);
-                Process.Start(@"C:\Users\tstba\OneDrive\Documents\ODM\RUN_EXPDP.bat");
+                GenerateFiles.GeneratePARFile(saveFileDialog1.FileName, strTemplateID);
             }
 
-
+            Process.Start("notepad.exe", saveFileDialog1.FileName);
+            Process.Start(@"C:\Users\tstba\OneDrive\Documents\ODM\RUN_EXPDP.bat");
         }
 
-        private List<String> GetTemplateParmInfo(string strTemplateID)
-        {
-            List<String> lstString = new List<String>();
 
-            List<TemplateParm> lstTemplateParm = Context.TemplateParmRepository.FindBy(x => x.TemplateId == strTemplateID).ToList();
-            foreach (TemplateParm TP in lstTemplateParm)
-            {
-                String str = TP.PARM.ParmName.ToString().Trim() + " = " + TP.ParmValue.ToString().Trim();
-                lstString.Add(str);
-            }
-            return lstString;
-        }
-
-        private List<String> GetTemplateSchemas(string strTemplateID)
-        {
-            List<String> lstString = new List<String>();
-            List<TemplateSchema> lstTemplateSchema = Context.TemplateSchemaRepository.FindBy(x => x.TemplateId == strTemplateID).OrderBy(x=>x.SchemaName).ToList();
-
-            string strLine = "include=schema:\"in (";
-            lstString.Add(strLine);
-
-            for (int i=0; i < lstTemplateSchema.Count; i++)
-            {
-                if (i == lstTemplateSchema.Count-1)
-                {
-                    lstString.Add("'" + lstTemplateSchema[i].SchemaName + "' ");
-                }
-                else
-                {
-                    lstString.Add("'" + lstTemplateSchema[i].SchemaName + "', ");
-                }
-            }
-            strLine = ")\"";
-            lstString.Add(strLine);
-            return lstString;
-        }
-
-        private List<String> GetRemapSanitize(string strTemplateID)
-        {
-            List<String> lstString = new List<String>();
-            List<TemplateSchema> lstTemplateSchema = Context.TemplateSchemaRepository.FindBy(x => x.TemplateId == strTemplateID).OrderBy(x => x.SchemaName).ToList();
-            
-            lstString.Add("REMAP_DATA=");
-            foreach (TemplateSchema TS in lstTemplateSchema)
-            {
-                List<TemplateSchemaSanitize> lstTemplateSchemaSanitize = Context.TemplateSchemaSanitizeRepository
-                    .FindBy(x => x.TemplateSchemaId == TS.Id).OrderBy(x => x.TableName).OrderBy(x => x.ColumnName).ToList();
+    
 
 
-                for (int i = 0; i < lstTemplateSchemaSanitize.Count; i++)
-                {
-                    string strline = TS.SchemaName.Trim() 
-                        + '.' + lstTemplateSchemaSanitize[i].TableName.Trim() 
-                        + '.' + lstTemplateSchemaSanitize[i].ColumnName.Trim() 
-                        + ":"    
-                        + lstTemplateSchemaSanitize[i].REMAP_FUNCTION.SchemaName 
-                        + '.' + lstTemplateSchemaSanitize[i].REMAP_FUNCTION.PackageName 
-                        + '.' + lstTemplateSchemaSanitize[i].REMAP_FUNCTION.FunctionName;
-
-                    if (i == lstTemplateSchemaSanitize.Count-1)
-                    {
-                    }
-                    else
-                    {
-                        strline = strline + ',';
-                    }
-                    lstString.Add(strline);
-                }
-            }
-            if (lstString.Count == 1)   // There's no remapping, just first entry, return null
-                return null;
-
-            return lstString;
-        }
-
-        private List<String> GetTableSampleSize(string strTemplateID)
-        {
-            List<String> lstString = new List<String>();
-            List<TemplateSchema> lstTemplateSchema = Context.TemplateSchemaRepository.FindBy(x => x.TemplateId == strTemplateID).OrderBy(x => x.SchemaName).ToList();
-
-            lstString.Add("SAMPLE=");
-            foreach (TemplateSchema TS in lstTemplateSchema)
-            {
-                foreach (TemplateSchemaTable TSS in Context.TemplateSchemaTableRepository.FindBy(x => x.TemplateSchemaId == TS.Id).OrderBy(x => x.TableName).ToList())
-                {
-                    lstString.Add(TSS.TEMPLATE_SCHEMA.SchemaName + '.' + TSS.TableName + ':' + TSS.SampleSize);
-                }
-            }
-
-            if (lstString.Count == 1)       //  In case there are no table sample size
-                return null;
-
-            return lstString;
-        }
 
             private void rgvTemplate_CommandCellClick(object sender, EventArgs e)
         {
@@ -339,16 +242,22 @@ namespace OracleDataMover.ora
                     Template tmpl = new Template();
                     tmpl.Name = dataRow.Cells["colTemplateName"].Value.ToString();
                     tmpl.DATABASE_ID = dataRow.Cells["colDatabaseID"].Value.ToString();
+                    tmpl.PARFileName = dataRow.Cells["colParFileName"].Value.ToString();
+                    tmpl.BATFileName = dataRow.Cells["colBatFileName"].Value.ToString();
+                    tmpl.ORA_UTILITY_ID = dataRow.Cells["colUtilityID"].Value.ToString();
                     Context.TemplateRepository.Save(tmpl);
                 }
                 if ((dataRow.Tag != null) && (dataRow.Tag.ToString() == "ThisRowIsDirty"))
                 {
                     string templID = dataRow.Cells["colTemplateID"].Value.ToString();
-                    Template di = Context.TemplateRepository
+                    Template tmpl = Context.TemplateRepository
                         .FindBy(x => x.Id == templID).FirstOrDefault();
-                    di.Name = dataRow.Cells["colTemplateName"].Value.ToString();
-                    di.DATABASE_ID = dataRow.Cells["colDatabaseID"].Value.ToString();
-                    Context.TemplateRepository.Save(di);
+                    tmpl.Name = dataRow.Cells["colTemplateName"].Value.ToString();
+                    tmpl.DATABASE_ID = dataRow.Cells["colDatabaseID"].Value.ToString();
+                    tmpl.PARFileName = dataRow.Cells["colParFileName"].Value.ToString();
+                    tmpl.BATFileName = dataRow.Cells["colBatFileName"].Value.ToString();
+                    tmpl.ORA_UTILITY_ID = dataRow.Cells["colUtilityID"].Value.ToString();
+                    Context.TemplateRepository.Save(tmpl);
                 }
             }
             Context.Commit();

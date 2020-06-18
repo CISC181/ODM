@@ -20,6 +20,9 @@
         <EntityTypeShape EntityType="ODMModel.TemplateParm" Width="1.5" PointX="5.125" PointY="0.5" />
         <AssociationConnector Association="ODMModel.TEMPLATEPARM_FK1" />
         <AssociationConnector Association="ODMModel.TEMPLATEPARM_FK2" />
+        <EntityTypeShape EntityType="ODMModel.ODMSetting" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ODMModel.OraUtility" Width="1.5" PointX="3.375" PointY="9" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_FK2" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -32,5 +32,7 @@ namespace OracleDataMoverEF.EF
         IDbSet<TemplateSchemaTable> TemplateSchemaTables { get; set; }
         IDbSet<TemplateSchemaSanitize> TemplateSchemaSanitizes { get; set; }
         IDbSet<TemplateParm> TemplateParms { get; set; }
+        IDbSet<ODMSetting> ODMSettings { get; set; }
+        IDbSet<OraUtility> OraUtilities { get; set; }
     }
 }
