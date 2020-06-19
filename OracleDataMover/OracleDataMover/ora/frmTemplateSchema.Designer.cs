@@ -38,6 +38,8 @@
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.rglTemplateSchema = new Telerik.WinControls.UI.RadLabel();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
+            this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
+            this.cmdAutoSanitizeSchema = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.rgvSchemaSanitize = new Telerik.WinControls.UI.RadGridView();
             this.radPanel4 = new Telerik.WinControls.UI.RadPanel();
@@ -49,13 +51,14 @@
             this.rlblDatabaseSchemas = new Telerik.WinControls.UI.RadLabel();
             this.rlcbScheams = new Telerik.WinControls.UI.RadCheckedListBox();
             this.rmccTemplateSchema = new Telerik.WinControls.UI.RadMultiColumnComboBox();
-            this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
-            this.cmdAutoSanitizeSchema = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rglTemplateSchema)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
+            this.radPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdAutoSanitizeSchema)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvSchemaSanitize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvSchemaSanitize.MasterTemplate)).BeginInit();
@@ -72,9 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccTemplateSchema)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccTemplateSchema.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccTemplateSchema.EditorControl.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
-            this.radPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdAutoSanitizeSchema)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,6 +111,24 @@
             this.radPanel2.Name = "radPanel2";
             this.radPanel2.Size = new System.Drawing.Size(1175, 670);
             this.radPanel2.TabIndex = 1;
+            // 
+            // radPanel3
+            // 
+            this.radPanel3.Controls.Add(this.cmdAutoSanitizeSchema);
+            this.radPanel3.Location = new System.Drawing.Point(7, 343);
+            this.radPanel3.Name = "radPanel3";
+            this.radPanel3.Size = new System.Drawing.Size(398, 34);
+            this.radPanel3.TabIndex = 6;
+            // 
+            // cmdAutoSanitizeSchema
+            // 
+            this.cmdAutoSanitizeSchema.Location = new System.Drawing.Point(3, 3);
+            this.cmdAutoSanitizeSchema.Name = "cmdAutoSanitizeSchema";
+            this.cmdAutoSanitizeSchema.Size = new System.Drawing.Size(182, 24);
+            this.cmdAutoSanitizeSchema.TabIndex = 0;
+            this.cmdAutoSanitizeSchema.Text = "Auto Sanitize Schema";
+            this.cmdAutoSanitizeSchema.ThemeName = "TelerikMetroBlue";
+            this.cmdAutoSanitizeSchema.Click += new System.EventHandler(this.cmdAutoSanitizeSchema_Click);
             // 
             // radLabel1
             // 
@@ -290,24 +308,6 @@
             this.rmccTemplateSchema.TabStop = false;
             this.rmccTemplateSchema.SelectedIndexChanged += new System.EventHandler(this.rmccTemplateSchema_SelectedIndexChanged);
             // 
-            // radPanel3
-            // 
-            this.radPanel3.Controls.Add(this.cmdAutoSanitizeSchema);
-            this.radPanel3.Location = new System.Drawing.Point(7, 343);
-            this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(398, 34);
-            this.radPanel3.TabIndex = 6;
-            // 
-            // cmdAutoSanitizeSchema
-            // 
-            this.cmdAutoSanitizeSchema.Location = new System.Drawing.Point(3, 3);
-            this.cmdAutoSanitizeSchema.Name = "cmdAutoSanitizeSchema";
-            this.cmdAutoSanitizeSchema.Size = new System.Drawing.Size(182, 24);
-            this.cmdAutoSanitizeSchema.TabIndex = 0;
-            this.cmdAutoSanitizeSchema.Text = "Auto Sanitize Schema";
-            this.cmdAutoSanitizeSchema.ThemeName = "TelerikMetroBlue";
-            this.cmdAutoSanitizeSchema.Click += new System.EventHandler(this.cmdAutoSanitizeSchema_Click);
-            // 
             // frmTemplateSchema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,6 +328,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
+            this.radPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmdAutoSanitizeSchema)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvSchemaSanitize.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvSchemaSanitize)).EndInit();
@@ -344,9 +347,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccTemplateSchema.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccTemplateSchema.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccTemplateSchema)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
-            this.radPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmdAutoSanitizeSchema)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
