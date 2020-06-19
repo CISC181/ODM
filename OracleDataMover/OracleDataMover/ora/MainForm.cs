@@ -35,10 +35,7 @@ namespace OracleDataMover.ora
             LoadrmccDatabase();
             LoadGrid();
             isLoading = false;
-
-
         }
-
 
         private void LoadrmccDatabase()
         {
@@ -53,7 +50,7 @@ namespace OracleDataMover.ora
             {
                 if (this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"] != null)
                 {
-                    LoadGrid();
+                    LoadGridData();
                 }
             }
         }
@@ -67,7 +64,7 @@ namespace OracleDataMover.ora
         private void LoadGridLayout()
         {
 
-            rgvTemplate.Columns.Clear();            
+            rgvTemplate.Columns.Clear();
 
             GridViewCommandColumn cmdExecuteEXPDP = new GridViewCommandColumn();
             cmdExecuteEXPDP.Name = "colExecute";
@@ -104,7 +101,7 @@ namespace OracleDataMover.ora
             this.rgvTemplate.Columns.Add(gtbTemplateName);
         }
 
-        private void LoadGridData()
+        public void LoadGridData()
         {
             if (this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"] != null)
             {
@@ -116,6 +113,7 @@ namespace OracleDataMover.ora
 
         private void rgvTemplate_CommandCellClick(object sender, EventArgs e)
         {
+     
             GridViewCellEventArgs args = (GridViewCellEventArgs)e;
 
             switch (args.Column.Name)
@@ -135,8 +133,18 @@ namespace OracleDataMover.ora
             GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + tmpl.PARFileName.ToString(), args.Value.ToString());
             GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString(), args.Value.ToString());
 
-            //Process.Start(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
-            Process.Start("CMD.EXE");
+
+
+            ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
+        }
+
+        public void ExecuteAsAdmin(string fileName)
+        {
+            Process proc = new Process();
+            proc.StartInfo.FileName = fileName;
+            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.Verb = "runas";
+            proc.Start();
         }
 
 
@@ -177,6 +185,7 @@ namespace OracleDataMover.ora
         private void rmManageTemplate_Click(object sender, EventArgs e)
         {
             frmTemplate frmT = new frmTemplate();
+            frmT.MF1 = this;
             frmT.Show();
         }
 
@@ -189,6 +198,7 @@ namespace OracleDataMover.ora
         private void rmTemplateParms_Click(object sender, EventArgs e)
         {
             frmTemplateParm frmT = new frmTemplateParm();
+            frmT.MF1 = this;
             frmT.Show();
         }
 
@@ -199,6 +209,8 @@ namespace OracleDataMover.ora
         {
             Application.Exit();
         }
+
+
     }
 
 }

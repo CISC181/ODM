@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.rmFile = new Telerik.WinControls.UI.RadMenuItem();
             this.rmClose = new Telerik.WinControls.UI.RadMenuItem();
@@ -179,7 +179,7 @@
             // 
             // 
             this.rgvTemplate.MasterTemplate.EnableGrouping = false;
-            this.rgvTemplate.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.rgvTemplate.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.rgvTemplate.Name = "rgvTemplate";
             this.rgvTemplate.ReadOnly = true;
             this.rgvTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -234,30 +234,30 @@
             this.rmccDatabase.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.rmccDatabase.EditorControl.MasterTemplate.AllowDeleteRow = false;
             this.rmccDatabase.EditorControl.MasterTemplate.AllowEditRow = false;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "Id";
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "colDatabaseID";
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "Name";
-            gridViewTextBoxColumn2.HeaderText = "Datbase Name";
-            gridViewTextBoxColumn2.Name = "colDatabaseName";
-            gridViewTextBoxColumn2.Width = 182;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "TNSName";
-            gridViewTextBoxColumn3.HeaderText = "TNS Name";
-            gridViewTextBoxColumn3.Name = "colTNSName";
-            gridViewTextBoxColumn3.Width = 306;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "Id";
+            gridViewTextBoxColumn4.IsVisible = false;
+            gridViewTextBoxColumn4.Name = "colDatabaseID";
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "Name";
+            gridViewTextBoxColumn5.HeaderText = "Datbase Name";
+            gridViewTextBoxColumn5.Name = "colDatabaseName";
+            gridViewTextBoxColumn5.Width = 182;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "TNSName";
+            gridViewTextBoxColumn6.HeaderText = "TNS Name";
+            gridViewTextBoxColumn6.Name = "colTNSName";
+            gridViewTextBoxColumn6.Width = 306;
             this.rmccDatabase.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3});
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.rmccDatabase.EditorControl.MasterTemplate.EnableGrouping = false;
             this.rmccDatabase.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            sortDescriptor1.PropertyName = "colTemplateName";
+            sortDescriptor2.PropertyName = "colTemplateName";
             this.rmccDatabase.EditorControl.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor1});
-            this.rmccDatabase.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            sortDescriptor2});
+            this.rmccDatabase.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.rmccDatabase.EditorControl.Name = "NestedRadGridView";
             this.rmccDatabase.EditorControl.ReadOnly = true;
             this.rmccDatabase.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.No;

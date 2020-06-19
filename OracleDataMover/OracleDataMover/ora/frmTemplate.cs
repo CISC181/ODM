@@ -21,7 +21,9 @@ namespace OracleDataMover.ora
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
         protected List<DATABASE_INFO> lstDatabase = Context.DATABASE_INFORepository.FindBy(x => true).ToList();
         protected List<OraUtility> lstOraUtility = Context.OraUtilityRepository.FindBy(x => true).OrderBy(x => x.UtilityName).ToList();
+        private MainForm MF;
 
+        public MainForm MF1 { get => MF; set => MF = value; }
         public frmTemplate()
         {
             InitializeComponent();
@@ -42,6 +44,7 @@ namespace OracleDataMover.ora
         }
         public void rbClose_Click(object sender, EventArgs e)
         {
+            MF.LoadGridData();
             this.Hide();
         }
         public void rgv_CellValueChanged(object sender, GridViewCellEventArgs e)
@@ -164,7 +167,6 @@ namespace OracleDataMover.ora
             }
 
             Process.Start("notepad.exe", saveFileDialog1.FileName);
-            Process.Start(@"C:\Users\tstba\OneDrive\Documents\ODM\RUN_EXPDP.bat");
         }
 
 

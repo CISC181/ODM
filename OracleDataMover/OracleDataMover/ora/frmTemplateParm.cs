@@ -20,6 +20,10 @@ namespace OracleDataMover.ora
         private Boolean isLoading;
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
 
+        private MainForm MF;
+
+        public MainForm MF1 { get => MF; set => MF = value; }
+
         public frmTemplateParm()
         {
             InitializeComponent();
@@ -62,6 +66,7 @@ namespace OracleDataMover.ora
 
         private void rbClose_Click(object sender, EventArgs e)
         {
+            MF.LoadGridData();
             this.Hide();
         }
 

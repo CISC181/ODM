@@ -14,12 +14,14 @@ namespace OracleDataMover.Common
 
         public static void GeneratePARFile(string strFileName, string strTemplateID)
         {
+            Template t = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
+
             using (System.IO.StreamWriter file =
                  new System.IO.StreamWriter(strFileName))
             {
-                file.WriteLine("#     OracleDataMover EXPDP written " + DateTime.Now.ToString("dddd, dd MMMM yyyy"));
+                file.WriteLine("#     OracleDataMover " + t.ORA_UTILITY.UtilityName  + " written " + DateTime.Now.ToString("dddd, dd MMMM yyyy"));
                 file.WriteLine("");
-                file.WriteLine("#     Extract Parameters");
+                file.WriteLine("#     " + t.ORA_UTILITY.UtilityName + " Parameters");
                 foreach (string str in GetTemplateParmInfo(strTemplateID))
                 {
                     file.WriteLine(str.ToString());
@@ -66,17 +68,20 @@ namespace OracleDataMover.Common
         {
             List<String> lstString = new List<String>();
             Template t = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
+            List<ODMSetting> ODMSetting = Context.ODMSettingRepository.FindBy(x => true).ToList();
 
-            lstString.Add("SET /P UID=UserID");
-            lstString.Add("SET /P PW=Password");
+            lstString.Add("echo off");
+
+            lstString.Add("SET /P UID=  UserID  ");
+            lstString.Add("SET /P PW=  Password  ");
             lstString.Add("SET SID=" + t.DATABASE_INFO.TnsName.ToString());
 
-            String str = t.ORA_UTILITY.UtilityName 
+            String str = t.ORA_UTILITY.UtilityName
                 + " '"
                 + "%UID%/"
-                + "%PW%"                
+                + "%PW%"
                 + "@%SID%' dumpfile=" + t.DMPFileName
-                + " parfile=" + t.PARFileName;
+                + " parfile=" + ODMSetting.Where(x => x.SettingName == "WORKING_DIR").FirstOrDefault().SettingValue + "\\" + t.PARFileName;
 
             lstString.Add(str);
             lstString.Add("pause");
@@ -118,6 +123,13 @@ namespace OracleDataMover.Common
             }
             strLine = ")\"";
             lstString.Add(strLine);
+
+            if (lstString.Count == 2)
+            {
+                lstString.Clear();
+                lstString.Add("");
+            }
+
             return lstString;
         }
 
@@ -154,7 +166,11 @@ namespace OracleDataMover.Common
                 }
             }
             if (lstString.Count == 1)   // There's no remapping, just first entry, return null
-                return null;
+            {
+                lstString.Clear();
+                lstString.Add("");
+            }
+
 
             return lstString;
         }
@@ -174,7 +190,10 @@ namespace OracleDataMover.Common
             }
 
             if (lstString.Count == 1)       //  In case there are no table sample size
-                return null;
+            {
+                lstString.Clear();
+                lstString.Add("");
+            }
 
             return lstString;
         }
