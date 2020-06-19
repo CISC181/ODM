@@ -438,7 +438,7 @@ public class CodeStringGenerator
                 inHeader ? Environment.NewLine : "",
                 includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : "",
                 inHeader ? "" : Environment.NewLine,
-				"using Eca.Common;",
+				"using Eca.Common;" + Environment.NewLine + "using System.Text.RegularExpressions;",
 				Environment.NewLine)
             : "";
     }

@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\GenerateFiles.cs" />
+    <Compile Include="Common\Utility.cs" />
     <Compile Include="ora\frmDatabaseInfo.cs">
       <SubType>Form</SubType>
     </Compile>

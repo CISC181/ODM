@@ -12,6 +12,18 @@ namespace OracleDataMoverUT.UT
     {
         protected ODMDataContext Context { get; set; }
 
+        [TestMethod]
+        public void TestClone()
+        {
+            Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+            Template t = Context.TemplateRepository.FindBy(x => x.Id == "BF2F6931ED37458AAF897FC8EBAB37E7").FirstOrDefault();
+            Template newT = t.Clone();
+
+
+            //Assert.IsTrue(Templates.Count() > 0);
+
+
+        }
 
         [TestMethod]
         public void GetTemplateData()

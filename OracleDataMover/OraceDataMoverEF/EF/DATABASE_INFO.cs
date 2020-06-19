@@ -12,6 +12,7 @@ namespace OracleDataMoverEF.EF
     using System;
     using System.Collections.Generic;
     using Eca.Common;
+    using System.Text.RegularExpressions;
     
     public partial class DATABASE_INFO : Entity
     {
