@@ -14,9 +14,18 @@ namespace OracleDataMover.Common
 
         public static void CopyTemplate(string strTemplateID, string strNewTemplateName)
         {
-            Template T = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
-            Template newT = new Template();
-            newT = T.Clone();
+            Template T = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();       
+            //Template newT = T.Clone();
+
+           // newT.Name = strNewTemplateName;
+           // Context.TemplateRepository.Save(newT);
+            Context.Commit();
+            /*
+            foreach (TemplateParm TP in Context.TemplateParmRepository.FindBy(x=>x.TemplateId == newT.Id).ToList())
+            {
+            
+            }
+            */
 
 
         }

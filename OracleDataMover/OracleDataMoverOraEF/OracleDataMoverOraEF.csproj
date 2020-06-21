@@ -101,6 +101,8 @@
       <DependentUpon>OraModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="EntityExtensions\OraEntities.cs" />
+    <Compile Include="NativeSQL\Domain\DBA_DataPump_Jobs.cs" />
+    <Compile Include="NativeSQL\SQL\OraDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ALL_CONSTRAINTSRepository.cs">
       <DependentUpon>Repositories.tt</DependentUpon>

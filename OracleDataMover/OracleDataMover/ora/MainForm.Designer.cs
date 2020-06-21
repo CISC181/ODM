@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.rmFile = new Telerik.WinControls.UI.RadMenuItem();
             this.rmClose = new Telerik.WinControls.UI.RadMenuItem();
@@ -46,19 +48,27 @@
             this.rmTemplateParms = new Telerik.WinControls.UI.RadMenuItem();
             this.rmManageTemplateSchema = new Telerik.WinControls.UI.RadMenuItem();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
-            this.rlblGridLabel = new Telerik.WinControls.UI.RadLabel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.rgvTemplate = new Telerik.WinControls.UI.RadGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rlblGridLabel = new Telerik.WinControls.UI.RadLabel();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.rbClose = new Telerik.WinControls.UI.RadButton();
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
             this.rmccDatabase = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.gridTimer = new System.Windows.Forms.Timer(this.components);
+            this.rgvDBAJobs = new Telerik.WinControls.UI.RadGridView();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rlblGridLabel)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgvTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvTemplate.MasterTemplate)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rlblGridLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rbClose)).BeginInit();
@@ -68,6 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvDBAJobs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvDBAJobs.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +90,7 @@
             this.rmManage});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(631, 20);
+            this.radMenu1.Size = new System.Drawing.Size(661, 20);
             this.radMenu1.TabIndex = 4;
             // 
             // rmFile
@@ -151,12 +163,64 @@
             // 
             // radPanel2
             // 
+            this.radPanel2.Controls.Add(this.tabControl1);
             this.radPanel2.Controls.Add(this.rlblGridLabel);
-            this.radPanel2.Controls.Add(this.rgvTemplate);
             this.radPanel2.Location = new System.Drawing.Point(15, 103);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(603, 360);
+            this.radPanel2.Size = new System.Drawing.Size(626, 360);
             this.radPanel2.TabIndex = 6;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(6, 30);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(601, 308);
+            this.tabControl1.TabIndex = 8;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.rgvTemplate);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(593, 282);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Template Info";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // rgvTemplate
+            // 
+            this.rgvTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this.rgvTemplate.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rgvTemplate.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.rgvTemplate.ForeColor = System.Drawing.Color.Black;
+            this.rgvTemplate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rgvTemplate.Location = new System.Drawing.Point(6, 15);
+            // 
+            // 
+            // 
+            this.rgvTemplate.MasterTemplate.EnableGrouping = false;
+            this.rgvTemplate.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.rgvTemplate.Name = "rgvTemplate";
+            this.rgvTemplate.ReadOnly = true;
+            this.rgvTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rgvTemplate.Size = new System.Drawing.Size(572, 251);
+            this.rgvTemplate.TabIndex = 0;
+            this.rgvTemplate.ThemeName = "TelerikMetroBlue";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.rgvDBAJobs);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(593, 282);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Datapump Jobs";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // rlblGridLabel
             // 
@@ -167,32 +231,12 @@
             this.rlblGridLabel.Text = "Template";
             this.rlblGridLabel.ThemeName = "Office2013Light";
             // 
-            // rgvTemplate
-            // 
-            this.rgvTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
-            this.rgvTemplate.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rgvTemplate.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.rgvTemplate.ForeColor = System.Drawing.Color.Black;
-            this.rgvTemplate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rgvTemplate.Location = new System.Drawing.Point(6, 30);
-            // 
-            // 
-            // 
-            this.rgvTemplate.MasterTemplate.EnableGrouping = false;
-            this.rgvTemplate.MasterTemplate.ViewDefinition = tableViewDefinition3;
-            this.rgvTemplate.Name = "rgvTemplate";
-            this.rgvTemplate.ReadOnly = true;
-            this.rgvTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rgvTemplate.Size = new System.Drawing.Size(572, 251);
-            this.rgvTemplate.TabIndex = 0;
-            this.rgvTemplate.ThemeName = "TelerikMetroBlue";
-            // 
             // radPanel1
             // 
             this.radPanel1.Controls.Add(this.rbClose);
             this.radPanel1.Location = new System.Drawing.Point(15, 482);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(603, 52);
+            this.radPanel1.Size = new System.Drawing.Size(626, 52);
             this.radPanel1.TabIndex = 5;
             // 
             // rbClose
@@ -211,7 +255,7 @@
             this.radPanel3.Controls.Add(this.radLabel1);
             this.radPanel3.Location = new System.Drawing.Point(15, 26);
             this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(603, 56);
+            this.radPanel3.Size = new System.Drawing.Size(626, 56);
             this.radPanel3.TabIndex = 7;
             // 
             // rmccDatabase
@@ -234,30 +278,30 @@
             this.rmccDatabase.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.rmccDatabase.EditorControl.MasterTemplate.AllowDeleteRow = false;
             this.rmccDatabase.EditorControl.MasterTemplate.AllowEditRow = false;
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "Id";
-            gridViewTextBoxColumn4.IsVisible = false;
-            gridViewTextBoxColumn4.Name = "colDatabaseID";
-            gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.FieldName = "Name";
-            gridViewTextBoxColumn5.HeaderText = "Datbase Name";
-            gridViewTextBoxColumn5.Name = "colDatabaseName";
-            gridViewTextBoxColumn5.Width = 182;
-            gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "TNSName";
-            gridViewTextBoxColumn6.HeaderText = "TNS Name";
-            gridViewTextBoxColumn6.Name = "colTNSName";
-            gridViewTextBoxColumn6.Width = 306;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.FieldName = "Id";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "colDatabaseID";
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.FieldName = "Name";
+            gridViewTextBoxColumn2.HeaderText = "Datbase Name";
+            gridViewTextBoxColumn2.Name = "colDatabaseName";
+            gridViewTextBoxColumn2.Width = 182;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.FieldName = "TNSName";
+            gridViewTextBoxColumn3.HeaderText = "TNS Name";
+            gridViewTextBoxColumn3.Name = "colTNSName";
+            gridViewTextBoxColumn3.Width = 306;
             this.rmccDatabase.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3});
             this.rmccDatabase.EditorControl.MasterTemplate.EnableGrouping = false;
             this.rmccDatabase.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            sortDescriptor2.PropertyName = "colTemplateName";
+            sortDescriptor1.PropertyName = "colTemplateName";
             this.rmccDatabase.EditorControl.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor2});
-            this.rmccDatabase.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            sortDescriptor1});
+            this.rmccDatabase.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.rmccDatabase.EditorControl.Name = "NestedRadGridView";
             this.rmccDatabase.EditorControl.ReadOnly = true;
             this.rmccDatabase.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -266,7 +310,7 @@
             this.rmccDatabase.EditorControl.TabIndex = 0;
             this.rmccDatabase.Location = new System.Drawing.Point(6, 27);
             this.rmccDatabase.Name = "rmccDatabase";
-            this.rmccDatabase.Size = new System.Drawing.Size(569, 20);
+            this.rmccDatabase.Size = new System.Drawing.Size(582, 20);
             this.rmccDatabase.TabIndex = 4;
             this.rmccDatabase.TabStop = false;
             this.rmccDatabase.SelectedIndexChanged += new System.EventHandler(this.rmccDatabase_SelectedIndexChanged);
@@ -280,11 +324,31 @@
             this.radLabel1.Text = "Database";
             this.radLabel1.ThemeName = "Office2013Light";
             // 
+            // rgvDBAJobs
+            // 
+            this.rgvDBAJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this.rgvDBAJobs.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rgvDBAJobs.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.rgvDBAJobs.ForeColor = System.Drawing.Color.Black;
+            this.rgvDBAJobs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rgvDBAJobs.Location = new System.Drawing.Point(10, 16);
+            // 
+            // 
+            // 
+            this.rgvDBAJobs.MasterTemplate.EnableGrouping = false;
+            this.rgvDBAJobs.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.rgvDBAJobs.Name = "rgvDBAJobs";
+            this.rgvDBAJobs.ReadOnly = true;
+            this.rgvDBAJobs.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rgvDBAJobs.Size = new System.Drawing.Size(572, 251);
+            this.rgvDBAJobs.TabIndex = 1;
+            this.rgvDBAJobs.ThemeName = "TelerikMetroBlue";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(631, 546);
+            this.ClientSize = new System.Drawing.Size(661, 546);
             this.Controls.Add(this.radPanel3);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
@@ -300,9 +364,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rlblGridLabel)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rgvTemplate.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvTemplate)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rlblGridLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rbClose)).EndInit();
@@ -313,6 +380,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvDBAJobs.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvDBAJobs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -339,5 +408,10 @@
         private Telerik.WinControls.UI.RadPanel radPanel3;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadMultiColumnComboBox rmccDatabase;
+        private System.Windows.Forms.Timer gridTimer;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private Telerik.WinControls.UI.RadGridView rgvDBAJobs;
     }
 }

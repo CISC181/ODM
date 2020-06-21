@@ -150,6 +150,7 @@
             // 
             // 
             // 
+            this.rgvSchemaSanitize.MasterTemplate.EnableFiltering = true;
             this.rgvSchemaSanitize.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgvSchemaSanitize.Name = "rgvSchemaSanitize";
             this.rgvSchemaSanitize.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -219,6 +220,7 @@
             // 
             // 
             // 
+            this.rgvTableSample.MasterTemplate.EnableFiltering = true;
             this.rgvTableSample.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.rgvTableSample.Name = "rgvTableSample";
             this.rgvTableSample.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -240,6 +242,7 @@
             // 
             this.rlcbScheams.CheckedMember = "SchemaChecked";
             this.rlcbScheams.DisplayMember = "SchemaName";
+            this.rlcbScheams.EnableFiltering = true;
             this.rlcbScheams.Location = new System.Drawing.Point(4, 28);
             this.rlcbScheams.Name = "rlcbScheams";
             this.rlcbScheams.Size = new System.Drawing.Size(401, 306);
@@ -303,7 +306,7 @@
             this.rmccTemplateSchema.EditorControl.TabIndex = 0;
             this.rmccTemplateSchema.Location = new System.Drawing.Point(19, 28);
             this.rmccTemplateSchema.Name = "rmccTemplateSchema";
-            this.rmccTemplateSchema.Size = new System.Drawing.Size(401, 20);
+            this.rmccTemplateSchema.Size = new System.Drawing.Size(426, 20);
             this.rmccTemplateSchema.TabIndex = 0;
             this.rmccTemplateSchema.TabStop = false;
             this.rmccTemplateSchema.SelectedIndexChanged += new System.EventHandler(this.rmccTemplateSchema_SelectedIndexChanged);

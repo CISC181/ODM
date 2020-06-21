@@ -55,7 +55,7 @@
             this.radPanel2.Controls.Add(this.rgvTemplate);
             this.radPanel2.Location = new System.Drawing.Point(12, 12);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1023, 284);
+            this.radPanel2.Size = new System.Drawing.Size(1234, 284);
             this.radPanel2.TabIndex = 4;
             // 
             // rlblGridLabel
@@ -83,7 +83,7 @@
             this.rgvTemplate.Name = "rgvTemplate";
             this.rgvTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rgvTemplate.ShowGroupPanel = false;
-            this.rgvTemplate.Size = new System.Drawing.Size(1017, 251);
+            this.rgvTemplate.Size = new System.Drawing.Size(1220, 251);
             this.rgvTemplate.TabIndex = 0;
             this.rgvTemplate.ThemeName = "TelerikMetroBlue";
             this.rgvTemplate.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_CellValueChanged);
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 366);
+            this.ClientSize = new System.Drawing.Size(1255, 366);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
             this.Name = "frmTemplate";

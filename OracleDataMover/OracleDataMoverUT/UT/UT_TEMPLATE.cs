@@ -4,6 +4,7 @@ using OracleDataMoverEF.EF;
 using OracleDataMoverEF.UnitOfWork;
 using System.Linq;
 using System.Collections.Generic;
+using OracleDataMover.Common;
 
 namespace OracleDataMoverUT.UT
 {
@@ -16,10 +17,13 @@ namespace OracleDataMoverUT.UT
         public void TestClone()
         {
             Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+
+
+            List<DBA_DataPump_Jobs> jobs = Context.GetDBADataPumpJobs();
+
+
             Template t = Context.TemplateRepository.FindBy(x => x.Id == "BF2F6931ED37458AAF897FC8EBAB37E7").FirstOrDefault();
-            Template newT = t.Clone();
-
-
+            Utility.CopyTemplate(t.Id, "test");
             //Assert.IsTrue(Templates.Count() > 0);
 
 

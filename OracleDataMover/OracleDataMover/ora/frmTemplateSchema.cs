@@ -72,6 +72,7 @@ namespace OracleDataMover.ora
         /// <param name="strDatabaseName"></param>
         private void LoadrlcbScheams(string strTemplateID, string strDatabaseName)
         {
+            rlcbScheams.Items.Clear();
             rlblDatabaseSchemas.Text = "Non-Oracle Scheams for Database: " + strDatabaseName;
             isLoading = true;
             OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");

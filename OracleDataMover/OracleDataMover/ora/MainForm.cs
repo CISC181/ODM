@@ -22,6 +22,7 @@ namespace OracleDataMover.ora
     {
         private Boolean isLoading;
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static OraDataContext ContextOra = null;
 
         public MainForm()
         {
@@ -34,7 +35,17 @@ namespace OracleDataMover.ora
             isLoading = true;
             LoadrmccDatabase();
             LoadGrid();
+            LoadDBAGrid();
             isLoading = false;
+
+            gridTimer.Interval = 1000;
+            gridTimer.Tick += new EventHandler(Timer1_Tick);
+            gridTimer.Enabled = true;
+        }
+
+        private void Timer1_Tick(object Sender, EventArgs e)
+        {
+            this.LoadDBAGridData();
         }
 
         private void LoadrmccDatabase()
@@ -51,6 +62,7 @@ namespace OracleDataMover.ora
                 if (this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"] != null)
                 {
                     LoadGridData();
+                    LoadDBAGrid();
                 }
             }
         }
@@ -63,7 +75,6 @@ namespace OracleDataMover.ora
 
         private void LoadGridLayout()
         {
-
             rgvTemplate.Columns.Clear();
 
             GridViewCommandColumn cmdExecuteEXPDP = new GridViewCommandColumn();
@@ -106,8 +117,37 @@ namespace OracleDataMover.ora
             if (this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"] != null)
             {
                 string strDatabaseID = rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"].Value.ToString();
+                String strDatabaseName = this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
                 List<Template> lstTemplate = Context.TemplateRepository.FindBy(x => x.DATABASE_ID == strDatabaseID).ToList();
+
                 rgvTemplate.DataSource = lstTemplate;
+
+                ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+                List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
+
+
+                //List <DBA_DataPump_Jobs> lstDBAJobs = Context.GetDBADataPumpJobs();
+
+
+                //var results = from Template in lstTemplate
+                //              join DBAJobs in lstDBAJobs
+                //              on  Template.UtilJobname.ToUpper() equals DBAJobs.JOB_NAME.ToUpper() into joined
+                //              from j in joined.DefaultIfEmpty()
+                //              select new
+                //              {
+                //                  TemplateData = Template,
+                //                  DBAJobData = j
+                //              };
+
+
+
+
+
+
+
+
+
+
             }
         }
 
@@ -136,6 +176,8 @@ namespace OracleDataMover.ora
 
 
             ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
+
+ 
         }
 
         public void ExecuteAsAdmin(string fileName)
@@ -145,6 +187,73 @@ namespace OracleDataMover.ora
             proc.StartInfo.UseShellExecute = true;
             proc.StartInfo.Verb = "runas";
             proc.Start();
+        }
+
+
+        private void LoadDBAGrid()
+        {
+            LoadDBAGridLayout();
+            LoadDBAGridData();
+        }
+
+        private void LoadDBAGridLayout()
+        {
+            rgvDBAJobs.Columns.Clear();
+
+
+            GridViewTextBoxColumn gtbOwnerName = new GridViewTextBoxColumn();
+            gtbOwnerName.EnableExpressionEditor = false;
+            gtbOwnerName.FieldName = "OWNER_NAME";
+            gtbOwnerName.HeaderText = "Owner";
+            gtbOwnerName.Name = "colOWNER_NAME";
+            gtbOwnerName.Width = 100;
+            this.rgvDBAJobs.Columns.Add(gtbOwnerName);
+
+            GridViewTextBoxColumn gtbJOB_NAME = new GridViewTextBoxColumn();
+            gtbJOB_NAME.EnableExpressionEditor = false;
+            gtbJOB_NAME.FieldName = "JOB_NAME";
+            gtbJOB_NAME.HeaderText = "Job Name";
+            gtbJOB_NAME.Name = "colJOB_NAME";
+            gtbJOB_NAME.Width = 100;
+            this.rgvDBAJobs.Columns.Add(gtbJOB_NAME);
+
+            GridViewTextBoxColumn gtbOPERATION = new GridViewTextBoxColumn();
+            gtbOPERATION.EnableExpressionEditor = false;
+            gtbOPERATION.FieldName = "OPERATION";
+            gtbOPERATION.HeaderText = "Operation";
+            gtbOPERATION.Name = "colOPERATION";
+            gtbOPERATION.Width = 85;
+            this.rgvDBAJobs.Columns.Add(gtbOPERATION);
+
+            GridViewTextBoxColumn gtbJOB_MODE = new GridViewTextBoxColumn();
+            gtbJOB_MODE.EnableExpressionEditor = false;
+            gtbJOB_MODE.FieldName = "JOB_MODE";
+            gtbJOB_MODE.HeaderText = "Job Mode";
+            gtbJOB_MODE.Name = "colJOB_MODE";
+            gtbJOB_MODE.Width = 85;
+            this.rgvDBAJobs.Columns.Add(gtbJOB_MODE);
+
+            GridViewTextBoxColumn gtbSTATE = new GridViewTextBoxColumn();
+            gtbSTATE.EnableExpressionEditor = false;
+            gtbSTATE.FieldName = "STATE";
+            gtbSTATE.HeaderText = "State";
+            gtbSTATE.Name = "colSTATE";
+            gtbSTATE.Width = 85;
+            this.rgvDBAJobs.Columns.Add(gtbSTATE);
+
+        }
+        private void LoadDBAGridData()
+        {
+            if (this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"] != null)
+            {
+                string strDatabaseID = rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"].Value.ToString();
+                String strDatabaseName = this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
+
+                ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+                List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
+                rgvDBAJobs.DataSource = lstDBAJobs;
+          }
+
         }
 
 

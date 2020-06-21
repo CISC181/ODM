@@ -87,6 +87,10 @@
       <Project>{b8b71552-03f6-4734-a063-f99187cfba98}</Project>
       <Name>OracleDataMoverOraEF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OracleDataMover\OracleDataMover.csproj">
+      <Project>{e9df3e91-50ad-4342-a1ab-5f23a8f6f835}</Project>
+      <Name>OracleDataMover</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

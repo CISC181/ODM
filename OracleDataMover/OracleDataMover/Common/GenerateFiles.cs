@@ -81,6 +81,7 @@ namespace OracleDataMover.Common
                 + "%UID%/"
                 + "%PW%"
                 + "@%SID%' dumpfile=" + t.DMPFileName
+                + " Job_name=" + t.UtilJobname 
                 + " parfile=" + ODMSetting.Where(x => x.SettingName == "WORKING_DIR").FirstOrDefault().SettingValue + "\\" + t.PARFileName;
 
             lstString.Add(str);

@@ -143,6 +143,14 @@ namespace OracleDataMover.ora
             gtbBatFileName.Width = 150;
             this.rgvTemplate.Columns.Add(gtbBatFileName);
 
+            GridViewTextBoxColumn gtbJobName = new GridViewTextBoxColumn();
+            gtbJobName.EnableExpressionEditor = false;
+            gtbJobName.Name = "colUtilJobName";
+            gtbJobName.FieldName = "UtilJobname";
+            gtbJobName.HeaderText = "Ora Job Name";
+            gtbJobName.Name = "colUtilJobName";
+            gtbJobName.Width = 150;
+            this.rgvTemplate.Columns.Add(gtbJobName);
         }
 
         private void rgvTemplate_cmdGeneratePAR_CommandCellClick(object sender, EventArgs e)
@@ -257,6 +265,7 @@ namespace OracleDataMover.ora
                     tmpl.BATFileName = dataRow.Cells["colBatFileName"].Value.ToString();
                     tmpl.ORA_UTILITY_ID = dataRow.Cells["colUtilityID"].Value.ToString();
                     tmpl.DMPFileName = dataRow.Cells["colDmpFileName"].Value.ToString(); 
+                    tmpl.UtilJobname = dataRow.Cells["colUtilJobName"].Value.ToString();
                     Context.TemplateRepository.Save(tmpl);
                 }
                 if ((dataRow.Tag != null) && (dataRow.Tag.ToString() == "ThisRowIsDirty"))
@@ -270,6 +279,7 @@ namespace OracleDataMover.ora
                     tmpl.BATFileName = dataRow.Cells["colBatFileName"].Value.ToString();
                     tmpl.ORA_UTILITY_ID = dataRow.Cells["colUtilityID"].Value.ToString();
                     tmpl.DMPFileName = dataRow.Cells["colDmpFileName"].Value.ToString();
+                    tmpl.UtilJobname = dataRow.Cells["colUtilJobName"].Value.ToString();
                     Context.TemplateRepository.Save(tmpl);
                 }
             }

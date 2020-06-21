@@ -79,6 +79,7 @@
           <Property Name="BAT_FILENAME" Type="varchar2" MaxLength="50" />
           <Property Name="ORA_UTILITY_ID" Type="varchar2" MaxLength="32" />
           <Property Name="DMP_FILENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="UTIL_JOBNAME" Type="varchar2" MaxLength="50" />
         </EntityType>
         <EntityType Name="TEMPLATE_PARM">
           <Key>
@@ -339,6 +340,7 @@
           <Property Name="ORA_UTILITY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ORA_UTILITY" Relationship="ODMModel.TEMPLATE_FK2" FromRole="Template" ToRole="ORA_UTILITY" />
           <Property Name="DMPFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UtilJobname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PARM">
           <Key>
@@ -568,6 +570,7 @@
           <EntitySetMapping Name="Templates1">
             <EntityTypeMapping TypeName="ODMModel.Template">
               <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="UtilJobname" ColumnName="UTIL_JOBNAME" />
                 <ScalarProperty Name="DMPFileName" ColumnName="DMP_FILENAME" />
                 <ScalarProperty Name="ORA_UTILITY_ID" ColumnName="ORA_UTILITY_ID" />
                 <ScalarProperty Name="BATFileName" ColumnName="BAT_FILENAME" />

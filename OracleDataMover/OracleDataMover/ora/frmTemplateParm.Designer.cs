@@ -197,7 +197,7 @@
             this.rmccTemplateSchema.EditorControl.TabIndex = 0;
             this.rmccTemplateSchema.Location = new System.Drawing.Point(3, 28);
             this.rmccTemplateSchema.Name = "rmccTemplateSchema";
-            this.rmccTemplateSchema.Size = new System.Drawing.Size(401, 20);
+            this.rmccTemplateSchema.Size = new System.Drawing.Size(492, 20);
             this.rmccTemplateSchema.TabIndex = 3;
             this.rmccTemplateSchema.TabStop = false;
             this.rmccTemplateSchema.SelectedIndexChanged += new System.EventHandler(this.rmccTemplateSchema_SelectedIndexChanged);
