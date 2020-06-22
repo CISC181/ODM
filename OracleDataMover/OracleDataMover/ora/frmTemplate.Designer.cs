@@ -86,6 +86,8 @@
             this.rgvTemplate.Size = new System.Drawing.Size(1220, 251);
             this.rgvTemplate.TabIndex = 0;
             this.rgvTemplate.ThemeName = "TelerikMetroBlue";
+            this.rgvTemplate.RowValidating += new Telerik.WinControls.UI.RowValidatingEventHandler(this.rgvTemplate_RowValidating);
+            this.rgvTemplate.CellValidating += new Telerik.WinControls.UI.CellValidatingEventHandler(this.rgvTemplate_CellValidating);
             this.rgvTemplate.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_CellValueChanged);
             // 
             // radPanel1

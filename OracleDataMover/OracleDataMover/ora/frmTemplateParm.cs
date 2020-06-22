@@ -59,6 +59,7 @@ namespace OracleDataMover.ora
                     //String strDatabaseName = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
                     //String strTemplateID = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colTemplateID"].Value.ToString();
                     LoadrgvTemplateParms();
+                    LoadrmccCopyFrom();
 
                 }
             }
@@ -111,6 +112,13 @@ namespace OracleDataMover.ora
             LoadrgvTemplateParms_LoadData();
         }
 
+        private void LoadrmccCopyFrom()
+        {
+            String strTemplateID = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colTemplateID"].Value.ToString();
+            List<Template> lstTemplate = Context.TemplateRepository.FindBy(x => true).Where(x=>x.Id != strTemplateID).ToList();
+            this.rmccCopyFrom.DataSource = lstTemplate;
+
+        }
 
 
         private void LoadrgvTemplateParms_Layout()
@@ -283,6 +291,39 @@ namespace OracleDataMover.ora
                     dataRow.Tag = string.Empty;
                 }
             }
+        }
+
+        private void rbCopy_Click(object sender, EventArgs e)
+        {
+            String strSourceTemplateID = this.rmccCopyFrom.EditorControl.CurrentRow.Cells["colTemplateID"].Value.ToString();
+            String strTargetTemplateID = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colTemplateID"].Value.ToString();
+
+            List<TemplateParm> lstTP = Context.TemplateParmRepository.FindBy(x => x.TemplateId == strSourceTemplateID).ToList();
+
+            foreach (TemplateParm TP in lstTP)
+            {
+                TemplateParm extTP = Context.TemplateParmRepository
+                    .FindBy(x => x.TemplateId == strTargetTemplateID)
+                    .Where(x => x.ParmId == TP.ParmId).FirstOrDefault();
+                if (extTP == null)
+                {
+                    TemplateParm newTP = new TemplateParm();
+                    newTP.ParmId = TP.ParmId;
+                    newTP.ParmValue = TP.ParmValue;
+                    newTP.TemplateId = strTargetTemplateID;
+                    newTP.Id = Regex.Replace(Guid.NewGuid().ToString().ToUpper(), "[-]", "");
+                    Context.TemplateParmRepository.Save(newTP);
+                }
+                else
+                {
+                    extTP.ParmValue = TP.ParmValue;
+                    Context.TemplateParmRepository.Save(extTP);
+                }             
+            }
+            Context.Commit();
+            LoadrgvTemplateParms();
+            LoadrmccCopyFrom();
+
         }
     }
 }

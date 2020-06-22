@@ -287,5 +287,90 @@ namespace OracleDataMover.ora
             MessageBox.Show("Data is saved");
             LoadGrid();
         }
+
+        private void rgvTemplate_CellValidating(object sender, CellValidatingEventArgs e)
+        {
+            //&& column.Name == "colDmpFileName"
+            GridViewDataColumn column = e.Column as GridViewDataColumn;
+            if (e.Row is GridViewDataRowInfo && column != null )
+            {
+                switch (column.Name.ToString())
+                {
+                    case "colDmpFileName":
+                        if (string.IsNullOrEmpty((string)e.Value) || ((string)e.Value).Trim() == string.Empty)
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("DMP File Name Required");
+                        }
+                        break;
+                    case "colTemplateName":
+                        if (string.IsNullOrEmpty((string)e.Value) || ((string)e.Value).Trim() == string.Empty)
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("Template Name Required");
+                        }
+                        break;
+                    case "colParFileName":
+                        if (string.IsNullOrEmpty((string)e.Value) || ((string)e.Value).Trim() == string.Empty)
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("PAR File Required");
+                        }
+                        break;
+                    case "colBatFileName":
+                        if (string.IsNullOrEmpty((string)e.Value) || ((string)e.Value).Trim() == string.Empty)
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("BAT File Required");
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void rgvTemplate_RowValidating(object sender, RowValidatingEventArgs e)
+        {
+            if (e.Row is GridViewNewRowInfo)
+            {
+                GridViewNewRowInfo row = e.Row as GridViewNewRowInfo;
+                
+                if (row.Cells["colTemplateName"].Value == null)
+                {
+                    MessageBox.Show("Template Name Required");
+                    e.Cancel = true;
+                    return;
+                }
+                if (row.Cells["colParFileName"].Value == null)
+                {
+                    MessageBox.Show("PAR File Required");
+                    e.Cancel = true;
+                    return;
+                }
+                if (row.Cells["colBatFileName"].Value == null)
+                {
+                    MessageBox.Show("BAT File Required");
+                    e.Cancel = true;
+                    return;
+                }
+                if (row.Cells["colUtilityID"].Value == null)
+                {
+                    MessageBox.Show("Utility Type Required");
+                    e.Cancel = true;
+                    return;
+                }
+                if (row.Cells["colDmpFileName"].Value == null)
+                {
+                    MessageBox.Show("DMP File Required Required");
+                    e.Cancel = true;
+                    return;
+                }
+                if (row.Cells["colUtilJobName"].Value == null)
+                {
+                    MessageBox.Show("Job Name Required");
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
     }
 }

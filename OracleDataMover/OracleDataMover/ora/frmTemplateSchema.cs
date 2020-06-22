@@ -45,7 +45,7 @@ namespace OracleDataMover.ora
         /// </summary>
         private void LoadrmccTemplateSchema()
         {
-            List<Template> lstTemplate = Context.TemplateRepository.FindBy(x => true).ToList();
+            List<Template> lstTemplate = Context.TemplateRepository.FindBy(x => true).Where(x=> x.ORA_UTILITY.UtilityName=="EXPDP").ToList();
             this.rmccTemplateSchema.DataSource = lstTemplate;
         }
 

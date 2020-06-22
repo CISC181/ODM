@@ -45,6 +45,7 @@ namespace OracleDataMover.ora
 
         private void Timer1_Tick(object Sender, EventArgs e)
         {
+            this.LoadGridData();
             this.LoadDBAGridData();
         }
 
@@ -122,8 +123,8 @@ namespace OracleDataMover.ora
 
                 rgvTemplate.DataSource = lstTemplate;
 
-                ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
-                List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
+                //ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+                //List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
 
 
                 //List <DBA_DataPump_Jobs> lstDBAJobs = Context.GetDBADataPumpJobs();
@@ -319,7 +320,35 @@ namespace OracleDataMover.ora
             Application.Exit();
         }
 
+        private void rgvDBAJobs_RowFormatting(object sender, RowFormattingEventArgs e)
+        {
+            string strState = (String)e.RowElement.RowInfo.Cells["colSTATE"].Value.ToString().ToUpper();
 
+            switch (strState)
+            {
+                case "EXECUTING":
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.GradientStyle = GradientStyles.Solid;
+                    e.RowElement.BackColor = Color.HotPink;
+                    break;
+                case "NOT RUNNING":
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.GradientStyle = GradientStyles.Solid;
+                    e.RowElement.BackColor = Color.Yellow;
+                    break;
+                case "COMPLETING":
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.GradientStyle = GradientStyles.Solid;
+                    e.RowElement.BackColor = Color.Green;
+                    break;
+                default:
+                    e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local);
+                    e.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
+                    e.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local);
+                    break;
+            }
+
+        }
     }
 
 }
