@@ -47,6 +47,13 @@ namespace OracleDataMover.Common
                 {
                     file.WriteLine(str.ToString());
                 }
+                file.WriteLine("");
+                file.WriteLine("");
+                file.WriteLine("#     Remap Schemas");
+                foreach (string str in GetRemap(strTemplateID))
+                {
+                    file.WriteLine(str.ToString());
+                }
             }
         }
 
@@ -195,6 +202,30 @@ namespace OracleDataMover.Common
                 lstString.Clear();
                 lstString.Add("");
             }
+
+            return lstString;
+        }
+
+
+
+        private static List<String> GetRemap(string strTemplateID)
+        {
+            List<String> lstString = new List<String>();
+            List<TemplateSchemaRemap> lstTemplateRemap = Context.TemplateSchemaRemapRepository.FindBy(x => x.TemplateId == strTemplateID).OrderBy(x => x.OldSchema).ToList();
+
+            lstString.Add("remap_schema=");
+            foreach (TemplateSchemaRemap TS in lstTemplateRemap)
+            {
+                lstString.Add(TS.OldSchema + ":" + TS.NewSchema);
+                lstString.Add(",");
+            }
+
+            if (lstString.Count == 1)       //  In case there are no table sample size
+            {
+                lstString.Clear();
+                lstString.Add("");
+            }
+            lstString.RemoveAt(lstString.Count() - 1);
 
             return lstString;
         }

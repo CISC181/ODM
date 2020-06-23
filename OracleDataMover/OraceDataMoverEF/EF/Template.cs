@@ -20,6 +20,7 @@ namespace OracleDataMoverEF.EF
         {
             this.TEMPLATE_SCHEMA = new HashSet<TemplateSchema>();
             this.TEMPLATE_PARM = new HashSet<TemplateParm>();
+            this.TEMPLATE_SCHEMA_REMAP = new HashSet<TemplateSchemaRemap>();
         }
     
         public string Name { get; set; }
@@ -34,5 +35,6 @@ namespace OracleDataMoverEF.EF
         public virtual ICollection<TemplateSchema> TEMPLATE_SCHEMA { get; set; }
         public virtual ICollection<TemplateParm> TEMPLATE_PARM { get; set; }
         public virtual OraUtility ORA_UTILITY { get; set; }
+        public virtual ICollection<TemplateSchemaRemap> TEMPLATE_SCHEMA_REMAP { get; set; }
     }
 }

@@ -312,6 +312,11 @@ namespace OracleDataMover.ora
             frmT.Show();
         }
 
+        private void rmiTemplateSchemaImport_Click(object sender, EventArgs e)
+        {
+            frmTemplateRemap frmT = new frmTemplateRemap();
+            frmT.Show();
+        }
 
         #endregion
 
@@ -349,6 +354,8 @@ namespace OracleDataMover.ora
             }
 
         }
+
+
     }
 
 }

@@ -34,6 +34,7 @@ namespace OracleDataMoverEF.UnitOfWork
     	TemplateRepository TemplateRepository { get; }
     	TemplateParmRepository TemplateParmRepository { get; }
     	TemplateSchemaRepository TemplateSchemaRepository { get; }
+    	TemplateSchemaRemapRepository TemplateSchemaRemapRepository { get; }
     	TemplateSchemaSanitizeRepository TemplateSchemaSanitizeRepository { get; }
     	TemplateSchemaTableRepository TemplateSchemaTableRepository { get; }
     	

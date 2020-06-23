@@ -34,5 +34,6 @@ namespace OracleDataMoverEF.EF
         IDbSet<TemplateParm> TemplateParms { get; set; }
         IDbSet<ODMSetting> ODMSettings { get; set; }
         IDbSet<OraUtility> OraUtilities { get; set; }
+        IDbSet<TemplateSchemaRemap> TemplateSchemaRemaps { get; set; }
     }
 }

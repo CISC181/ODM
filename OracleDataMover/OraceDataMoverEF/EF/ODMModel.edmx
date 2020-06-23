@@ -106,6 +106,19 @@
           <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
           <Property Name="UPDATEDDATE" Type="date" />
         </EntityType>
+        <EntityType Name="TEMPLATE_SCHEMA_REMAP">
+          <Key>
+            <PropertyRef Name="TEMPLATE_SCHEMA_REMAP_ID" />
+          </Key>
+          <Property Name="TEMPLATE_SCHEMA_REMAP_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="OLD_SCHEMA" Type="varchar2" MaxLength="50" />
+          <Property Name="NEW_SCHEMA" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
         <EntityType Name="TEMPLATE_SCHEMA_SANITIZE">
           <Key>
             <PropertyRef Name="TEMPLATE_SCHEMA_SANITIZE_ID" />
@@ -165,6 +178,18 @@
               <PropertyRef Name="TEMPLATE_ID" />
             </Principal>
             <Dependent Role="TEMPLATE_SCHEMA">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_REMAP_FK1">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="TEMPLATE_SCHEMA_REMAP" Type="Self.TEMPLATE_SCHEMA_REMAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_REMAP">
               <PropertyRef Name="TEMPLATE_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -238,6 +263,7 @@
           <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_PARM" EntityType="Self.TEMPLATE_PARM" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_SCHEMA" EntityType="Self.TEMPLATE_SCHEMA" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_SCHEMA_REMAP" EntityType="Self.TEMPLATE_SCHEMA_REMAP" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_SCHEMA_SANITIZE" EntityType="Self.TEMPLATE_SCHEMA_SANITIZE" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_SCHEMA_TABLE" EntityType="Self.TEMPLATE_SCHEMA_TABLE" Schema="ODM" store:Type="Tables" />
           <AssociationSet Name="TEMPLATE_FK1" Association="Self.TEMPLATE_FK1">
@@ -251,6 +277,10 @@
           <AssociationSet Name="TEMPLATE_SCHEMA_FK1" Association="Self.TEMPLATE_SCHEMA_FK1">
             <End Role="TEMPLATE" EntitySet="TEMPLATE" />
             <End Role="TEMPLATE_SCHEMA" EntitySet="TEMPLATE_SCHEMA" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_REMAP_FK1" Association="Self.TEMPLATE_SCHEMA_REMAP_FK1">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="TEMPLATE_SCHEMA_REMAP" EntitySet="TEMPLATE_SCHEMA_REMAP" />
           </AssociationSet>
           <AssociationSet Name="TEMPLATE_SCHEMA_SANITIZE_FK1" Association="Self.TEMPLATE_SCHEMA_SANITIZE_FK1">
             <End Role="TEMPLATE_SCHEMA" EntitySet="TEMPLATE_SCHEMA" />
@@ -320,6 +350,11 @@
             <End Role="ORA_UTILITY" EntitySet="OraUtilities" />
             <End Role="Template" EntitySet="Templates1" />
           </AssociationSet>
+          <EntitySet Name="TemplateSchemaRemaps" EntityType="ODMModel.TemplateSchemaRemap" />
+          <AssociationSet Name="TEMPLATE_SCHEMA_REMAP_FK1" Association="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1">
+            <End Role="Template" EntitySet="Templates1" />
+            <End Role="TEMPLATE_SCHEMA_REMAP" EntitySet="TemplateSchemaRemaps" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Template">
           <Key>
@@ -341,6 +376,7 @@
           <NavigationProperty Name="ORA_UTILITY" Relationship="ODMModel.TEMPLATE_FK2" FromRole="Template" ToRole="ORA_UTILITY" />
           <Property Name="DMPFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UtilJobname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA_REMAP" Relationship="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" FromRole="Template" ToRole="TEMPLATE_SCHEMA_REMAP" />
         </EntityType>
         <EntityType Name="PARM">
           <Key>
@@ -561,6 +597,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TemplateSchemaRemap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="OldSchema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NewSchema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE" Relationship="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" FromRole="TEMPLATE_SCHEMA_REMAP" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATE_SCHEMA_REMAP_FK1">
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="ODMModel.TemplateSchemaRemap" Role="TEMPLATE_SCHEMA_REMAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_REMAP">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -702,6 +764,20 @@
                 <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
                 <ScalarProperty Name="UtilityName" ColumnName="ORA_UTILITY_NAME" />
                 <ScalarProperty Name="Id" ColumnName="ORA_UTILITY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSchemaRemaps">
+            <EntityTypeMapping TypeName="ODMModel.TemplateSchemaRemap">
+              <MappingFragment StoreEntitySet="TEMPLATE_SCHEMA_REMAP">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedId" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="NewSchema" ColumnName="NEW_SCHEMA" />
+                <ScalarProperty Name="OldSchema" ColumnName="OLD_SCHEMA" />
+                <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_SCHEMA_REMAP_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

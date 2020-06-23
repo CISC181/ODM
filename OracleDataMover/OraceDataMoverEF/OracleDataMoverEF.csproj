@@ -109,6 +109,9 @@
     <Compile Include="EF\TemplateSchema.cs">
       <DependentUpon>ODMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\TemplateSchemaRemap.cs">
+      <DependentUpon>ODMModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\TemplateSchemaSanitize.cs">
       <DependentUpon>ODMModel.tt</DependentUpon>
     </Compile>
@@ -143,6 +146,9 @@
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\TemplateRepository.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TemplateSchemaRemapRepository.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\TemplateSchemaRepository.cs">

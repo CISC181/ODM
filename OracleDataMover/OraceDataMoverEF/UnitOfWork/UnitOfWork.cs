@@ -54,6 +54,7 @@ namespace OracleDataMoverEF.UnitOfWork
     	private TemplateRepository templateRepository;
     	private TemplateParmRepository templateParmRepository;
     	private TemplateSchemaRepository templateSchemaRepository;
+    	private TemplateSchemaRemapRepository templateSchemaRemapRepository;
     	private TemplateSchemaSanitizeRepository templateSchemaSanitizeRepository;
     	private TemplateSchemaTableRepository templateSchemaTableRepository;
     	public virtual DATABASE_INFORepository DATABASE_INFORepository
@@ -157,6 +158,19 @@ namespace OracleDataMoverEF.UnitOfWork
     			}
     
     			return this.templateSchemaRepository;
+    		}
+    	}
+    
+    	public virtual TemplateSchemaRemapRepository TemplateSchemaRemapRepository
+    	{
+    		get 
+    		{
+    			if (this.templateSchemaRemapRepository == null)
+    			{
+    				this.templateSchemaRemapRepository = new TemplateSchemaRemapRepository(this);
+    			}
+    
+    			return this.templateSchemaRemapRepository;
     		}
     	}
     
