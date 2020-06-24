@@ -11,6 +11,7 @@ using Telerik.WinControls.UI;
 using Telerik.WinControls.Enumerations;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using OracleDataMover.Common;
 
 namespace OracleDataMover.ora
 {
@@ -20,7 +21,7 @@ namespace OracleDataMover.ora
         protected static OraDataContext ContextOra = null;
         private List<ALL_CONSTRAINTS> lstConstraints = null;
         private List<ALL_CONS_COLUMNS> lstAllConsCols = null;
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
         public frmTemplateSchema()
         {
@@ -58,7 +59,7 @@ namespace OracleDataMover.ora
 
                     String strDatabaseName = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
                     String strTemplateID = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colTemplateID"].Value.ToString();
-                    ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+                    ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
                     LoadrlcbScheams(strTemplateID, strDatabaseName);
 
                 }
@@ -75,7 +76,7 @@ namespace OracleDataMover.ora
             rlcbScheams.Items.Clear();
             rlblDatabaseSchemas.Text = "Non-Oracle Scheams for Database: " + strDatabaseName;
             isLoading = true;
-            OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+            OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
 
             List<ALL_USERS> lstUsers = ContextOra.ALL_USERSRepository
                     .FindBy(x => x.ORACLE_MAINTAINED == "N")
@@ -168,7 +169,7 @@ namespace OracleDataMover.ora
             GridViewDataRowInfo gvdri = (GridViewDataRowInfo)rmccTemplateSchema.SelectedItem;
             String strDatabaseName = gvdri.Cells["colDatabaseName"].Value.ToString();
 
-            OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+            OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
 
             List<ALL_TABLES> lstAllTables = ContextOra.ALL_TABLESRepository
                 .FindBy(x => x.OWNER == ldi.Value.ToString()).OrderBy(x => x.TABLE_NAME).ToList();
@@ -362,7 +363,7 @@ namespace OracleDataMover.ora
             GridViewDataRowInfo gvdri = (GridViewDataRowInfo)rmccTemplateSchema.SelectedItem;
             String strDatabaseName = gvdri.Cells["colDatabaseName"].Value.ToString();
 
-            OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+            OraDataContext ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
             ListViewDataItem ldi = rlcbScheams.SelectedItem;
             if (ldi == null)
                 return;
@@ -605,7 +606,7 @@ namespace OracleDataMover.ora
 
         private void AutoSanitize(string strDatabaseName, string strTemplateID, string strSchemaName, string strSchemaID)
         {
-            ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+            ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
 
             List<TemplateSchemaSanitize> TSS = Context.TemplateSchemaSanitizeRepository.FindBy(x => x.TemplateSchemaId == strSchemaID).ToList();
             List<RemapFunction> RF = Context.RemapFunctionRepository.FindBy(x => true).ToList();

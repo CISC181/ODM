@@ -12,12 +12,13 @@ using OracleDataMoverEF.UnitOfWork;
 using System.Linq;
 using Telerik.WinControls.UI;
 using System.Diagnostics;
+using OracleDataMover.Common;
 
 namespace OracleDataMover.ora
 {
     public partial class frmRemapFunction : Telerik.WinControls.UI.RadForm
     {
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
 
         public frmRemapFunction()

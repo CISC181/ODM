@@ -13,12 +13,13 @@ using System.Linq;
 using Telerik.WinControls.UI;
 using System.Diagnostics;
 using System.Configuration;
+using OracleDataMover.Common;
 
 namespace OracleDataMover.ora
 {
     public partial class frmDatabaseInfo : Telerik.WinControls.UI.RadForm
     {
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
         private Boolean bDirty;
 
         public frmDatabaseInfo()

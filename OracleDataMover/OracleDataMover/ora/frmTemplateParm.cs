@@ -12,13 +12,14 @@ using Telerik.WinControls.Enumerations;
 using System.Text.RegularExpressions;
 using System.Drawing;
 using System.ComponentModel;
+using OracleDataMover.Common;
 
 namespace OracleDataMover.ora
 {
     public partial class frmTemplateParm : Telerik.WinControls.UI.RadForm
     {
         private Boolean isLoading;
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
         private MainForm MF;
 

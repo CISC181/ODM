@@ -12,7 +12,10 @@ namespace OracleDataMover.Common
 {
     public class Utility
     {
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        private static string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+        public static string UserName { get => userName; set => userName = value; }
+
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
         
         public static void WriteHistoryRecord(string strTemplateID)

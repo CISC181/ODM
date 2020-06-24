@@ -11,6 +11,7 @@ using Telerik.WinControls.UI;
 using Telerik.WinControls.Enumerations;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using OracleDataMover.Common;
 
 namespace OracleDataMover.ora
 {
@@ -18,7 +19,7 @@ namespace OracleDataMover.ora
     public partial class frmTemplateRemap : Telerik.WinControls.UI.RadForm
     {
         private Boolean isLoading;
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
         protected static OraDataContext ContextOra = null;
 
 
@@ -55,7 +56,7 @@ namespace OracleDataMover.ora
 
                     String strDatabaseName = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
                     String strTemplateID = this.rmccTemplateSchema.EditorControl.CurrentRow.Cells["colTemplateID"].Value.ToString();
-                    ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
+                    ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
                     LoadrgvRemap(strTemplateID);
                 }
             }

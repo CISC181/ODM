@@ -10,7 +10,7 @@ namespace OracleDataMover.Common
 {
     public class GenerateFiles
     {
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
         public static void GeneratePARFile(string strFileName, string strTemplateID)
         {

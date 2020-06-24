@@ -47,6 +47,7 @@
             this.rmManageTemplate = new Telerik.WinControls.UI.RadMenuItem();
             this.rmTemplateParms = new Telerik.WinControls.UI.RadMenuItem();
             this.rmManageTemplateSchema = new Telerik.WinControls.UI.RadMenuItem();
+            this.rmiTemplateSchemaImport = new Telerik.WinControls.UI.RadMenuItem();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -59,7 +60,7 @@
             this.rmccDatabase = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.gridTimer = new System.Windows.Forms.Timer(this.components);
-            this.rmiTemplateSchemaImport = new Telerik.WinControls.UI.RadMenuItem();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -79,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,6 +162,12 @@
             this.rmManageTemplateSchema.Name = "rmManageTemplateSchema";
             this.rmManageTemplateSchema.Text = "Manage Template Export Parms";
             this.rmManageTemplateSchema.Click += new System.EventHandler(this.rmManageTemplateSchema_Click);
+            // 
+            // rmiTemplateSchemaImport
+            // 
+            this.rmiTemplateSchemaImport.Name = "rmiTemplateSchemaImport";
+            this.rmiTemplateSchemaImport.Text = "Manage Template Import Parms";
+            this.rmiTemplateSchemaImport.Click += new System.EventHandler(this.rmiTemplateSchemaImport_Click);
             // 
             // radPanel2
             // 
@@ -244,6 +252,7 @@
             // 
             // radPanel1
             // 
+            this.radPanel1.Controls.Add(this.radButton1);
             this.radPanel1.Controls.Add(this.rbClose);
             this.radPanel1.Location = new System.Drawing.Point(15, 482);
             this.radPanel1.Name = "radPanel1";
@@ -335,11 +344,14 @@
             this.radLabel1.Text = "Database";
             this.radLabel1.ThemeName = "Office2013Light";
             // 
-            // rmiTemplateSchemaImport
+            // radButton1
             // 
-            this.rmiTemplateSchemaImport.Name = "rmiTemplateSchemaImport";
-            this.rmiTemplateSchemaImport.Text = "Manage Template Import Parms";
-            this.rmiTemplateSchemaImport.Click += new System.EventHandler(this.rmiTemplateSchemaImport_Click);
+            this.radButton1.Location = new System.Drawing.Point(120, 13);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(110, 24);
+            this.radButton1.TabIndex = 3;
+            this.radButton1.Text = "radButton1";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // MainForm
             // 
@@ -377,6 +389,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -408,5 +421,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private Telerik.WinControls.UI.RadGridView rgvDBAJobs;
         private Telerik.WinControls.UI.RadMenuItem rmiTemplateSchemaImport;
+        private Telerik.WinControls.UI.RadButton radButton1;
     }
 }

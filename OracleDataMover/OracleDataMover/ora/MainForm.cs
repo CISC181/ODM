@@ -21,13 +21,14 @@ namespace OracleDataMover.ora
     public partial class MainForm : Telerik.WinControls.UI.RadForm
     {
         private Boolean isLoading;
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
         protected static OraDataContext ContextOra = null;
+
 
         public MainForm()
         {
             InitializeComponent();
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            
             //MessageBox.Show(userName);
             RadToolTip newToolTip = new RadToolTip();
             newToolTip.Show("A tooltip which appears at mouse position", 2000);
@@ -254,8 +255,9 @@ namespace OracleDataMover.ora
                 string strDatabaseID = rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseID"].Value.ToString();
                 String strDatabaseName = this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
 
-                ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
-                List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
+                ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
+                
+        List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
                 rgvDBAJobs.DataSource = lstDBAJobs;
           }
 
@@ -359,7 +361,12 @@ namespace OracleDataMover.ora
 
         }
 
+        private void radButton1_Click(object sender, EventArgs e)
+        {
+            RadForm1 rf = new RadForm1();
+            rf.Show();
 
+        }
     }
 
 }

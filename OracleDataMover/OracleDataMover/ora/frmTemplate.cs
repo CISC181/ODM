@@ -19,7 +19,7 @@ namespace OracleDataMover.ora
     public partial class frmTemplate : Telerik.WinControls.UI.RadForm
     {
         private Boolean quitValidating = false;
-        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+        protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
         protected List<DATABASE_INFO> lstDatabase = Context.DATABASE_INFORepository.FindBy(x => true).ToList();
         protected List<OraUtility> lstOraUtility = Context.OraUtilityRepository.FindBy(x => true).OrderBy(x => x.UtilityName).ToList();
         private MainForm MF;
