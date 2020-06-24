@@ -3,6 +3,8 @@ using OracleDataMoverEF.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +13,34 @@ namespace OracleDataMover.Common
     public class Utility
     {
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
+
+        
+        public static void WriteHistoryRecord(string strTemplateID)
+        {
+            Template T = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
+
+            string IP = string.Empty;
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    IP = ip.ToString();
+                    break;
+                }
+            }
+
+            string  machine = System.Environment.MachineName;
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
+            TemplateJobHistory TJH = new TemplateJobHistory();
+            TJH.TemplateId = T.Id;
+            TJH.IPAddress = IP;
+            TJH.MachineName = machine;
+            TJH.UserName = userName;
+            Context.TemplateJobHistoryRepository.Save(TJH);
+            Context.Commit();
+        }
 
         public static void CopyTemplate(string strTemplateID, string strNewTemplateName)
         {

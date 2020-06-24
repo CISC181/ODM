@@ -25,6 +25,8 @@
         <AssociationConnector Association="ODMModel.TEMPLATE_FK2" />
         <EntityTypeShape EntityType="ODMModel.TemplateSchemaRemap" Width="2.25" PointX="10.125" PointY="8.875" />
         <AssociationConnector Association="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" />
+        <EntityTypeShape EntityType="ODMModel.TemplateJobHistory" Width="1.5" PointX="6.75" PointY="9.125" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_JOB_HISTORY_FK1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

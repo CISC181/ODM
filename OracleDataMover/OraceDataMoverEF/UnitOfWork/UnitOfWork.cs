@@ -52,6 +52,7 @@ namespace OracleDataMoverEF.UnitOfWork
     	private PARMRepository pARMRepository;
     	private RemapFunctionRepository remapFunctionRepository;
     	private TemplateRepository templateRepository;
+    	private TemplateJobHistoryRepository templateJobHistoryRepository;
     	private TemplateParmRepository templateParmRepository;
     	private TemplateSchemaRepository templateSchemaRepository;
     	private TemplateSchemaRemapRepository templateSchemaRemapRepository;
@@ -132,6 +133,19 @@ namespace OracleDataMoverEF.UnitOfWork
     			}
     
     			return this.templateRepository;
+    		}
+    	}
+    
+    	public virtual TemplateJobHistoryRepository TemplateJobHistoryRepository
+    	{
+    		get 
+    		{
+    			if (this.templateJobHistoryRepository == null)
+    			{
+    				this.templateJobHistoryRepository = new TemplateJobHistoryRepository(this);
+    			}
+    
+    			return this.templateJobHistoryRepository;
     		}
     	}
     

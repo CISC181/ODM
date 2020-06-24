@@ -111,6 +111,14 @@ namespace OracleDataMover.ora
             gtbTemplateName.Name = "colTemplateName";
             gtbTemplateName.Width = 200;
             this.rgvTemplate.Columns.Add(gtbTemplateName);
+
+            GridViewTextBoxColumn gtbDMPFileName = new GridViewTextBoxColumn();
+            gtbDMPFileName.EnableExpressionEditor = false;
+            gtbDMPFileName.FieldName = "DMPFileName";
+            gtbDMPFileName.HeaderText = "DMP Filename";
+            gtbDMPFileName.Name = "colDmpFileName";
+            gtbDMPFileName.Width = 150;
+            this.rgvTemplate.Columns.Add(gtbDMPFileName);
         }
 
         public void LoadGridData()
@@ -159,8 +167,9 @@ namespace OracleDataMover.ora
 
             switch (args.Column.Name)
             {
-                case "colExecute":
+                case "colExecute":                    
                     rgvTemplate_cmdGeneratePAR_CommandCellClick(sender, e);
+                    Utility.WriteHistoryRecord(args.Value.ToString());
                     break;
             }
         }
@@ -170,15 +179,10 @@ namespace OracleDataMover.ora
             GridViewCellEventArgs args = (GridViewCellEventArgs)e;
             ODMSetting ODMSetting = Context.ODMSettingRepository.FindBy(x => x.SettingName == "WORKING_DIR").FirstOrDefault();
             Template tmpl = Context.TemplateRepository.FindBy(x => x.Id == args.Value.ToString()).FirstOrDefault();
-
             GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + tmpl.PARFileName.ToString(), args.Value.ToString());
             GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString(), args.Value.ToString());
-
-
-
             ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
 
- 
         }
 
         public void ExecuteAsAdmin(string fileName)

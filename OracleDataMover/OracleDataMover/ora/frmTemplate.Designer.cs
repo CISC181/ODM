@@ -78,6 +78,7 @@
             // 
             // 
             // 
+            this.rgvTemplate.MasterTemplate.EnableFiltering = true;
             this.rgvTemplate.MasterTemplate.EnableGrouping = false;
             this.rgvTemplate.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgvTemplate.Name = "rgvTemplate";
@@ -89,6 +90,7 @@
             this.rgvTemplate.RowValidating += new Telerik.WinControls.UI.RowValidatingEventHandler(this.rgvTemplate_RowValidating);
             this.rgvTemplate.CellValidating += new Telerik.WinControls.UI.CellValidatingEventHandler(this.rgvTemplate_CellValidating);
             this.rgvTemplate.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_CellValueChanged);
+            this.rgvTemplate.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.rgvTemplate_PreviewKeyDown);
             // 
             // radPanel1
             // 
@@ -97,12 +99,12 @@
             this.radPanel1.Controls.Add(this.rbUndo);
             this.radPanel1.Location = new System.Drawing.Point(9, 302);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1026, 52);
+            this.radPanel1.Size = new System.Drawing.Size(1237, 52);
             this.radPanel1.TabIndex = 3;
             // 
             // rbClose
             // 
-            this.rbClose.Location = new System.Drawing.Point(913, 13);
+            this.rbClose.Location = new System.Drawing.Point(1116, 13);
             this.rbClose.Name = "rbClose";
             this.rbClose.Size = new System.Drawing.Size(110, 24);
             this.rbClose.TabIndex = 2;

@@ -18,6 +18,7 @@ namespace OracleDataMover.ora
 {
     public partial class frmTemplate : Telerik.WinControls.UI.RadForm
     {
+        private Boolean quitValidating = false;
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), "Gibbonsbr");
         protected List<DATABASE_INFO> lstDatabase = Context.DATABASE_INFORepository.FindBy(x => true).ToList();
         protected List<OraUtility> lstOraUtility = Context.OraUtilityRepository.FindBy(x => true).OrderBy(x => x.UtilityName).ToList();
@@ -50,6 +51,40 @@ namespace OracleDataMover.ora
         public void rgv_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
             e.Row.Tag = "ThisRowIsDirty";
+
+            if (quitValidating == true)
+            {
+                quitValidating = false;
+                return;
+            }
+
+            if (e.Row is GridViewNewRowInfo)
+            {
+                GridViewNewRowInfo row = (GridViewNewRowInfo)e.Row;
+
+                if (e.Column.Name == "colTemplateName")
+                {
+                    if (row.Cells["colDmpFileName"].Value == null)
+                    {
+                        row.Cells["colDmpFileName"].Value = e.Value.ToString().ToUpper() + ".DMP";
+                    }
+                    if (row.Cells["colParFileName"].Value == null)
+                    {
+                        row.Cells["colParFileName"].Value = e.Value.ToString().ToUpper() + ".PAR";
+                    }
+                    if (row.Cells["colBatFileName"].Value == null)
+                    {
+                        row.Cells["colBatFileName"].Value = e.Value.ToString().ToUpper() + ".BAT";
+                    }
+                    if (row.Cells["colUtilJobName"].Value == null)
+                    {
+                        row.Cells["colUtilJobName"].Value = e.Value.ToString().ToUpper();
+                    }
+                }
+            }
+
+
+
         }
         protected void rbUndo_Click(object sender, EventArgs e)
         {
@@ -284,15 +319,17 @@ namespace OracleDataMover.ora
                 }
             }
             Context.Commit();
+            
             MessageBox.Show("Data is saved");
             LoadGrid();
+            this.MF1.LoadGridData();
         }
 
         private void rgvTemplate_CellValidating(object sender, CellValidatingEventArgs e)
         {
-            //&& column.Name == "colDmpFileName"
+ 
             GridViewDataColumn column = e.Column as GridViewDataColumn;
-            if (e.Row is GridViewDataRowInfo && column != null )
+            if (e.Row is GridViewDataRowInfo || e.Row is GridViewNewRowInfo && column != null)
             {
                 switch (column.Name.ToString())
                 {
@@ -322,6 +359,13 @@ namespace OracleDataMover.ora
                         {
                             e.Cancel = true;
                             MessageBox.Show("BAT File Required");
+                            break;
+                        }
+                        if (CheckExension(e.Value.ToString(), ".BAT") == false)
+                        {
+                            MessageBox.Show("BAT File Must have .BAT extension");
+                            e.Cancel = true;
+                            return;
                         }
                         break;
                 }
@@ -330,9 +374,19 @@ namespace OracleDataMover.ora
 
         private void rgvTemplate_RowValidating(object sender, RowValidatingEventArgs e)
         {
+
+            if (quitValidating == true)
+            {
+                quitValidating = false;
+                return;
+            }
+
+
             if (e.Row is GridViewNewRowInfo)
             {
                 GridViewNewRowInfo row = e.Row as GridViewNewRowInfo;
+
+
                 
                 if (row.Cells["colTemplateName"].Value == null)
                 {
@@ -340,6 +394,13 @@ namespace OracleDataMover.ora
                     e.Cancel = true;
                     return;
                 }
+                if (row.Cells["colDatabaseID"].Value == null)
+                {
+                    MessageBox.Show("Database is required");
+                    e.Cancel = true;
+                    return;
+                }
+
                 if (row.Cells["colParFileName"].Value == null)
                 {
                     MessageBox.Show("PAR File Required");
@@ -352,6 +413,14 @@ namespace OracleDataMover.ora
                     e.Cancel = true;
                     return;
                 }
+
+                if (CheckExension(row.Cells["colBatFileName"].Value.ToString(),".BAT") == false )
+                {
+                    MessageBox.Show("BAT File Must have .BAT extension");
+                    e.Cancel = true;
+                    return;
+                }
+
                 if (row.Cells["colUtilityID"].Value == null)
                 {
                     MessageBox.Show("Utility Type Required");
@@ -371,6 +440,25 @@ namespace OracleDataMover.ora
                     return;
                 }
             }
+        }
+
+        private void rgvTemplate_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Escape)
+            {
+                quitValidating = true;
+            }
+        }
+
+        private Boolean CheckExension(string filename, string ext)
+        {
+            //"d.bat".IndexOf("bat");
+              //  "d.bat".ToUpper().IndexOf("bat".ToUpper());
+            int iCheck = filename.ToUpper().IndexOf(ext.ToUpper());
+            if (iCheck >= 0)
+                return true;
+            else
+                return false;
         }
     }
 }

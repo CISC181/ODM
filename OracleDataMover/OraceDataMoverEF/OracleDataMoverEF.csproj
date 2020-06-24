@@ -103,6 +103,9 @@
     <Compile Include="EF\Template.cs">
       <DependentUpon>ODMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\TemplateJobHistory.cs">
+      <DependentUpon>ODMModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\TemplateParm.cs">
       <DependentUpon>ODMModel.tt</DependentUpon>
     </Compile>
@@ -140,6 +143,9 @@
     <Compile Include="Repositories\Repositories.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TemplateJobHistoryRepository.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\TemplateParmRepository.cs">

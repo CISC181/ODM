@@ -81,6 +81,20 @@
           <Property Name="DMP_FILENAME" Type="varchar2" MaxLength="50" />
           <Property Name="UTIL_JOBNAME" Type="varchar2" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TEMPLATE_JOB_HISTORY">
+          <Key>
+            <PropertyRef Name="TEMPLATE_JOB_HISTORY" />
+          </Key>
+          <Property Name="TEMPLATE_JOB_HISTORY" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="USER_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="MACHINE_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="IP_ADDRESS" Type="varchar2" MaxLength="100" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
         <EntityType Name="TEMPLATE_PARM">
           <Key>
             <PropertyRef Name="TEMPLATE_PARM_ID" />
@@ -167,6 +181,18 @@
             </Principal>
             <Dependent Role="TEMPLATE">
               <PropertyRef Name="ORA_UTILITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_JOB_HISTORY_FK1">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="TEMPLATE_JOB_HISTORY" Type="Self.TEMPLATE_JOB_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_JOB_HISTORY">
+              <PropertyRef Name="TEMPLATE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,6 +287,7 @@
           <EntitySet Name="PARM" EntityType="Self.PARM" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="REMAP_FUNCTION" EntityType="Self.REMAP_FUNCTION" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_JOB_HISTORY" EntityType="Self.TEMPLATE_JOB_HISTORY" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_PARM" EntityType="Self.TEMPLATE_PARM" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_SCHEMA" EntityType="Self.TEMPLATE_SCHEMA" Schema="ODM" store:Type="Tables" />
           <EntitySet Name="TEMPLATE_SCHEMA_REMAP" EntityType="Self.TEMPLATE_SCHEMA_REMAP" Schema="ODM" store:Type="Tables" />
@@ -273,6 +300,10 @@
           <AssociationSet Name="TEMPLATE_FK2" Association="Self.TEMPLATE_FK2">
             <End Role="ORA_UTILITY" EntitySet="ORA_UTILITY" />
             <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_JOB_HISTORY_FK1" Association="Self.TEMPLATE_JOB_HISTORY_FK1">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="TEMPLATE_JOB_HISTORY" EntitySet="TEMPLATE_JOB_HISTORY" />
           </AssociationSet>
           <AssociationSet Name="TEMPLATE_SCHEMA_FK1" Association="Self.TEMPLATE_SCHEMA_FK1">
             <End Role="TEMPLATE" EntitySet="TEMPLATE" />
@@ -355,6 +386,11 @@
             <End Role="Template" EntitySet="Templates1" />
             <End Role="TEMPLATE_SCHEMA_REMAP" EntitySet="TemplateSchemaRemaps" />
           </AssociationSet>
+          <EntitySet Name="TemplateJobHistories" EntityType="ODMModel.TemplateJobHistory" />
+          <AssociationSet Name="TEMPLATE_JOB_HISTORY_FK1" Association="ODMModel.TEMPLATE_JOB_HISTORY_FK1">
+            <End Role="Template" EntitySet="Templates1" />
+            <End Role="TEMPLATE_JOB_HISTORY" EntitySet="TemplateJobHistories" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Template">
           <Key>
@@ -377,6 +413,7 @@
           <Property Name="DMPFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UtilJobname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TEMPLATE_SCHEMA_REMAP" Relationship="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" FromRole="Template" ToRole="TEMPLATE_SCHEMA_REMAP" />
+          <NavigationProperty Name="TEMPLATE_JOB_HISTORY" Relationship="ODMModel.TEMPLATE_JOB_HISTORY_FK1" FromRole="Template" ToRole="TEMPLATE_JOB_HISTORY" />
         </EntityType>
         <EntityType Name="PARM">
           <Key>
@@ -623,6 +660,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TemplateJobHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE" Relationship="ODMModel.TEMPLATE_JOB_HISTORY_FK1" FromRole="TEMPLATE_JOB_HISTORY" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATE_JOB_HISTORY_FK1">
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="ODMModel.TemplateJobHistory" Role="TEMPLATE_JOB_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_JOB_HISTORY">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -778,6 +842,21 @@
                 <ScalarProperty Name="OldSchema" ColumnName="OLD_SCHEMA" />
                 <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
                 <ScalarProperty Name="Id" ColumnName="TEMPLATE_SCHEMA_REMAP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateJobHistories">
+            <EntityTypeMapping TypeName="ODMModel.TemplateJobHistory">
+              <MappingFragment StoreEntitySet="TEMPLATE_JOB_HISTORY">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IP_ADDRESS" />
+                <ScalarProperty Name="MachineName" ColumnName="MACHINE_NAME" />
+                <ScalarProperty Name="UserName" ColumnName="USER_NAME" />
+                <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_JOB_HISTORY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

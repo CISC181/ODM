@@ -32,6 +32,7 @@ namespace OracleDataMoverEF.UnitOfWork
     	PARMRepository PARMRepository { get; }
     	RemapFunctionRepository RemapFunctionRepository { get; }
     	TemplateRepository TemplateRepository { get; }
+    	TemplateJobHistoryRepository TemplateJobHistoryRepository { get; }
     	TemplateParmRepository TemplateParmRepository { get; }
     	TemplateSchemaRepository TemplateSchemaRepository { get; }
     	TemplateSchemaRemapRepository TemplateSchemaRemapRepository { get; }
