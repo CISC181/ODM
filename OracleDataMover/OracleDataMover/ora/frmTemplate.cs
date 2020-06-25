@@ -382,64 +382,64 @@ namespace OracleDataMover.ora
             }
 
 
-            if (e.Row is GridViewNewRowInfo)
-            {
-                GridViewNewRowInfo row = e.Row as GridViewNewRowInfo;
+            //if (e.Row is GridViewNewRowInfo)
+            //{
+            //    GridViewNewRowInfo row = e.Row as GridViewNewRowInfo;
 
 
                 
-                if (row.Cells["colTemplateName"].Value == null)
-                {
-                    MessageBox.Show("Template Name Required");
-                    e.Cancel = true;
-                    return;
-                }
-                if (row.Cells["colDatabaseID"].Value == null)
-                {
-                    MessageBox.Show("Database is required");
-                    e.Cancel = true;
-                    return;
-                }
+            //    if (row.Cells["colTemplateName"].Value == null)
+            //    {
+            //        MessageBox.Show("Template Name Required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //    if (row.Cells["colDatabaseID"].Value == null)
+            //    {
+            //        MessageBox.Show("Database is required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
 
-                if (row.Cells["colParFileName"].Value == null)
-                {
-                    MessageBox.Show("PAR File Required");
-                    e.Cancel = true;
-                    return;
-                }
-                if (row.Cells["colBatFileName"].Value == null)
-                {
-                    MessageBox.Show("BAT File Required");
-                    e.Cancel = true;
-                    return;
-                }
+            //    if (row.Cells["colParFileName"].Value == null)
+            //    {
+            //        MessageBox.Show("PAR File Required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //    if (row.Cells["colBatFileName"].Value == null)
+            //    {
+            //        MessageBox.Show("BAT File Required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
 
-                if (CheckExension(row.Cells["colBatFileName"].Value.ToString(),".BAT") == false )
-                {
-                    MessageBox.Show("BAT File Must have .BAT extension");
-                    e.Cancel = true;
-                    return;
-                }
+            //    if (CheckExension(row.Cells["colBatFileName"].Value.ToString(),".BAT") == false )
+            //    {
+            //        MessageBox.Show("BAT File Must have .BAT extension");
+            //        e.Cancel = true;
+            //        return;
+            //    }
 
-                if (row.Cells["colUtilityID"].Value == null)
-                {
-                    MessageBox.Show("Utility Type Required");
-                    e.Cancel = true;
-                    return;
-                }
-                if (row.Cells["colDmpFileName"].Value == null)
-                {
-                    MessageBox.Show("DMP File Required Required");
-                    e.Cancel = true;
-                    return;
-                }
-                if (row.Cells["colUtilJobName"].Value == null)
-                {
-                    MessageBox.Show("Job Name Required");
-                    e.Cancel = true;
-                    return;
-                }
-            }
+            //    if (row.Cells["colUtilityID"].Value == null)
+            //    {
+            //        MessageBox.Show("Utility Type Required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //    if (row.Cells["colDmpFileName"].Value == null)
+            //    {
+            //        MessageBox.Show("DMP File Required Required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //    if (row.Cells["colUtilJobName"].Value == null)
+            //    {
+            //        MessageBox.Show("Job Name Required");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //}
         }
 
         private void rgvTemplate_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)

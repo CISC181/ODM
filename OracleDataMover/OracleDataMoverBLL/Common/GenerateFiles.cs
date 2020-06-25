@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OracleDataMover.Commonxxx
+namespace OracleDataMover.Common
 {
     public class GenerateFiles
     {

@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OracleDataMover.Commonxxx
+namespace OracleDataMover.Common
 {
     public class Utility
     {
@@ -18,7 +18,7 @@ namespace OracleDataMover.Commonxxx
 
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
-
+        
         public static void WriteHistoryRecord(string strTemplateID)
         {
             Template T = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();
@@ -44,6 +44,15 @@ namespace OracleDataMover.Commonxxx
             TJH.UserName = userName;
             Context.TemplateJobHistoryRepository.Save(TJH);
             Context.Commit();
+        }
+
+        public static void ExecuteAsAdmin(string fileName)
+        {
+            Process proc = new Process();
+            proc.StartInfo.FileName = fileName;
+            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.Verb = "runas";
+            proc.Start();
         }
 
         public static void CopyTemplate(string strTemplateID, string strNewTemplateName)

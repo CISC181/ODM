@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDataMoverUT", "Oracle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDataMoverOraEF", "OracleDataMoverOraEF\OracleDataMoverOraEF.csproj", "{B8B71552-03F6-4734-A063-F99187CFBA98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDataMoverBLL", "OracleDataMoverBLL\OracleDataMoverBLL.csproj", "{520CC2D3-571C-460C-B7E3-5A210E8954E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODM", "ODM\ODM.csproj", "{92FBE525-0D97-4342-AB47-3F4C53C43F91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,22 @@ Global
 		{B8B71552-03F6-4734-A063-F99187CFBA98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B8B71552-03F6-4734-A063-F99187CFBA98}.Release|x86.ActiveCfg = Release|Any CPU
 		{B8B71552-03F6-4734-A063-F99187CFBA98}.Release|x86.Build.0 = Release|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{520CC2D3-571C-460C-B7E3-5A210E8954E7}.Release|x86.Build.0 = Release|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Debug|x86.Build.0 = Debug|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Release|x86.ActiveCfg = Release|Any CPU
+		{92FBE525-0D97-4342-AB47-3F4C53C43F91}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

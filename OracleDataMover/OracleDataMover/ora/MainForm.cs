@@ -182,19 +182,9 @@ namespace OracleDataMover.ora
             Template tmpl = Context.TemplateRepository.FindBy(x => x.Id == args.Value.ToString()).FirstOrDefault();
             GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + tmpl.PARFileName.ToString(), args.Value.ToString());
             GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString(), args.Value.ToString());
-            ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
+            OracleDataMover.Common.ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
 
         }
-
-        public void ExecuteAsAdmin(string fileName)
-        {
-            Process proc = new Process();
-            proc.StartInfo.FileName = fileName;
-            proc.StartInfo.UseShellExecute = true;
-            proc.StartInfo.Verb = "runas";
-            proc.Start();
-        }
-
 
         private void LoadDBAGrid()
         {
