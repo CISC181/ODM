@@ -13,7 +13,7 @@ using System.Linq;
 using Telerik.WinControls.UI;
 using System.Diagnostics;
 using System.Configuration;
-using OracleDataMover.Common;
+using OracleDataMoverBLL.Common;
 
 namespace OracleDataMover.ora
 {

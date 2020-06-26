@@ -41,7 +41,7 @@ namespace OracleDataMover.ora
 
             gridTimer.Interval = 1000;
             gridTimer.Tick += new EventHandler(Timer1_Tick);
-            gridTimer.Enabled = true;
+            gridTimer.Enabled = false;
         }
 
         private void Timer1_Tick(object Sender, EventArgs e)
@@ -328,11 +328,13 @@ namespace OracleDataMover.ora
             switch (strState)
             {
                 case "EXECUTING":
+                    gridTimer.Enabled = true;
                     e.RowElement.DrawFill = true;
                     e.RowElement.GradientStyle = GradientStyles.Solid;
                     e.RowElement.BackColor = Color.HotPink;
                     break;
                 case "NOT RUNNING":
+                    gridTimer.Enabled = true;
                     e.RowElement.DrawFill = true;
                     e.RowElement.GradientStyle = GradientStyles.Solid;
                     e.RowElement.BackColor = Color.Yellow;
@@ -341,6 +343,7 @@ namespace OracleDataMover.ora
                     e.RowElement.DrawFill = true;
                     e.RowElement.GradientStyle = GradientStyles.Solid;
                     e.RowElement.BackColor = Color.Green;
+                    gridTimer.Enabled = false;
                     break;
                 default:
                     e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local);

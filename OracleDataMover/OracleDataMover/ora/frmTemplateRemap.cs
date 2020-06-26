@@ -11,7 +11,7 @@ using Telerik.WinControls.UI;
 using Telerik.WinControls.Enumerations;
 using System.Text.RegularExpressions;
 using System.Drawing;
-using OracleDataMover.Common;
+using OracleDataMoverBLL.Common;
 
 namespace OracleDataMover.ora
 {

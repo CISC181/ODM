@@ -55,12 +55,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.rgvDBAJobs = new Telerik.WinControls.UI.RadGridView();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.rbClose = new Telerik.WinControls.UI.RadButton();
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
             this.rmccDatabase = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.gridTimer = new System.Windows.Forms.Timer(this.components);
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -73,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rgvDBAJobs.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
@@ -80,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,6 +209,7 @@
             // 
             // 
             // 
+            this.rgvTemplate.MasterTemplate.EnableFiltering = true;
             this.rgvTemplate.MasterTemplate.EnableGrouping = false;
             this.rgvTemplate.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgvTemplate.Name = "rgvTemplate";
@@ -258,6 +259,15 @@
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(626, 52);
             this.radPanel1.TabIndex = 5;
+            // 
+            // radButton1
+            // 
+            this.radButton1.Location = new System.Drawing.Point(120, 13);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(110, 24);
+            this.radButton1.TabIndex = 3;
+            this.radButton1.Text = "radButton1";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // rbClose
             // 
@@ -344,15 +354,6 @@
             this.radLabel1.Text = "Database";
             this.radLabel1.ThemeName = "Office2013Light";
             // 
-            // radButton1
-            // 
-            this.radButton1.Location = new System.Drawing.Point(120, 13);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(110, 24);
-            this.radButton1.TabIndex = 3;
-            this.radButton1.Text = "radButton1";
-            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +382,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rgvDBAJobs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
             this.radPanel3.ResumeLayout(false);
@@ -389,7 +391,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rmccDatabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
