@@ -4,7 +4,7 @@ using OracleDataMoverEF.EF;
 using OracleDataMoverEF.UnitOfWork;
 using System.Linq;
 using System.Collections.Generic;
-using OracleDataMover.Common;
+using OracleDataMoverBLL.Common;
 
 namespace OracleDataMoverUT.UT
 {

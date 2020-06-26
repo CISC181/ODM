@@ -31,6 +31,15 @@ namespace OracleDataMover.ora
             LoadGridLayout();
             LoadGrid();
         }
+        public frmTemplate(String TemplateName) :this()
+        {
+            Telerik.WinControls.Data.FilterDescriptor filter = new Telerik.WinControls.Data.FilterDescriptor();
+            filter.PropertyName = "Name";
+            filter.Operator = Telerik.WinControls.Data.FilterOperator.Contains;
+            filter.Value = TemplateName;
+            filter.IsFilterEditor = true;
+            this.rgvTemplate.FilterDescriptors.Add(filter);
+        }
         #region CommonMethods
         private List<GridViewRowInfo> GetAllRows(GridViewTemplate template)
         {
@@ -45,6 +54,19 @@ namespace OracleDataMover.ora
         }
         public void rbClose_Click(object sender, EventArgs e)
         {
+            if (Context.HasChanges())
+            {
+                var confirmResult = MessageBox.Show("You have pending changes.  Do you want to save changes?", "Confirm",
+                         MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    Context.Commit();
+                }
+                else
+                {
+                    Context.Rollback();
+                }
+            }
             MF.LoadGridData();
             this.Hide();
         }
@@ -66,7 +88,8 @@ namespace OracleDataMover.ora
                 {
                     if (row.Cells["colDmpFileName"].Value == null)
                     {
-                        row.Cells["colDmpFileName"].Value = e.Value.ToString().ToUpper() + ".DMP";
+                        string strDMPName = e.Value.ToString().ToUpper().Replace("_EXP","").Replace("_IMP","") + ".DMP";
+                        row.Cells["colDmpFileName"].Value = strDMPName;
                     }
                     if (row.Cells["colParFileName"].Value == null)
                     {
@@ -318,6 +341,7 @@ namespace OracleDataMover.ora
                     Context.TemplateRepository.Save(tmpl);
                 }
             }
+
             Context.Commit();
             
             MessageBox.Show("Data is saved");
@@ -339,7 +363,14 @@ namespace OracleDataMover.ora
                             e.Cancel = true;
                             MessageBox.Show("DMP File Name Required");
                         }
+                        if (CheckExension(e.Value.ToString(), ".DMP") == false)
+                        {
+                            MessageBox.Show("DMP File Must have .DMP extension");
+                            e.Cancel = true;
+                            return;
+                        }
                         break;
+
                     case "colTemplateName":
                         if (string.IsNullOrEmpty((string)e.Value) || ((string)e.Value).Trim() == string.Empty)
                         {
@@ -352,6 +383,13 @@ namespace OracleDataMover.ora
                         {
                             e.Cancel = true;
                             MessageBox.Show("PAR File Required");
+                            break;
+                        }
+                        if (CheckExension(e.Value.ToString(), ".PAR") == false)
+                        {
+                            MessageBox.Show("BAT File Must have .PAR extension");
+                            e.Cancel = true;
+                            return;
                         }
                         break;
                     case "colBatFileName":

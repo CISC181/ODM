@@ -525,6 +525,19 @@ namespace OracleDataMover.ora
 
         private void rbClose_Click(object sender, EventArgs e)
         {
+            if (Context.HasChanges())
+            {
+                var confirmResult = MessageBox.Show("You have pending changes.  Do you want to save changes?", "Confirm",
+                         MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    Context.Commit();
+                }
+                else
+                {
+                    Context.Rollback();
+                }
+            }
             this.Hide();
         }
         private Boolean DoesConstraintExist(string strOwner, string strTableName, string strColumnName)

@@ -46,6 +46,11 @@ namespace OracleDataMoverEF.UnitOfWork
     		    this.context = (ODMEntities)context;
             }
     
+        public bool HasChanges()
+        {
+            return ((ODMEntities)this.context).ObjectChanges();
+        }
+
     	private DATABASE_INFORepository dATABASE_INFORepository;
     	private ODMSettingRepository oDMSettingRepository;
     	private OraUtilityRepository oraUtilityRepository;

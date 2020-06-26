@@ -16,15 +16,16 @@ namespace OracleDataMoverEF.EF
     {
         public string LoggedInUserId { get; set; }
 
-        public virtual bool ObjectChanges<TEntity>(TEntity anObject) where TEntity : class
+        public virtual bool ObjectChanges()
         {
-                return this.ChangeTracker.Entries<TEntity>().Count() > 0;
+            return this.ChangeTracker.Entries<Entity>().Count(p => p.State == EntityState.Added
+               || p.State == EntityState.Modified || p.State == EntityState.Deleted) > 0;
         }
         public virtual bool ObjectIsNew<TEntity>(TEntity anObject) where TEntity : class
         {
             return !this.ChangeTracker.Entries<TEntity>().Any(x => x.Entity == anObject);
         }
-        
+
 
         public override int SaveChanges()
         {

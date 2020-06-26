@@ -85,6 +85,10 @@
       <Project>{677f730d-bcf9-470f-8bd9-190d3a827cc3}</Project>
       <Name>OracleDataMoverEF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OracleDataMoverBLL\OracleDataMoverBLL.csproj">
+      <Project>{520cc2d3-571c-460c-b7e3-5a210e8954e7}</Project>
+      <Name>OracleDataMoverBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OracleDataMoverOraEF\OracleDataMoverOraEF.csproj">
       <Project>{b8b71552-03f6-4734-a063-f99187cfba98}</Project>
       <Name>OracleDataMoverOraEF</Name>

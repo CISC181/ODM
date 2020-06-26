@@ -28,7 +28,7 @@ namespace OracleDataMover.ora
         public MainForm()
         {
             InitializeComponent();
-            
+
             //MessageBox.Show(userName);
             RadToolTip newToolTip = new RadToolTip();
             newToolTip.Show("A tooltip which appears at mouse position", 2000);
@@ -94,7 +94,7 @@ namespace OracleDataMover.ora
             gtbUtilityName.FieldName = "ORA_UTILITY.UtilityName";
             gtbUtilityName.HeaderText = "Utility Name";
             gtbUtilityName.Name = "colUtilityName";
-            gtbUtilityName.Width = 75;
+            gtbUtilityName.Width = 150;
             this.rgvTemplate.Columns.Add(gtbUtilityName);
 
             GridViewTextBoxColumn gtbTemplateID = new GridViewTextBoxColumn();
@@ -163,12 +163,12 @@ namespace OracleDataMover.ora
 
         private void rgvTemplate_CommandCellClick(object sender, EventArgs e)
         {
-     
+
             GridViewCellEventArgs args = (GridViewCellEventArgs)e;
 
             switch (args.Column.Name)
             {
-                case "colExecute":                    
+                case "colExecute":
                     rgvTemplate_cmdGeneratePAR_CommandCellClick(sender, e);
                     Utility.WriteHistoryRecord(args.Value.ToString());
                     break;
@@ -177,6 +177,7 @@ namespace OracleDataMover.ora
 
         private void rgvTemplate_cmdGeneratePAR_CommandCellClick(object sender, EventArgs e)
         {
+            gridTimer.Enabled = true;
             GridViewCellEventArgs args = (GridViewCellEventArgs)e;
             ODMSetting ODMSetting = Context.ODMSettingRepository.FindBy(x => x.SettingName == "WORKING_DIR").FirstOrDefault();
             Template tmpl = Context.TemplateRepository.FindBy(x => x.Id == args.Value.ToString()).FirstOrDefault();
@@ -246,10 +247,10 @@ namespace OracleDataMover.ora
                 String strDatabaseName = this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
 
                 ContextOra = new OraDataContext(new OraEntities(strDatabaseName), Utility.UserName);
-                
-        List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
+
+                List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
                 rgvDBAJobs.DataSource = lstDBAJobs;
-          }
+            }
 
         }
 
@@ -318,6 +319,19 @@ namespace OracleDataMover.ora
 
         private void rbClose_Click(object sender, EventArgs e)
         {
+            if (Context.HasChanges())
+            {
+                var confirmResult = MessageBox.Show("You have pending changes.  Do you want to save changes?", "Confirm",
+                         MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    Context.Commit();
+                }
+                else
+                {
+                    Context.Rollback();
+                }
+            }
             Application.Exit();
         }
 
@@ -328,13 +342,11 @@ namespace OracleDataMover.ora
             switch (strState)
             {
                 case "EXECUTING":
-                    gridTimer.Enabled = true;
                     e.RowElement.DrawFill = true;
                     e.RowElement.GradientStyle = GradientStyles.Solid;
                     e.RowElement.BackColor = Color.HotPink;
                     break;
                 case "NOT RUNNING":
-                    gridTimer.Enabled = true;
                     e.RowElement.DrawFill = true;
                     e.RowElement.GradientStyle = GradientStyles.Solid;
                     e.RowElement.BackColor = Color.Yellow;
@@ -358,6 +370,16 @@ namespace OracleDataMover.ora
         {
             RadForm1 rf = new RadForm1();
             rf.Show();
+
+        }
+
+        private void rgvTemplate_DoubleClick(object sender, EventArgs e)
+        {
+            RadGridView rgv = (RadGridView)sender;
+            String TemplateName = rgv.SelectedRows[0].Cells["colTemplateName"].Value.ToString();
+            frmTemplate frm = new frmTemplate(TemplateName);
+            frm.MF1 = this;
+            frm.Show();
 
         }
     }

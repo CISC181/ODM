@@ -91,7 +91,7 @@
             this.rmManage});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(661, 20);
+            this.radMenu1.Size = new System.Drawing.Size(719, 20);
             this.radMenu1.TabIndex = 4;
             // 
             // rmFile
@@ -174,7 +174,7 @@
             this.radPanel2.Controls.Add(this.tabControl1);
             this.radPanel2.Location = new System.Drawing.Point(15, 103);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(626, 360);
+            this.radPanel2.Size = new System.Drawing.Size(692, 360);
             this.radPanel2.TabIndex = 6;
             // 
             // tabControl1
@@ -184,7 +184,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 17);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(601, 340);
+            this.tabControl1.Size = new System.Drawing.Size(669, 340);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -193,7 +193,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(593, 314);
+            this.tabPage1.Size = new System.Drawing.Size(661, 314);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Template Info";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -215,9 +215,10 @@
             this.rgvTemplate.Name = "rgvTemplate";
             this.rgvTemplate.ReadOnly = true;
             this.rgvTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rgvTemplate.Size = new System.Drawing.Size(572, 293);
+            this.rgvTemplate.Size = new System.Drawing.Size(649, 293);
             this.rgvTemplate.TabIndex = 0;
             this.rgvTemplate.ThemeName = "TelerikMetroBlue";
+            this.rgvTemplate.DoubleClick += new System.EventHandler(this.rgvTemplate_DoubleClick);
             // 
             // tabPage2
             // 
@@ -257,7 +258,7 @@
             this.radPanel1.Controls.Add(this.rbClose);
             this.radPanel1.Location = new System.Drawing.Point(15, 482);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(626, 52);
+            this.radPanel1.Size = new System.Drawing.Size(692, 52);
             this.radPanel1.TabIndex = 5;
             // 
             // radButton1
@@ -271,7 +272,7 @@
             // 
             // rbClose
             // 
-            this.rbClose.Location = new System.Drawing.Point(468, 13);
+            this.rbClose.Location = new System.Drawing.Point(579, 13);
             this.rbClose.Name = "rbClose";
             this.rbClose.Size = new System.Drawing.Size(110, 24);
             this.rbClose.TabIndex = 2;
@@ -285,7 +286,7 @@
             this.radPanel3.Controls.Add(this.radLabel1);
             this.radPanel3.Location = new System.Drawing.Point(15, 26);
             this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(626, 56);
+            this.radPanel3.Size = new System.Drawing.Size(692, 56);
             this.radPanel3.TabIndex = 7;
             // 
             // rmccDatabase
@@ -358,7 +359,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 546);
+            this.ClientSize = new System.Drawing.Size(719, 546);
             this.Controls.Add(this.radPanel3);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
