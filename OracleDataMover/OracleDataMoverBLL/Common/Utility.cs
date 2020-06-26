@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OracleDataMover.Common
+namespace OracleDataMoverBLL.Common
 {
     public class Utility
     {

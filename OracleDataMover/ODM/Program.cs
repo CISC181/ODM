@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Drawing;
 using System.ComponentModel;
-using OracleDataMover.Common;
+using OracleDataMoverBLL.Common;
 using System.Diagnostics;
 
 
@@ -25,15 +25,15 @@ namespace ODM
             Template T = GetTemplate(strTemplateName);
 
             if (T != null)
-                GenerateFiles(T);
+                CreateFiles(T);
         }
 
-        private static void GenerateFiles(Template T)
+        private static void CreateFiles(Template T)
         {
             ODMSetting ODMSetting = Context.ODMSettingRepository.FindBy(x => x.SettingName == "WORKING_DIR").FirstOrDefault();
-            OracleDataMover.Common.GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + T.PARFileName.ToString(), T.Id.ToString());
-            OracleDataMover.Common.GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + T.BATFileName.ToString(), T.Id.ToString());
-            OracleDataMover.Common.Utility.ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + T.BATFileName.ToString());
+            GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + T.PARFileName.ToString(), T.Id.ToString());
+            GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + T.BATFileName.ToString(), T.Id.ToString());
+            Utility.ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + T.BATFileName.ToString());
         }
         private static Template GetTemplate(String strTemplateName)
         {

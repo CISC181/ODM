@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 using System.Drawing;
 using System.ComponentModel;
 using Telerik.WinControls;
-using OracleDataMover.Common;
+using OracleDataMoverBLL.Common;
 using System.Diagnostics;
 
 namespace OracleDataMover.ora
@@ -182,7 +182,7 @@ namespace OracleDataMover.ora
             Template tmpl = Context.TemplateRepository.FindBy(x => x.Id == args.Value.ToString()).FirstOrDefault();
             GenerateFiles.GeneratePARFile(ODMSetting.SettingValue + '\\' + tmpl.PARFileName.ToString(), args.Value.ToString());
             GenerateFiles.GenerateBATFile(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString(), args.Value.ToString());
-            OracleDataMover.Common.ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
+            Utility.ExecuteAsAdmin(ODMSetting.SettingValue + '\\' + tmpl.BATFileName.ToString());
 
         }
 
