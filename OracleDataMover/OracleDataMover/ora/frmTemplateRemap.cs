@@ -21,7 +21,9 @@ namespace OracleDataMover.ora
         private Boolean isLoading;
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
         protected static OraDataContext ContextOra = null;
+        private MainForm MF;
 
+        public MainForm MF1 { get => MF; set => MF = value; }
 
         public frmTemplateRemap()
         {
@@ -57,6 +59,7 @@ namespace OracleDataMover.ora
                     Context.Rollback();
                 }
             }
+            MF.LoadGridData();
             this.Hide();
         }
 

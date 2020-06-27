@@ -130,7 +130,10 @@ namespace OracleDataMover.ora
                 String strDatabaseName = this.rmccDatabase.EditorControl.CurrentRow.Cells["colDatabaseName"].Value.ToString();
                 List<Template> lstTemplate = Context.TemplateRepository.FindBy(x => x.DATABASE_ID == strDatabaseID).ToList();
 
+                rgvTemplate.DataSource = null;
                 rgvTemplate.DataSource = lstTemplate;
+
+
 
                 //ContextOra = new OraDataContext(new OraEntities(strDatabaseName), "Gibbonsbr");
                 //List<OracleDataMoverOraEF.EF.DBA_DataPump_Jobs> lstDBAJobs = ContextOra.GetDBADataPumpJobs();
@@ -272,6 +275,7 @@ namespace OracleDataMover.ora
         private void rmManageDatabase_Click(object sender, EventArgs e)
         {
             frmDatabaseInfo frmDb = new frmDatabaseInfo();
+            frmDb.MF1 = this;
             frmDb.Show();
 
         }
@@ -279,12 +283,14 @@ namespace OracleDataMover.ora
         private void rmManageRemap_Click(object sender, EventArgs e)
         {
             frmRemapFunction frmT = new frmRemapFunction();
+            frmT.MF1 = this;
             frmT.Show();
         }
 
         private void rmManageParms_Click(object sender, EventArgs e)
         {
             frmParm pf = new frmParm();
+            pf.MF1 = this;
             pf.Show();
 
         }
@@ -299,6 +305,7 @@ namespace OracleDataMover.ora
         private void rmManageTemplateSchema_Click(object sender, EventArgs e)
         {
             frmTemplateSchema frmT = new frmTemplateSchema();
+            frmT.MF1 = this;
             frmT.Show();
         }
 
@@ -312,6 +319,7 @@ namespace OracleDataMover.ora
         private void rmiTemplateSchemaImport_Click(object sender, EventArgs e)
         {
             frmTemplateRemap frmT = new frmTemplateRemap();
+            frmT.MF1 = this;
             frmT.Show();
         }
 

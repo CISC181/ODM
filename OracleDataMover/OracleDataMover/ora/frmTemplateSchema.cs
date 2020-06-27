@@ -22,7 +22,9 @@ namespace OracleDataMover.ora
         private List<ALL_CONSTRAINTS> lstConstraints = null;
         private List<ALL_CONS_COLUMNS> lstAllConsCols = null;
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
+        private MainForm MF;
 
+        public MainForm MF1 { get => MF; set => MF = value; }
         public frmTemplateSchema()
         {
             InitializeComponent();
@@ -538,6 +540,7 @@ namespace OracleDataMover.ora
                     Context.Rollback();
                 }
             }
+            MF.LoadGridData();
             this.Hide();
         }
         private Boolean DoesConstraintExist(string strOwner, string strTableName, string strColumnName)

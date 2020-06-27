@@ -19,6 +19,10 @@ namespace OracleDataMover.ora
     public partial class frmParm : Telerik.WinControls.UI.RadForm
     {
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
+        private MainForm MF;
+
+        public MainForm MF1 { get => MF; set => MF = value; }
+
         public frmParm()
         {
             InitializeComponent();
@@ -53,6 +57,7 @@ namespace OracleDataMover.ora
                     Context.Rollback();
                 }
             }
+            MF.LoadGridData();
             this.Hide();
         }
         public void rgv_CellValueChanged(object sender, GridViewCellEventArgs e)

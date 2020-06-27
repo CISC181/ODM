@@ -21,6 +21,8 @@ namespace OracleDataMover.ora
     {
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
         private Boolean bDirty;
+        private MainForm MF;
+        public MainForm MF1 { get => MF; set => MF = value; }
 
         public frmDatabaseInfo()
         {
@@ -66,6 +68,7 @@ namespace OracleDataMover.ora
                     Context.Rollback();
                 }
             }
+            MF.LoadGridData();
             this.Hide();
         }
         public void rgv_CellValueChanged(object sender, GridViewCellEventArgs e)

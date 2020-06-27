@@ -58,6 +58,11 @@ public partial class ODMDataContext : DataContext<IODMEntities>
 		    this.context = (ODMEntities)context;
         }
 
+    public bool HasChanges()
+    {
+        return ((ODMEntities)this.context).ObjectChanges();
+    }
+
 <#
 //Parse through each entity (repository) and create an object for them
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)) {
