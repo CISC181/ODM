@@ -376,7 +376,7 @@ namespace OracleDataMover.ora
 
         private void radButton1_Click(object sender, EventArgs e)
         {
-            RadForm1 rf = new RadForm1();
+            frmTemplateSchedule rf = new frmTemplateSchedule();
             rf.Show();
 
         }

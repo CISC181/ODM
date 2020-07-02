@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition7 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition8 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor3 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition9 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.rglTemplateSchema = new Telerik.WinControls.UI.RadLabel();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
@@ -151,7 +151,7 @@
             // 
             // 
             this.rgvSchemaSanitize.MasterTemplate.EnableFiltering = true;
-            this.rgvSchemaSanitize.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.rgvSchemaSanitize.MasterTemplate.ViewDefinition = tableViewDefinition7;
             this.rgvSchemaSanitize.Name = "rgvSchemaSanitize";
             this.rgvSchemaSanitize.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rgvSchemaSanitize.ShowGroupPanel = false;
@@ -221,7 +221,7 @@
             // 
             // 
             this.rgvTableSample.MasterTemplate.EnableFiltering = true;
-            this.rgvTableSample.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.rgvTableSample.MasterTemplate.ViewDefinition = tableViewDefinition8;
             this.rgvTableSample.Name = "rgvTableSample";
             this.rgvTableSample.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rgvTableSample.ShowGroupPanel = false;
@@ -271,33 +271,33 @@
             this.rmccTemplateSchema.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.rmccTemplateSchema.EditorControl.MasterTemplate.AllowDeleteRow = false;
             this.rmccTemplateSchema.EditorControl.MasterTemplate.AllowEditRow = false;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "Id";
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "colTemplateID";
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "Name";
-            gridViewTextBoxColumn2.HeaderText = "TemplateName";
-            gridViewTextBoxColumn2.Name = "colTemplateName";
-            gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn2.Width = 151;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "DATABASE_INFO.Name";
-            gridViewTextBoxColumn3.HeaderText = "Datbase Name";
-            gridViewTextBoxColumn3.Name = "colDatabaseName";
-            gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 225;
+            gridViewTextBoxColumn7.EnableExpressionEditor = false;
+            gridViewTextBoxColumn7.FieldName = "Id";
+            gridViewTextBoxColumn7.IsVisible = false;
+            gridViewTextBoxColumn7.Name = "colTemplateID";
+            gridViewTextBoxColumn8.EnableExpressionEditor = false;
+            gridViewTextBoxColumn8.FieldName = "Name";
+            gridViewTextBoxColumn8.HeaderText = "TemplateName";
+            gridViewTextBoxColumn8.Name = "colTemplateName";
+            gridViewTextBoxColumn8.ReadOnly = true;
+            gridViewTextBoxColumn8.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn8.Width = 151;
+            gridViewTextBoxColumn9.EnableExpressionEditor = false;
+            gridViewTextBoxColumn9.FieldName = "DATABASE_INFO.Name";
+            gridViewTextBoxColumn9.HeaderText = "Datbase Name";
+            gridViewTextBoxColumn9.Name = "colDatabaseName";
+            gridViewTextBoxColumn9.ReadOnly = true;
+            gridViewTextBoxColumn9.Width = 225;
             this.rmccTemplateSchema.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3});
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9});
             this.rmccTemplateSchema.EditorControl.MasterTemplate.EnableGrouping = false;
             this.rmccTemplateSchema.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            sortDescriptor1.PropertyName = "colTemplateName";
+            sortDescriptor3.PropertyName = "colTemplateName";
             this.rmccTemplateSchema.EditorControl.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor1});
-            this.rmccTemplateSchema.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            sortDescriptor3});
+            this.rmccTemplateSchema.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition9;
             this.rmccTemplateSchema.EditorControl.Name = "NestedRadGridView";
             this.rmccTemplateSchema.EditorControl.ReadOnly = true;
             this.rmccTemplateSchema.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.No;

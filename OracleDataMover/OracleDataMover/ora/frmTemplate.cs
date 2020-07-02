@@ -132,6 +132,13 @@ namespace OracleDataMover.ora
             rgvTemplate.CommandCellClick += new
             CommandCellClickEventHandler(rgvTemplate_CommandCellClick);
 
+            GridViewCommandColumn commandExport = new GridViewCommandColumn();
+            commandExport.Name = "colExport";
+            commandExport.UseDefaultText = true;
+            commandExport.DefaultText = "Export";
+            commandExport.FieldName = "ID";
+            rgvTemplate.MasterTemplate.Columns.Add(commandExport);
+
             GridViewCommandColumn cmdGeneratePAR = new GridViewCommandColumn();
             cmdGeneratePAR.Name = "colGenerate";
             cmdGeneratePAR.UseDefaultText = true;
@@ -235,8 +242,15 @@ namespace OracleDataMover.ora
             Process.Start("notepad.exe", saveFileDialog1.FileName);
         }
 
+        private void rgvTemplate_cmdExport_CommandCellClick(object sender, EventArgs e)
+        {
+            var TemplateID = ((sender as GridCommandCellElement)).Value.ToString();
 
-    
+            Utility.ExportTemplate(TemplateID);
+
+        }
+
+
 
 
 
@@ -252,6 +266,10 @@ namespace OracleDataMover.ora
                 case "colGenerate":
                     rgvTemplate_cmdGeneratePAR_CommandCellClick(sender, e);
                     break;
+                case "colExport":
+                    rgvTemplate_cmdExport_CommandCellClick(sender, e);
+                    break;
+
             }
         }
 

@@ -23,8 +23,11 @@ namespace OracleDataMoverEF.EF
         public ODMEntities()
             : base("name=ODMEntities")
         {
+           // this.Configuration.LazyLoadingEnabled = false;
         }
-    
+
+
+
         public IDbSet<TEntity> GetSet<TEntity>() where TEntity : class 
         {
             return this.Set<TEntity>();

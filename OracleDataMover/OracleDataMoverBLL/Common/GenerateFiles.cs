@@ -12,6 +12,11 @@ namespace OracleDataMoverBLL.Common
     {
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
+
+
+
+
+
         public static void GeneratePARFile(string strFileName, string strTemplateID)
         {
             Template t = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();

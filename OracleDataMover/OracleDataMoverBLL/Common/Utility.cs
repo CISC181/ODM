@@ -1,4 +1,5 @@
-﻿using OracleDataMoverEF.EF;
+﻿using Newtonsoft.Json;
+using OracleDataMoverEF.EF;
 using OracleDataMoverEF.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,18 @@ namespace OracleDataMoverBLL.Common
 
         protected static ODMDataContext Context = new ODMDataContext(new ODMEntities(), Utility.UserName);
 
-        
+        public static void ExportTemplate(String strTemplateID)
+        {
+            Context.DisableLazyLoadingAndDetectChanges();
+
+            Template T = Context.TemplateRepository
+                .FindBy(x => x.Id == strTemplateID)
+                
+                .FirstOrDefault();
+            string output = JsonConvert.SerializeObject(T);
+
+        }
+
         public static void WriteHistoryRecord(string strTemplateID)
         {
             Template T = Context.TemplateRepository.FindBy(x => x.Id == strTemplateID).FirstOrDefault();

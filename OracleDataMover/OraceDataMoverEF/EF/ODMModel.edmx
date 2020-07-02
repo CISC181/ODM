@@ -338,7 +338,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ODMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ODMEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ODMEntities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Templates1" EntityType="ODMModel.Template" />
           <EntitySet Name="PARMs" EntityType="ODMModel.PARM" />
           <EntitySet Name="DATABASE_INFO" EntityType="ODMModel.DATABASE_INFO" />
