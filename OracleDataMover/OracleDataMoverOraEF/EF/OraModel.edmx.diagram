@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb6c77e1692f44aea16978d2558852b7" Name="Diagram1" ZoomLevel="112">
+        <EntityTypeShape EntityType="OraModel.ALL_CONS_COLUMNS" Width="1.5" PointX="9.125" PointY="0.625" />
+        <EntityTypeShape EntityType="OraModel.ALL_CONSTRAINTS" Width="1.5" PointX="6.875" PointY="0.625" />
+        <EntityTypeShape EntityType="OraModel.ALL_TAB_COLS" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="OraModel.ALL_TABLES" Width="1.5" PointX="2.875" PointY="0.5" />
+        <EntityTypeShape EntityType="OraModel.ALL_USERS" Width="1.5" PointX="5" PointY="0.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

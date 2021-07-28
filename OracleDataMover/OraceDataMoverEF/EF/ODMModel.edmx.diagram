@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47e50580b3f4448aa43e602c414bdec8" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="ODMModel.Template" Width="1.5" PointX="5.75" PointY="2.75" />
+        <EntityTypeShape EntityType="ODMModel.PARM" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="ODMModel.DATABASE_INFO" Width="1.5" PointX="10.5" PointY="2.875" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_FK1" />
+        <EntityTypeShape EntityType="ODMModel.RemapFunction" Width="1.5" PointX="13.5" PointY="8.5" />
+        <EntityTypeShape EntityType="ODMModel.TemplateSchema" Width="3.125" PointX="0.5" PointY="3.875" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_SCHEMA_FK1" />
+        <EntityTypeShape EntityType="ODMModel.TemplateSchemaTable" Width="2.75" PointX="0.5" PointY="7.625" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_SCHEMA_TABLE_FK1" />
+        <EntityTypeShape EntityType="ODMModel.TemplateSchemaSanitize" Width="2.875" PointX="5.75" PointY="7.75" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK2" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK1" />
+        <EntityTypeShape EntityType="ODMModel.TemplateParm" Width="1.5" PointX="3.25" PointY="0.5" />
+        <AssociationConnector Association="ODMModel.TEMPLATEPARM_FK1" />
+        <AssociationConnector Association="ODMModel.TEMPLATEPARM_FK2" />
+        <EntityTypeShape EntityType="ODMModel.ODMSetting" Width="1.5" PointX="0.5" PointY="11.875" />
+        <EntityTypeShape EntityType="ODMModel.OraUtility" Width="1.5" PointX="13.375" PointY="4.875" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_FK2" />
+        <EntityTypeShape EntityType="ODMModel.TemplateSchemaRemap" Width="2.25" PointX="10.5" PointY="6.375" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" />
+        <EntityTypeShape EntityType="ODMModel.TemplateJobHistory" Width="1.5" PointX="8.25" PointY="0.5" />
+        <AssociationConnector Association="ODMModel.TEMPLATE_JOB_HISTORY_FK1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

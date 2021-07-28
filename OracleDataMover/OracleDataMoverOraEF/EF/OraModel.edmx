@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OraModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SYS.ALL_CONS_COLUMNS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALL_CONS_COLUMNS">
+          <Key>
+            <PropertyRef Name="OWNER" />
+            <PropertyRef Name="CONSTRAINT_NAME" />
+            <PropertyRef Name="TABLE_NAME" />
+          </Key>
+          <Property Name="OWNER" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="CONSTRAINT_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="COLUMN_NAME" Type="varchar2" MaxLength="4000" />
+          <Property Name="POSITION" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SYS.ALL_CONSTRAINTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALL_CONSTRAINTS">
+          <Key>
+            <PropertyRef Name="CONSTRAINT_NAME" />
+            <PropertyRef Name="TABLE_NAME" />
+          </Key>
+          <Property Name="OWNER" Type="varchar2" MaxLength="128" />
+          <Property Name="CONSTRAINT_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="CONSTRAINT_TYPE" Type="varchar2" MaxLength="1" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="SEARCH_CONDITION" Type="long" />
+          <Property Name="SEARCH_CONDITION_VC" Type="varchar2" MaxLength="4000" />
+          <Property Name="R_OWNER" Type="varchar2" MaxLength="128" />
+          <Property Name="R_CONSTRAINT_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="DELETE_RULE" Type="varchar2" MaxLength="9" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="8" />
+          <Property Name="DEFERRABLE" Type="varchar2" MaxLength="14" />
+          <Property Name="DEFERRED" Type="varchar2" MaxLength="9" />
+          <Property Name="VALIDATED" Type="varchar2" MaxLength="13" />
+          <Property Name="GENERATED" Type="varchar2" MaxLength="14" />
+          <Property Name="BAD" Type="varchar2" MaxLength="3" />
+          <Property Name="RELY" Type="varchar2" MaxLength="4" />
+          <Property Name="LAST_CHANGE" Type="date" />
+          <Property Name="INDEX_OWNER" Type="varchar2" MaxLength="128" />
+          <Property Name="INDEX_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="INVALID" Type="varchar2" MaxLength="7" />
+          <Property Name="VIEW_RELATED" Type="varchar2" MaxLength="14" />
+          <Property Name="ORIGIN_CON_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SYS.ALL_TAB_COLS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALL_TAB_COLS">
+          <Key>
+            <PropertyRef Name="OWNER" />
+            <PropertyRef Name="TABLE_NAME" />
+            <PropertyRef Name="COLUMN_NAME" />
+            <PropertyRef Name="DATA_LENGTH" />
+            <PropertyRef Name="INTERNAL_COLUMN_ID" />
+          </Key>
+          <Property Name="OWNER" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="COLUMN_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="varchar2" MaxLength="128" />
+          <Property Name="DATA_TYPE_MOD" Type="varchar2" MaxLength="3" />
+          <Property Name="DATA_TYPE_OWNER" Type="varchar2" MaxLength="128" />
+          <Property Name="DATA_LENGTH" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DATA_PRECISION" Type="number" Precision="38" Scale="0" />
+          <Property Name="DATA_SCALE" Type="number" Precision="38" Scale="0" />
+          <Property Name="NULLABLE" Type="varchar2" MaxLength="1" />
+          <Property Name="COLUMN_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="DEFAULT_LENGTH" Type="number" Precision="38" Scale="0" />
+          <Property Name="DATA_DEFAULT" Type="long" />
+          <Property Name="NUM_DISTINCT" Type="number" Precision="38" Scale="0" />
+          <Property Name="LOW_VALUE" Type="raw" MaxLength="2000" />
+          <Property Name="HIGH_VALUE" Type="raw" MaxLength="2000" />
+          <Property Name="DENSITY" Type="number" Precision="38" Scale="0" />
+          <Property Name="NUM_NULLS" Type="number" Precision="38" Scale="0" />
+          <Property Name="NUM_BUCKETS" Type="number" Precision="38" Scale="0" />
+          <Property Name="LAST_ANALYZED" Type="date" />
+          <Property Name="SAMPLE_SIZE" Type="number" Precision="38" Scale="0" />
+          <Property Name="CHARACTER_SET_NAME" Type="varchar2" MaxLength="44" />
+          <Property Name="CHAR_COL_DECL_LENGTH" Type="number" Precision="38" Scale="0" />
+          <Property Name="GLOBAL_STATS" Type="varchar2" MaxLength="3" />
+          <Property Name="USER_STATS" Type="varchar2" MaxLength="3" />
+          <Property Name="AVG_COL_LEN" Type="number" Precision="38" Scale="0" />
+          <Property Name="CHAR_LENGTH" Type="number" Precision="38" Scale="0" />
+          <Property Name="CHAR_USED" Type="varchar2" MaxLength="1" />
+          <Property Name="V80_FMT_IMAGE" Type="varchar2" MaxLength="3" />
+          <Property Name="DATA_UPGRADED" Type="varchar2" MaxLength="3" />
+          <Property Name="HIDDEN_COLUMN" Type="varchar2" MaxLength="3" />
+          <Property Name="VIRTUAL_COLUMN" Type="varchar2" MaxLength="3" />
+          <Property Name="SEGMENT_COLUMN_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="INTERNAL_COLUMN_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HISTOGRAM" Type="varchar2" MaxLength="15" />
+          <Property Name="QUALIFIED_COL_NAME" Type="varchar2" MaxLength="4000" />
+          <Property Name="USER_GENERATED" Type="varchar2" MaxLength="3" />
+          <Property Name="DEFAULT_ON_NULL" Type="varchar2" MaxLength="3" />
+          <Property Name="IDENTITY_COLUMN" Type="varchar2" MaxLength="3" />
+          <Property Name="EVALUATION_EDITION" Type="varchar2" MaxLength="128" />
+          <Property Name="UNUSABLE_BEFORE" Type="varchar2" MaxLength="128" />
+          <Property Name="UNUSABLE_BEGINNING" Type="varchar2" MaxLength="128" />
+          <Property Name="COLLATION" Type="varchar2" MaxLength="100" />
+          <Property Name="COLLATED_COLUMN_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SYS.ALL_TABLES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALL_TABLES">
+          <Key>
+            <PropertyRef Name="OWNER" />
+            <PropertyRef Name="TABLE_NAME" />
+          </Key>
+          <Property Name="OWNER" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="TABLESPACE_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="CLUSTER_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="IOT_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="8" />
+          <Property Name="PCT_FREE" Type="number" Precision="38" Scale="0" />
+          <Property Name="PCT_USED" Type="number" Precision="38" Scale="0" />
+          <Property Name="INI_TRANS" Type="number" Precision="38" Scale="0" />
+          <Property Name="MAX_TRANS" Type="number" Precision="38" Scale="0" />
+          <Property Name="INITIAL_EXTENT" Type="number" Precision="38" Scale="0" />
+          <Property Name="NEXT_EXTENT" Type="number" Precision="38" Scale="0" />
+          <Property Name="MIN_EXTENTS" Type="number" Precision="38" Scale="0" />
+          <Property Name="MAX_EXTENTS" Type="number" Precision="38" Scale="0" />
+          <Property Name="PCT_INCREASE" Type="number" Precision="38" Scale="0" />
+          <Property Name="FREELISTS" Type="number" Precision="38" Scale="0" />
+          <Property Name="FREELIST_GROUPS" Type="number" Precision="38" Scale="0" />
+          <Property Name="LOGGING" Type="varchar2" MaxLength="3" />
+          <Property Name="BACKED_UP" Type="varchar2" MaxLength="1" />
+          <Property Name="NUM_ROWS" Type="number" Precision="38" Scale="0" />
+          <Property Name="BLOCKS" Type="number" Precision="38" Scale="0" />
+          <Property Name="EMPTY_BLOCKS" Type="number" Precision="38" Scale="0" />
+          <Property Name="AVG_SPACE" Type="number" Precision="38" Scale="0" />
+          <Property Name="CHAIN_CNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="AVG_ROW_LEN" Type="number" Precision="38" Scale="0" />
+          <Property Name="AVG_SPACE_FREELIST_BLOCKS" Type="number" Precision="38" Scale="0" />
+          <Property Name="NUM_FREELIST_BLOCKS" Type="number" Precision="38" Scale="0" />
+          <Property Name="DEGREE" Type="varchar2" MaxLength="10" />
+          <Property Name="INSTANCES" Type="varchar2" MaxLength="10" />
+          <Property Name="CACHE" Type="varchar2" MaxLength="5" />
+          <Property Name="TABLE_LOCK" Type="varchar2" MaxLength="8" />
+          <Property Name="SAMPLE_SIZE" Type="number" Precision="38" Scale="0" />
+          <Property Name="LAST_ANALYZED" Type="date" />
+          <Property Name="PARTITIONED" Type="varchar2" MaxLength="3" />
+          <Property Name="IOT_TYPE" Type="varchar2" MaxLength="12" />
+          <Property Name="TEMPORARY" Type="varchar2" MaxLength="1" />
+          <Property Name="SECONDARY" Type="varchar2" MaxLength="1" />
+          <Property Name="NESTED" Type="varchar2" MaxLength="3" />
+          <Property Name="BUFFER_POOL" Type="varchar2" MaxLength="7" />
+          <Property Name="FLASH_CACHE" Type="varchar2" MaxLength="7" />
+          <Property Name="CELL_FLASH_CACHE" Type="varchar2" MaxLength="7" />
+          <Property Name="ROW_MOVEMENT" Type="varchar2" MaxLength="8" />
+          <Property Name="GLOBAL_STATS" Type="varchar2" MaxLength="3" />
+          <Property Name="USER_STATS" Type="varchar2" MaxLength="3" />
+          <Property Name="DURATION" Type="varchar2" MaxLength="15" />
+          <Property Name="SKIP_CORRUPT" Type="varchar2" MaxLength="8" />
+          <Property Name="MONITORING" Type="varchar2" MaxLength="3" />
+          <Property Name="CLUSTER_OWNER" Type="varchar2" MaxLength="128" />
+          <Property Name="DEPENDENCIES" Type="varchar2" MaxLength="8" />
+          <Property Name="COMPRESSION" Type="varchar2" MaxLength="8" />
+          <Property Name="COMPRESS_FOR" Type="varchar2" MaxLength="30" />
+          <Property Name="DROPPED" Type="varchar2" MaxLength="3" />
+          <Property Name="READ_ONLY" Type="varchar2" MaxLength="3" />
+          <Property Name="SEGMENT_CREATED" Type="varchar2" MaxLength="3" />
+          <Property Name="RESULT_CACHE" Type="varchar2" MaxLength="7" />
+          <Property Name="CLUSTERING" Type="varchar2" MaxLength="3" />
+          <Property Name="ACTIVITY_TRACKING" Type="varchar2" MaxLength="23" />
+          <Property Name="DML_TIMESTAMP" Type="varchar2" MaxLength="25" />
+          <Property Name="HAS_IDENTITY" Type="varchar2" MaxLength="3" />
+          <Property Name="CONTAINER_DATA" Type="varchar2" MaxLength="3" />
+          <Property Name="INMEMORY" Type="varchar2" MaxLength="8" />
+          <Property Name="INMEMORY_PRIORITY" Type="varchar2" MaxLength="8" />
+          <Property Name="INMEMORY_DISTRIBUTE" Type="varchar2" MaxLength="15" />
+          <Property Name="INMEMORY_COMPRESSION" Type="varchar2" MaxLength="17" />
+          <Property Name="INMEMORY_DUPLICATE" Type="varchar2" MaxLength="13" />
+          <Property Name="DEFAULT_COLLATION" Type="varchar2" MaxLength="100" />
+          <Property Name="DUPLICATED" Type="varchar2" MaxLength="1" />
+          <Property Name="SHARDED" Type="varchar2" MaxLength="1" />
+          <Property Name="EXTERNAL" Type="varchar2" MaxLength="3" />
+          <Property Name="HYBRID" Type="varchar2" MaxLength="3" />
+          <Property Name="CELLMEMORY" Type="varchar2" MaxLength="24" />
+          <Property Name="CONTAINERS_DEFAULT" Type="varchar2" MaxLength="3" />
+          <Property Name="CONTAINER_MAP" Type="varchar2" MaxLength="3" />
+          <Property Name="EXTENDED_DATA_LINK" Type="varchar2" MaxLength="3" />
+          <Property Name="EXTENDED_DATA_LINK_MAP" Type="varchar2" MaxLength="3" />
+          <Property Name="INMEMORY_SERVICE" Type="varchar2" MaxLength="12" />
+          <Property Name="INMEMORY_SERVICE_NAME" Type="varchar2" MaxLength="1000" />
+          <Property Name="CONTAINER_MAP_OBJECT" Type="varchar2" MaxLength="3" />
+          <Property Name="MEMOPTIMIZE_READ" Type="varchar2" MaxLength="8" />
+          <Property Name="MEMOPTIMIZE_WRITE" Type="varchar2" MaxLength="8" />
+          <Property Name="HAS_SENSITIVE_COLUMN" Type="varchar2" MaxLength="3" />
+          <Property Name="ADMIT_NULL" Type="varchar2" MaxLength="3" />
+          <Property Name="DATA_LINK_DML_ENABLED" Type="varchar2" MaxLength="3" />
+          <Property Name="LOGICAL_REPLICATION" Type="varchar2" MaxLength="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SYS.ALL_USERS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALL_USERS">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="CREATED" />
+          </Key>
+          <Property Name="USERNAME" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="USER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREATED" Type="date" Nullable="false" />
+          <Property Name="COMMON" Type="varchar2" MaxLength="3" />
+          <Property Name="ORACLE_MAINTAINED" Type="varchar2" MaxLength="1" />
+          <Property Name="INHERITED" Type="varchar2" MaxLength="3" />
+          <Property Name="DEFAULT_COLLATION" Type="varchar2" MaxLength="100" />
+          <Property Name="IMPLICIT" Type="varchar2" MaxLength="3" />
+          <Property Name="ALL_SHARD" Type="varchar2" MaxLength="3" />
+        </EntityType>
+        <EntityContainer Name="OraModelStoreContainer">
+          <EntitySet Name="ALL_CONS_COLUMNS" EntityType="Self.ALL_CONS_COLUMNS" store:Type="Views" store:Schema="SYS">
+            <DefiningQuery>SELECT 
+"ALL_CONS_COLUMNS"."OWNER" AS "OWNER", 
+"ALL_CONS_COLUMNS"."CONSTRAINT_NAME" AS "CONSTRAINT_NAME", 
+"ALL_CONS_COLUMNS"."TABLE_NAME" AS "TABLE_NAME", 
+"ALL_CONS_COLUMNS"."COLUMN_NAME" AS "COLUMN_NAME", 
+"ALL_CONS_COLUMNS"."POSITION" AS "POSITION"
+FROM "SYS"."ALL_CONS_COLUMNS" "ALL_CONS_COLUMNS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ALL_CONSTRAINTS" EntityType="Self.ALL_CONSTRAINTS" store:Type="Views" store:Schema="SYS">
+            <DefiningQuery>SELECT 
+"ALL_CONSTRAINTS"."OWNER" AS "OWNER", 
+"ALL_CONSTRAINTS"."CONSTRAINT_NAME" AS "CONSTRAINT_NAME", 
+"ALL_CONSTRAINTS"."CONSTRAINT_TYPE" AS "CONSTRAINT_TYPE", 
+"ALL_CONSTRAINTS"."TABLE_NAME" AS "TABLE_NAME", 
+"ALL_CONSTRAINTS"."SEARCH_CONDITION" AS "SEARCH_CONDITION", 
+"ALL_CONSTRAINTS"."SEARCH_CONDITION_VC" AS "SEARCH_CONDITION_VC", 
+"ALL_CONSTRAINTS"."R_OWNER" AS "R_OWNER", 
+"ALL_CONSTRAINTS"."R_CONSTRAINT_NAME" AS "R_CONSTRAINT_NAME", 
+"ALL_CONSTRAINTS"."DELETE_RULE" AS "DELETE_RULE", 
+"ALL_CONSTRAINTS"."STATUS" AS "STATUS", 
+"ALL_CONSTRAINTS"."DEFERRABLE" AS "DEFERRABLE", 
+"ALL_CONSTRAINTS"."DEFERRED" AS "DEFERRED", 
+"ALL_CONSTRAINTS"."VALIDATED" AS "VALIDATED", 
+"ALL_CONSTRAINTS"."GENERATED" AS "GENERATED", 
+"ALL_CONSTRAINTS"."BAD" AS "BAD", 
+"ALL_CONSTRAINTS"."RELY" AS "RELY", 
+"ALL_CONSTRAINTS"."LAST_CHANGE" AS "LAST_CHANGE", 
+"ALL_CONSTRAINTS"."INDEX_OWNER" AS "INDEX_OWNER", 
+"ALL_CONSTRAINTS"."INDEX_NAME" AS "INDEX_NAME", 
+"ALL_CONSTRAINTS"."INVALID" AS "INVALID", 
+"ALL_CONSTRAINTS"."VIEW_RELATED" AS "VIEW_RELATED", 
+"ALL_CONSTRAINTS"."ORIGIN_CON_ID" AS "ORIGIN_CON_ID"
+FROM "SYS"."ALL_CONSTRAINTS" "ALL_CONSTRAINTS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ALL_TAB_COLS" EntityType="Self.ALL_TAB_COLS" store:Type="Views" store:Schema="SYS">
+            <DefiningQuery>SELECT 
+"ALL_TAB_COLS"."OWNER" AS "OWNER", 
+"ALL_TAB_COLS"."TABLE_NAME" AS "TABLE_NAME", 
+"ALL_TAB_COLS"."COLUMN_NAME" AS "COLUMN_NAME", 
+"ALL_TAB_COLS"."DATA_TYPE" AS "DATA_TYPE", 
+"ALL_TAB_COLS"."DATA_TYPE_MOD" AS "DATA_TYPE_MOD", 
+"ALL_TAB_COLS"."DATA_TYPE_OWNER" AS "DATA_TYPE_OWNER", 
+"ALL_TAB_COLS"."DATA_LENGTH" AS "DATA_LENGTH", 
+"ALL_TAB_COLS"."DATA_PRECISION" AS "DATA_PRECISION", 
+"ALL_TAB_COLS"."DATA_SCALE" AS "DATA_SCALE", 
+"ALL_TAB_COLS"."NULLABLE" AS "NULLABLE", 
+"ALL_TAB_COLS"."COLUMN_ID" AS "COLUMN_ID", 
+"ALL_TAB_COLS"."DEFAULT_LENGTH" AS "DEFAULT_LENGTH", 
+"ALL_TAB_COLS"."DATA_DEFAULT" AS "DATA_DEFAULT", 
+"ALL_TAB_COLS"."NUM_DISTINCT" AS "NUM_DISTINCT", 
+"ALL_TAB_COLS"."LOW_VALUE" AS "LOW_VALUE", 
+"ALL_TAB_COLS"."HIGH_VALUE" AS "HIGH_VALUE", 
+"ALL_TAB_COLS"."DENSITY" AS "DENSITY", 
+"ALL_TAB_COLS"."NUM_NULLS" AS "NUM_NULLS", 
+"ALL_TAB_COLS"."NUM_BUCKETS" AS "NUM_BUCKETS", 
+"ALL_TAB_COLS"."LAST_ANALYZED" AS "LAST_ANALYZED", 
+"ALL_TAB_COLS"."SAMPLE_SIZE" AS "SAMPLE_SIZE", 
+"ALL_TAB_COLS"."CHARACTER_SET_NAME" AS "CHARACTER_SET_NAME", 
+"ALL_TAB_COLS"."CHAR_COL_DECL_LENGTH" AS "CHAR_COL_DECL_LENGTH", 
+"ALL_TAB_COLS"."GLOBAL_STATS" AS "GLOBAL_STATS", 
+"ALL_TAB_COLS"."USER_STATS" AS "USER_STATS", 
+"ALL_TAB_COLS"."AVG_COL_LEN" AS "AVG_COL_LEN", 
+"ALL_TAB_COLS"."CHAR_LENGTH" AS "CHAR_LENGTH", 
+"ALL_TAB_COLS"."CHAR_USED" AS "CHAR_USED", 
+"ALL_TAB_COLS"."V80_FMT_IMAGE" AS "V80_FMT_IMAGE", 
+"ALL_TAB_COLS"."DATA_UPGRADED" AS "DATA_UPGRADED", 
+"ALL_TAB_COLS"."HIDDEN_COLUMN" AS "HIDDEN_COLUMN", 
+"ALL_TAB_COLS"."VIRTUAL_COLUMN" AS "VIRTUAL_COLUMN", 
+"ALL_TAB_COLS"."SEGMENT_COLUMN_ID" AS "SEGMENT_COLUMN_ID", 
+"ALL_TAB_COLS"."INTERNAL_COLUMN_ID" AS "INTERNAL_COLUMN_ID", 
+"ALL_TAB_COLS"."HISTOGRAM" AS "HISTOGRAM", 
+"ALL_TAB_COLS"."QUALIFIED_COL_NAME" AS "QUALIFIED_COL_NAME", 
+"ALL_TAB_COLS"."USER_GENERATED" AS "USER_GENERATED", 
+"ALL_TAB_COLS"."DEFAULT_ON_NULL" AS "DEFAULT_ON_NULL", 
+"ALL_TAB_COLS"."IDENTITY_COLUMN" AS "IDENTITY_COLUMN", 
+"ALL_TAB_COLS"."EVALUATION_EDITION" AS "EVALUATION_EDITION", 
+"ALL_TAB_COLS"."UNUSABLE_BEFORE" AS "UNUSABLE_BEFORE", 
+"ALL_TAB_COLS"."UNUSABLE_BEGINNING" AS "UNUSABLE_BEGINNING", 
+"ALL_TAB_COLS"."COLLATION" AS "COLLATION", 
+"ALL_TAB_COLS"."COLLATED_COLUMN_ID" AS "COLLATED_COLUMN_ID"
+FROM "SYS"."ALL_TAB_COLS" "ALL_TAB_COLS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ALL_TABLES" EntityType="Self.ALL_TABLES" store:Type="Views" store:Schema="SYS">
+            <DefiningQuery>SELECT 
+"ALL_TABLES"."OWNER" AS "OWNER", 
+"ALL_TABLES"."TABLE_NAME" AS "TABLE_NAME", 
+"ALL_TABLES"."TABLESPACE_NAME" AS "TABLESPACE_NAME", 
+"ALL_TABLES"."CLUSTER_NAME" AS "CLUSTER_NAME", 
+"ALL_TABLES"."IOT_NAME" AS "IOT_NAME", 
+"ALL_TABLES"."STATUS" AS "STATUS", 
+"ALL_TABLES"."PCT_FREE" AS "PCT_FREE", 
+"ALL_TABLES"."PCT_USED" AS "PCT_USED", 
+"ALL_TABLES"."INI_TRANS" AS "INI_TRANS", 
+"ALL_TABLES"."MAX_TRANS" AS "MAX_TRANS", 
+"ALL_TABLES"."INITIAL_EXTENT" AS "INITIAL_EXTENT", 
+"ALL_TABLES"."NEXT_EXTENT" AS "NEXT_EXTENT", 
+"ALL_TABLES"."MIN_EXTENTS" AS "MIN_EXTENTS", 
+"ALL_TABLES"."MAX_EXTENTS" AS "MAX_EXTENTS", 
+"ALL_TABLES"."PCT_INCREASE" AS "PCT_INCREASE", 
+"ALL_TABLES"."FREELISTS" AS "FREELISTS", 
+"ALL_TABLES"."FREELIST_GROUPS" AS "FREELIST_GROUPS", 
+"ALL_TABLES"."LOGGING" AS "LOGGING", 
+"ALL_TABLES"."BACKED_UP" AS "BACKED_UP", 
+"ALL_TABLES"."NUM_ROWS" AS "NUM_ROWS", 
+"ALL_TABLES"."BLOCKS" AS "BLOCKS", 
+"ALL_TABLES"."EMPTY_BLOCKS" AS "EMPTY_BLOCKS", 
+"ALL_TABLES"."AVG_SPACE" AS "AVG_SPACE", 
+"ALL_TABLES"."CHAIN_CNT" AS "CHAIN_CNT", 
+"ALL_TABLES"."AVG_ROW_LEN" AS "AVG_ROW_LEN", 
+"ALL_TABLES"."AVG_SPACE_FREELIST_BLOCKS" AS "AVG_SPACE_FREELIST_BLOCKS", 
+"ALL_TABLES"."NUM_FREELIST_BLOCKS" AS "NUM_FREELIST_BLOCKS", 
+"ALL_TABLES"."DEGREE" AS "DEGREE", 
+"ALL_TABLES"."INSTANCES" AS "INSTANCES", 
+"ALL_TABLES"."CACHE" AS "CACHE", 
+"ALL_TABLES"."TABLE_LOCK" AS "TABLE_LOCK", 
+"ALL_TABLES"."SAMPLE_SIZE" AS "SAMPLE_SIZE", 
+"ALL_TABLES"."LAST_ANALYZED" AS "LAST_ANALYZED", 
+"ALL_TABLES"."PARTITIONED" AS "PARTITIONED", 
+"ALL_TABLES"."IOT_TYPE" AS "IOT_TYPE", 
+"ALL_TABLES"."TEMPORARY" AS "TEMPORARY", 
+"ALL_TABLES"."SECONDARY" AS "SECONDARY", 
+"ALL_TABLES"."NESTED" AS "NESTED", 
+"ALL_TABLES"."BUFFER_POOL" AS "BUFFER_POOL", 
+"ALL_TABLES"."FLASH_CACHE" AS "FLASH_CACHE", 
+"ALL_TABLES"."CELL_FLASH_CACHE" AS "CELL_FLASH_CACHE", 
+"ALL_TABLES"."ROW_MOVEMENT" AS "ROW_MOVEMENT", 
+"ALL_TABLES"."GLOBAL_STATS" AS "GLOBAL_STATS", 
+"ALL_TABLES"."USER_STATS" AS "USER_STATS", 
+"ALL_TABLES"."DURATION" AS "DURATION", 
+"ALL_TABLES"."SKIP_CORRUPT" AS "SKIP_CORRUPT", 
+"ALL_TABLES"."MONITORING" AS "MONITORING", 
+"ALL_TABLES"."CLUSTER_OWNER" AS "CLUSTER_OWNER", 
+"ALL_TABLES"."DEPENDENCIES" AS "DEPENDENCIES", 
+"ALL_TABLES"."COMPRESSION" AS "COMPRESSION", 
+"ALL_TABLES"."COMPRESS_FOR" AS "COMPRESS_FOR", 
+"ALL_TABLES"."DROPPED" AS "DROPPED", 
+"ALL_TABLES"."READ_ONLY" AS "READ_ONLY", 
+"ALL_TABLES"."SEGMENT_CREATED" AS "SEGMENT_CREATED", 
+"ALL_TABLES"."RESULT_CACHE" AS "RESULT_CACHE", 
+"ALL_TABLES"."CLUSTERING" AS "CLUSTERING", 
+"ALL_TABLES"."ACTIVITY_TRACKING" AS "ACTIVITY_TRACKING", 
+"ALL_TABLES"."DML_TIMESTAMP" AS "DML_TIMESTAMP", 
+"ALL_TABLES"."HAS_IDENTITY" AS "HAS_IDENTITY", 
+"ALL_TABLES"."CONTAINER_DATA" AS "CONTAINER_DATA", 
+"ALL_TABLES"."INMEMORY" AS "INMEMORY", 
+"ALL_TABLES"."INMEMORY_PRIORITY" AS "INMEMORY_PRIORITY", 
+"ALL_TABLES"."INMEMORY_DISTRIBUTE" AS "INMEMORY_DISTRIBUTE", 
+"ALL_TABLES"."INMEMORY_COMPRESSION" AS "INMEMORY_COMPRESSION", 
+"ALL_TABLES"."INMEMORY_DUPLICATE" AS "INMEMORY_DUPLICATE", 
+"ALL_TABLES"."DEFAULT_COLLATION" AS "DEFAULT_COLLATION", 
+"ALL_TABLES"."DUPLICATED" AS "DUPLICATED", 
+"ALL_TABLES"."SHARDED" AS "SHARDED", 
+"ALL_TABLES"."EXTERNAL" AS "EXTERNAL", 
+"ALL_TABLES"."HYBRID" AS "HYBRID", 
+"ALL_TABLES"."CELLMEMORY" AS "CELLMEMORY", 
+"ALL_TABLES"."CONTAINERS_DEFAULT" AS "CONTAINERS_DEFAULT", 
+"ALL_TABLES"."CONTAINER_MAP" AS "CONTAINER_MAP", 
+"ALL_TABLES"."EXTENDED_DATA_LINK" AS "EXTENDED_DATA_LINK", 
+"ALL_TABLES"."EXTENDED_DATA_LINK_MAP" AS "EXTENDED_DATA_LINK_MAP", 
+"ALL_TABLES"."INMEMORY_SERVICE" AS "INMEMORY_SERVICE", 
+"ALL_TABLES"."INMEMORY_SERVICE_NAME" AS "INMEMORY_SERVICE_NAME", 
+"ALL_TABLES"."CONTAINER_MAP_OBJECT" AS "CONTAINER_MAP_OBJECT", 
+"ALL_TABLES"."MEMOPTIMIZE_READ" AS "MEMOPTIMIZE_READ", 
+"ALL_TABLES"."MEMOPTIMIZE_WRITE" AS "MEMOPTIMIZE_WRITE", 
+"ALL_TABLES"."HAS_SENSITIVE_COLUMN" AS "HAS_SENSITIVE_COLUMN", 
+"ALL_TABLES"."ADMIT_NULL" AS "ADMIT_NULL", 
+"ALL_TABLES"."DATA_LINK_DML_ENABLED" AS "DATA_LINK_DML_ENABLED", 
+"ALL_TABLES"."LOGICAL_REPLICATION" AS "LOGICAL_REPLICATION"
+FROM "SYS"."ALL_TABLES" "ALL_TABLES"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ALL_USERS" EntityType="Self.ALL_USERS" store:Type="Views" store:Schema="SYS">
+            <DefiningQuery>SELECT 
+"ALL_USERS"."USERNAME" AS "USERNAME", 
+"ALL_USERS"."USER_ID" AS "USER_ID", 
+"ALL_USERS"."CREATED" AS "CREATED", 
+"ALL_USERS"."COMMON" AS "COMMON", 
+"ALL_USERS"."ORACLE_MAINTAINED" AS "ORACLE_MAINTAINED", 
+"ALL_USERS"."INHERITED" AS "INHERITED", 
+"ALL_USERS"."DEFAULT_COLLATION" AS "DEFAULT_COLLATION", 
+"ALL_USERS"."IMPLICIT" AS "IMPLICIT", 
+"ALL_USERS"."ALL_SHARD" AS "ALL_SHARD"
+FROM "SYS"."ALL_USERS" "ALL_USERS"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ALL_CONS_COLUMNS" EntityType="OraModel.ALL_CONS_COLUMNS" />
+          <EntitySet Name="ALL_CONSTRAINTS" EntityType="OraModel.ALL_CONSTRAINTS" />
+          <EntitySet Name="ALL_TAB_COLS" EntityType="OraModel.ALL_TAB_COLS" />
+          <EntitySet Name="ALL_TABLES" EntityType="OraModel.ALL_TABLES" />
+          <EntitySet Name="ALL_USERS" EntityType="OraModel.ALL_USERS" />
+        </EntityContainer>
+        <EntityType Name="ALL_CONS_COLUMNS">
+          <Key>
+            <PropertyRef Name="OWNER" />
+            <PropertyRef Name="CONSTRAINT_NAME" />
+            <PropertyRef Name="TABLE_NAME" />
+          </Key>
+          <Property Name="OWNER" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CONSTRAINT_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TABLE_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="COLUMN_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="POSITION" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ALL_CONSTRAINTS">
+          <Key>
+            <PropertyRef Name="CONSTRAINT_NAME" />
+            <PropertyRef Name="TABLE_NAME" />
+          </Key>
+          <Property Name="OWNER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CONSTRAINT_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CONSTRAINT_TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TABLE_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SEARCH_CONDITION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SEARCH_CONDITION_VC" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="R_OWNER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="R_CONSTRAINT_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DELETE_RULE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="DEFERRABLE" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="DEFERRED" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="VALIDATED" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="GENERATED" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="BAD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="RELY" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_CHANGE" Type="DateTime" />
+          <Property Name="INDEX_OWNER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="INVALID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="VIEW_RELATED" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGIN_CON_ID" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ALL_TAB_COLS">
+          <Key>
+            <PropertyRef Name="OWNER" />
+            <PropertyRef Name="TABLE_NAME" />
+            <PropertyRef Name="COLUMN_NAME" />
+            <PropertyRef Name="DATA_LENGTH" />
+            <PropertyRef Name="INTERNAL_COLUMN_ID" />
+          </Key>
+          <Property Name="OWNER" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TABLE_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="COLUMN_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_TYPE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_TYPE_MOD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_TYPE_OWNER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_LENGTH" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DATA_PRECISION" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DATA_SCALE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NULLABLE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="COLUMN_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DEFAULT_LENGTH" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DATA_DEFAULT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_DISTINCT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LOW_VALUE" Type="Binary" MaxLength="2000" FixedLength="false" />
+          <Property Name="HIGH_VALUE" Type="Binary" MaxLength="2000" FixedLength="false" />
+          <Property Name="DENSITY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NUM_NULLS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NUM_BUCKETS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LAST_ANALYZED" Type="DateTime" />
+          <Property Name="SAMPLE_SIZE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CHARACTER_SET_NAME" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="CHAR_COL_DECL_LENGTH" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="GLOBAL_STATS" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="USER_STATS" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="AVG_COL_LEN" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CHAR_LENGTH" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CHAR_USED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="V80_FMT_IMAGE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_UPGRADED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="HIDDEN_COLUMN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="VIRTUAL_COLUMN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="SEGMENT_COLUMN_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="INTERNAL_COLUMN_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="HISTOGRAM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="QUALIFIED_COL_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="USER_GENERATED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DEFAULT_ON_NULL" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IDENTITY_COLUMN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EVALUATION_EDITION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UNUSABLE_BEFORE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UNUSABLE_BEGINNING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="COLLATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COLLATED_COLUMN_ID" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ALL_TABLES">
+          <Key>
+            <PropertyRef Name="OWNER" />
+            <PropertyRef Name="TABLE_NAME" />
+          </Key>
+          <Property Name="OWNER" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TABLE_NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TABLESPACE_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CLUSTER_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="IOT_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="PCT_FREE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PCT_USED" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="INI_TRANS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MAX_TRANS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="INITIAL_EXTENT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NEXT_EXTENT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MIN_EXTENTS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MAX_EXTENTS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PCT_INCREASE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FREELISTS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FREELIST_GROUPS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LOGGING" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="BACKED_UP" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_ROWS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="BLOCKS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="EMPTY_BLOCKS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AVG_SPACE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CHAIN_CNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AVG_ROW_LEN" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AVG_SPACE_FREELIST_BLOCKS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NUM_FREELIST_BLOCKS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DEGREE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="INSTANCES" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CACHE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TABLE_LOCK" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SAMPLE_SIZE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LAST_ANALYZED" Type="DateTime" />
+          <Property Name="PARTITIONED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IOT_TYPE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="TEMPORARY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SECONDARY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="NESTED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="BUFFER_POOL" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="FLASH_CACHE" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CELL_FLASH_CACHE" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="ROW_MOVEMENT" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="GLOBAL_STATS" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="USER_STATS" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DURATION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SKIP_CORRUPT" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="MONITORING" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CLUSTER_OWNER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DEPENDENCIES" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="COMPRESSION" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="COMPRESS_FOR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DROPPED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="READ_ONLY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="SEGMENT_CREATED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="RESULT_CACHE" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CLUSTERING" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVITY_TRACKING" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+          <Property Name="DML_TIMESTAMP" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="HAS_IDENTITY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CONTAINER_DATA" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY_PRIORITY" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY_DISTRIBUTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY_COMPRESSION" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY_DUPLICATE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="DEFAULT_COLLATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DUPLICATED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SHARDED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="EXTERNAL" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="HYBRID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CELLMEMORY" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="CONTAINERS_DEFAULT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CONTAINER_MAP" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EXTENDED_DATA_LINK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EXTENDED_DATA_LINK_MAP" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY_SERVICE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="INMEMORY_SERVICE_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CONTAINER_MAP_OBJECT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MEMOPTIMIZE_READ" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="MEMOPTIMIZE_WRITE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="HAS_SENSITIVE_COLUMN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ADMIT_NULL" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_LINK_DML_ENABLED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="LOGICAL_REPLICATION" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ALL_USERS">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="CREATED" />
+          </Key>
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="COMMON" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ORACLE_MAINTAINED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="INHERITED" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DEFAULT_COLLATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IMPLICIT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ALL_SHARD" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OraModelStoreContainer" CdmEntityContainer="OraEntities">
+          <EntitySetMapping Name="ALL_CONS_COLUMNS">
+            <EntityTypeMapping TypeName="OraModel.ALL_CONS_COLUMNS">
+              <MappingFragment StoreEntitySet="ALL_CONS_COLUMNS">
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="CONSTRAINT_NAME" ColumnName="CONSTRAINT_NAME" />
+                <ScalarProperty Name="OWNER" ColumnName="OWNER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALL_CONSTRAINTS">
+            <EntityTypeMapping TypeName="OraModel.ALL_CONSTRAINTS">
+              <MappingFragment StoreEntitySet="ALL_CONSTRAINTS">
+                <ScalarProperty Name="ORIGIN_CON_ID" ColumnName="ORIGIN_CON_ID" />
+                <ScalarProperty Name="VIEW_RELATED" ColumnName="VIEW_RELATED" />
+                <ScalarProperty Name="INVALID" ColumnName="INVALID" />
+                <ScalarProperty Name="INDEX_NAME" ColumnName="INDEX_NAME" />
+                <ScalarProperty Name="INDEX_OWNER" ColumnName="INDEX_OWNER" />
+                <ScalarProperty Name="LAST_CHANGE" ColumnName="LAST_CHANGE" />
+                <ScalarProperty Name="RELY" ColumnName="RELY" />
+                <ScalarProperty Name="BAD" ColumnName="BAD" />
+                <ScalarProperty Name="GENERATED" ColumnName="GENERATED" />
+                <ScalarProperty Name="VALIDATED" ColumnName="VALIDATED" />
+                <ScalarProperty Name="DEFERRED" ColumnName="DEFERRED" />
+                <ScalarProperty Name="DEFERRABLE" ColumnName="DEFERRABLE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DELETE_RULE" ColumnName="DELETE_RULE" />
+                <ScalarProperty Name="R_CONSTRAINT_NAME" ColumnName="R_CONSTRAINT_NAME" />
+                <ScalarProperty Name="R_OWNER" ColumnName="R_OWNER" />
+                <ScalarProperty Name="SEARCH_CONDITION_VC" ColumnName="SEARCH_CONDITION_VC" />
+                <ScalarProperty Name="SEARCH_CONDITION" ColumnName="SEARCH_CONDITION" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="CONSTRAINT_TYPE" ColumnName="CONSTRAINT_TYPE" />
+                <ScalarProperty Name="CONSTRAINT_NAME" ColumnName="CONSTRAINT_NAME" />
+                <ScalarProperty Name="OWNER" ColumnName="OWNER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALL_TAB_COLS">
+            <EntityTypeMapping TypeName="OraModel.ALL_TAB_COLS">
+              <MappingFragment StoreEntitySet="ALL_TAB_COLS">
+                <ScalarProperty Name="COLLATED_COLUMN_ID" ColumnName="COLLATED_COLUMN_ID" />
+                <ScalarProperty Name="COLLATION" ColumnName="COLLATION" />
+                <ScalarProperty Name="UNUSABLE_BEGINNING" ColumnName="UNUSABLE_BEGINNING" />
+                <ScalarProperty Name="UNUSABLE_BEFORE" ColumnName="UNUSABLE_BEFORE" />
+                <ScalarProperty Name="EVALUATION_EDITION" ColumnName="EVALUATION_EDITION" />
+                <ScalarProperty Name="IDENTITY_COLUMN" ColumnName="IDENTITY_COLUMN" />
+                <ScalarProperty Name="DEFAULT_ON_NULL" ColumnName="DEFAULT_ON_NULL" />
+                <ScalarProperty Name="USER_GENERATED" ColumnName="USER_GENERATED" />
+                <ScalarProperty Name="QUALIFIED_COL_NAME" ColumnName="QUALIFIED_COL_NAME" />
+                <ScalarProperty Name="HISTOGRAM" ColumnName="HISTOGRAM" />
+                <ScalarProperty Name="INTERNAL_COLUMN_ID" ColumnName="INTERNAL_COLUMN_ID" />
+                <ScalarProperty Name="SEGMENT_COLUMN_ID" ColumnName="SEGMENT_COLUMN_ID" />
+                <ScalarProperty Name="VIRTUAL_COLUMN" ColumnName="VIRTUAL_COLUMN" />
+                <ScalarProperty Name="HIDDEN_COLUMN" ColumnName="HIDDEN_COLUMN" />
+                <ScalarProperty Name="DATA_UPGRADED" ColumnName="DATA_UPGRADED" />
+                <ScalarProperty Name="V80_FMT_IMAGE" ColumnName="V80_FMT_IMAGE" />
+                <ScalarProperty Name="CHAR_USED" ColumnName="CHAR_USED" />
+                <ScalarProperty Name="CHAR_LENGTH" ColumnName="CHAR_LENGTH" />
+                <ScalarProperty Name="AVG_COL_LEN" ColumnName="AVG_COL_LEN" />
+                <ScalarProperty Name="USER_STATS" ColumnName="USER_STATS" />
+                <ScalarProperty Name="GLOBAL_STATS" ColumnName="GLOBAL_STATS" />
+                <ScalarProperty Name="CHAR_COL_DECL_LENGTH" ColumnName="CHAR_COL_DECL_LENGTH" />
+                <ScalarProperty Name="CHARACTER_SET_NAME" ColumnName="CHARACTER_SET_NAME" />
+                <ScalarProperty Name="SAMPLE_SIZE" ColumnName="SAMPLE_SIZE" />
+                <ScalarProperty Name="LAST_ANALYZED" ColumnName="LAST_ANALYZED" />
+                <ScalarProperty Name="NUM_BUCKETS" ColumnName="NUM_BUCKETS" />
+                <ScalarProperty Name="NUM_NULLS" ColumnName="NUM_NULLS" />
+                <ScalarProperty Name="DENSITY" ColumnName="DENSITY" />
+                <ScalarProperty Name="HIGH_VALUE" ColumnName="HIGH_VALUE" />
+                <ScalarProperty Name="LOW_VALUE" ColumnName="LOW_VALUE" />
+                <ScalarProperty Name="NUM_DISTINCT" ColumnName="NUM_DISTINCT" />
+                <ScalarProperty Name="DATA_DEFAULT" ColumnName="DATA_DEFAULT" />
+                <ScalarProperty Name="DEFAULT_LENGTH" ColumnName="DEFAULT_LENGTH" />
+                <ScalarProperty Name="COLUMN_ID" ColumnName="COLUMN_ID" />
+                <ScalarProperty Name="NULLABLE" ColumnName="NULLABLE" />
+                <ScalarProperty Name="DATA_SCALE" ColumnName="DATA_SCALE" />
+                <ScalarProperty Name="DATA_PRECISION" ColumnName="DATA_PRECISION" />
+                <ScalarProperty Name="DATA_LENGTH" ColumnName="DATA_LENGTH" />
+                <ScalarProperty Name="DATA_TYPE_OWNER" ColumnName="DATA_TYPE_OWNER" />
+                <ScalarProperty Name="DATA_TYPE_MOD" ColumnName="DATA_TYPE_MOD" />
+                <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
+                <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="OWNER" ColumnName="OWNER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALL_TABLES">
+            <EntityTypeMapping TypeName="OraModel.ALL_TABLES">
+              <MappingFragment StoreEntitySet="ALL_TABLES">
+                <ScalarProperty Name="LOGICAL_REPLICATION" ColumnName="LOGICAL_REPLICATION" />
+                <ScalarProperty Name="DATA_LINK_DML_ENABLED" ColumnName="DATA_LINK_DML_ENABLED" />
+                <ScalarProperty Name="ADMIT_NULL" ColumnName="ADMIT_NULL" />
+                <ScalarProperty Name="HAS_SENSITIVE_COLUMN" ColumnName="HAS_SENSITIVE_COLUMN" />
+                <ScalarProperty Name="MEMOPTIMIZE_WRITE" ColumnName="MEMOPTIMIZE_WRITE" />
+                <ScalarProperty Name="MEMOPTIMIZE_READ" ColumnName="MEMOPTIMIZE_READ" />
+                <ScalarProperty Name="CONTAINER_MAP_OBJECT" ColumnName="CONTAINER_MAP_OBJECT" />
+                <ScalarProperty Name="INMEMORY_SERVICE_NAME" ColumnName="INMEMORY_SERVICE_NAME" />
+                <ScalarProperty Name="INMEMORY_SERVICE" ColumnName="INMEMORY_SERVICE" />
+                <ScalarProperty Name="EXTENDED_DATA_LINK_MAP" ColumnName="EXTENDED_DATA_LINK_MAP" />
+                <ScalarProperty Name="EXTENDED_DATA_LINK" ColumnName="EXTENDED_DATA_LINK" />
+                <ScalarProperty Name="CONTAINER_MAP" ColumnName="CONTAINER_MAP" />
+                <ScalarProperty Name="CONTAINERS_DEFAULT" ColumnName="CONTAINERS_DEFAULT" />
+                <ScalarProperty Name="CELLMEMORY" ColumnName="CELLMEMORY" />
+                <ScalarProperty Name="HYBRID" ColumnName="HYBRID" />
+                <ScalarProperty Name="EXTERNAL" ColumnName="EXTERNAL" />
+                <ScalarProperty Name="SHARDED" ColumnName="SHARDED" />
+                <ScalarProperty Name="DUPLICATED" ColumnName="DUPLICATED" />
+                <ScalarProperty Name="DEFAULT_COLLATION" ColumnName="DEFAULT_COLLATION" />
+                <ScalarProperty Name="INMEMORY_DUPLICATE" ColumnName="INMEMORY_DUPLICATE" />
+                <ScalarProperty Name="INMEMORY_COMPRESSION" ColumnName="INMEMORY_COMPRESSION" />
+                <ScalarProperty Name="INMEMORY_DISTRIBUTE" ColumnName="INMEMORY_DISTRIBUTE" />
+                <ScalarProperty Name="INMEMORY_PRIORITY" ColumnName="INMEMORY_PRIORITY" />
+                <ScalarProperty Name="INMEMORY" ColumnName="INMEMORY" />
+                <ScalarProperty Name="CONTAINER_DATA" ColumnName="CONTAINER_DATA" />
+                <ScalarProperty Name="HAS_IDENTITY" ColumnName="HAS_IDENTITY" />
+                <ScalarProperty Name="DML_TIMESTAMP" ColumnName="DML_TIMESTAMP" />
+                <ScalarProperty Name="ACTIVITY_TRACKING" ColumnName="ACTIVITY_TRACKING" />
+                <ScalarProperty Name="CLUSTERING" ColumnName="CLUSTERING" />
+                <ScalarProperty Name="RESULT_CACHE" ColumnName="RESULT_CACHE" />
+                <ScalarProperty Name="SEGMENT_CREATED" ColumnName="SEGMENT_CREATED" />
+                <ScalarProperty Name="READ_ONLY" ColumnName="READ_ONLY" />
+                <ScalarProperty Name="DROPPED" ColumnName="DROPPED" />
+                <ScalarProperty Name="COMPRESS_FOR" ColumnName="COMPRESS_FOR" />
+                <ScalarProperty Name="COMPRESSION" ColumnName="COMPRESSION" />
+                <ScalarProperty Name="DEPENDENCIES" ColumnName="DEPENDENCIES" />
+                <ScalarProperty Name="CLUSTER_OWNER" ColumnName="CLUSTER_OWNER" />
+                <ScalarProperty Name="MONITORING" ColumnName="MONITORING" />
+                <ScalarProperty Name="SKIP_CORRUPT" ColumnName="SKIP_CORRUPT" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="USER_STATS" ColumnName="USER_STATS" />
+                <ScalarProperty Name="GLOBAL_STATS" ColumnName="GLOBAL_STATS" />
+                <ScalarProperty Name="ROW_MOVEMENT" ColumnName="ROW_MOVEMENT" />
+                <ScalarProperty Name="CELL_FLASH_CACHE" ColumnName="CELL_FLASH_CACHE" />
+                <ScalarProperty Name="FLASH_CACHE" ColumnName="FLASH_CACHE" />
+                <ScalarProperty Name="BUFFER_POOL" ColumnName="BUFFER_POOL" />
+                <ScalarProperty Name="NESTED" ColumnName="NESTED" />
+                <ScalarProperty Name="SECONDARY" ColumnName="SECONDARY" />
+                <ScalarProperty Name="TEMPORARY" ColumnName="TEMPORARY" />
+                <ScalarProperty Name="IOT_TYPE" ColumnName="IOT_TYPE" />
+                <ScalarProperty Name="PARTITIONED" ColumnName="PARTITIONED" />
+                <ScalarProperty Name="LAST_ANALYZED" ColumnName="LAST_ANALYZED" />
+                <ScalarProperty Name="SAMPLE_SIZE" ColumnName="SAMPLE_SIZE" />
+                <ScalarProperty Name="TABLE_LOCK" ColumnName="TABLE_LOCK" />
+                <ScalarProperty Name="CACHE" ColumnName="CACHE" />
+                <ScalarProperty Name="INSTANCES" ColumnName="INSTANCES" />
+                <ScalarProperty Name="DEGREE" ColumnName="DEGREE" />
+                <ScalarProperty Name="NUM_FREELIST_BLOCKS" ColumnName="NUM_FREELIST_BLOCKS" />
+                <ScalarProperty Name="AVG_SPACE_FREELIST_BLOCKS" ColumnName="AVG_SPACE_FREELIST_BLOCKS" />
+                <ScalarProperty Name="AVG_ROW_LEN" ColumnName="AVG_ROW_LEN" />
+                <ScalarProperty Name="CHAIN_CNT" ColumnName="CHAIN_CNT" />
+                <ScalarProperty Name="AVG_SPACE" ColumnName="AVG_SPACE" />
+                <ScalarProperty Name="EMPTY_BLOCKS" ColumnName="EMPTY_BLOCKS" />
+                <ScalarProperty Name="BLOCKS" ColumnName="BLOCKS" />
+                <ScalarProperty Name="NUM_ROWS" ColumnName="NUM_ROWS" />
+                <ScalarProperty Name="BACKED_UP" ColumnName="BACKED_UP" />
+                <ScalarProperty Name="LOGGING" ColumnName="LOGGING" />
+                <ScalarProperty Name="FREELIST_GROUPS" ColumnName="FREELIST_GROUPS" />
+                <ScalarProperty Name="FREELISTS" ColumnName="FREELISTS" />
+                <ScalarProperty Name="PCT_INCREASE" ColumnName="PCT_INCREASE" />
+                <ScalarProperty Name="MAX_EXTENTS" ColumnName="MAX_EXTENTS" />
+                <ScalarProperty Name="MIN_EXTENTS" ColumnName="MIN_EXTENTS" />
+                <ScalarProperty Name="NEXT_EXTENT" ColumnName="NEXT_EXTENT" />
+                <ScalarProperty Name="INITIAL_EXTENT" ColumnName="INITIAL_EXTENT" />
+                <ScalarProperty Name="MAX_TRANS" ColumnName="MAX_TRANS" />
+                <ScalarProperty Name="INI_TRANS" ColumnName="INI_TRANS" />
+                <ScalarProperty Name="PCT_USED" ColumnName="PCT_USED" />
+                <ScalarProperty Name="PCT_FREE" ColumnName="PCT_FREE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="IOT_NAME" ColumnName="IOT_NAME" />
+                <ScalarProperty Name="CLUSTER_NAME" ColumnName="CLUSTER_NAME" />
+                <ScalarProperty Name="TABLESPACE_NAME" ColumnName="TABLESPACE_NAME" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="OWNER" ColumnName="OWNER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALL_USERS">
+            <EntityTypeMapping TypeName="OraModel.ALL_USERS">
+              <MappingFragment StoreEntitySet="ALL_USERS">
+                <ScalarProperty Name="ALL_SHARD" ColumnName="ALL_SHARD" />
+                <ScalarProperty Name="IMPLICIT" ColumnName="IMPLICIT" />
+                <ScalarProperty Name="DEFAULT_COLLATION" ColumnName="DEFAULT_COLLATION" />
+                <ScalarProperty Name="INHERITED" ColumnName="INHERITED" />
+                <ScalarProperty Name="ORACLE_MAINTAINED" ColumnName="ORACLE_MAINTAINED" />
+                <ScalarProperty Name="COMMON" ColumnName="COMMON" />
+                <ScalarProperty Name="CREATED" ColumnName="CREATED" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

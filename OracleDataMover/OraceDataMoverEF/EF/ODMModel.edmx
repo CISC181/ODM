@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ODMModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DATABASE_INFO">
+          <Key>
+            <PropertyRef Name="DATABASE_ID" />
+          </Key>
+          <Property Name="DATABASE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="DATABASE_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="TNSNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="ODM_SETTING">
+          <Key>
+            <PropertyRef Name="ODM_SETTING_ID" />
+          </Key>
+          <Property Name="ODM_SETTING_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="SETTING_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="SETTING_VALUE" Type="varchar2" MaxLength="200" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="20" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="ORA_UTILITY">
+          <Key>
+            <PropertyRef Name="ORA_UTILITY_ID" />
+          </Key>
+          <Property Name="ORA_UTILITY_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="ORA_UTILITY_NAME" Type="varchar2" MaxLength="20" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="PARM">
+          <Key>
+            <PropertyRef Name="PARM_ID" />
+          </Key>
+          <Property Name="PARM_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="PARM_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="40" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="REMAP_FUNCTION">
+          <Key>
+            <PropertyRef Name="FUNCTION_ID" />
+          </Key>
+          <Property Name="FUNCTION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="SCHEMA_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="PACKAGE_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="FUNCTION_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="40" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="40" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="TEMPLATE">
+          <Key>
+            <PropertyRef Name="TEMPLATE_ID" />
+          </Key>
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="DATABASE_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+          <Property Name="PAR_FILENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="BAT_FILENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="ORA_UTILITY_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="DMP_FILENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="UTIL_JOBNAME" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TEMPLATE_JOB_HISTORY">
+          <Key>
+            <PropertyRef Name="TEMPLATE_JOB_HISTORY" />
+          </Key>
+          <Property Name="TEMPLATE_JOB_HISTORY" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="USER_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="MACHINE_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="IP_ADDRESS" Type="varchar2" MaxLength="100" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="TEMPLATE_PARM">
+          <Key>
+            <PropertyRef Name="TEMPLATE_PARM_ID" />
+          </Key>
+          <Property Name="TEMPLATE_PARM_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="PARM_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="PARM_VALUE" Type="varchar2" MaxLength="500" Nullable="false" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="TEMPLATE_SCHEMA">
+          <Key>
+            <PropertyRef Name="TEMPLATE_SCHEMA_ID" />
+          </Key>
+          <Property Name="TEMPLATE_SCHEMA_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="SCHEMA_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="TEMPLATE_SCHEMA_REMAP">
+          <Key>
+            <PropertyRef Name="TEMPLATE_SCHEMA_REMAP_ID" />
+          </Key>
+          <Property Name="TEMPLATE_SCHEMA_REMAP_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="OLD_SCHEMA" Type="varchar2" MaxLength="50" />
+          <Property Name="NEW_SCHEMA" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="TEMPLATE_SCHEMA_SANITIZE">
+          <Key>
+            <PropertyRef Name="TEMPLATE_SCHEMA_SANITIZE_ID" />
+          </Key>
+          <Property Name="TEMPLATE_SCHEMA_SANITIZE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_SCHEMA_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COLUMN_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="FUNCTION_ID" Type="varchar2" MaxLength="32" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="TEMPLATE_SCHEMA_TABLE">
+          <Key>
+            <PropertyRef Name="TEMPLATE_SCHEMA_TABLE_ID" />
+          </Key>
+          <Property Name="TEMPLATE_SCHEMA_TABLE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TEMPLATE_SCHEMA_ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="SAMPLE_SIZE" Type="number" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="CREATEDBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDDATE" Type="date" />
+          <Property Name="UPDATEBYID" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATEDDATE" Type="date" />
+        </EntityType>
+        <Association Name="TEMPLATE_FK1">
+          <End Role="DATABASE_INFO" Type="Self.DATABASE_INFO" Multiplicity="0..1" />
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATABASE_INFO">
+              <PropertyRef Name="DATABASE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE">
+              <PropertyRef Name="DATABASE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_FK2">
+          <End Role="ORA_UTILITY" Type="Self.ORA_UTILITY" Multiplicity="0..1" />
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORA_UTILITY">
+              <PropertyRef Name="ORA_UTILITY_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE">
+              <PropertyRef Name="ORA_UTILITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_JOB_HISTORY_FK1">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="TEMPLATE_JOB_HISTORY" Type="Self.TEMPLATE_JOB_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_JOB_HISTORY">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_FK1">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="TEMPLATE_SCHEMA" Type="Self.TEMPLATE_SCHEMA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_REMAP_FK1">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="TEMPLATE_SCHEMA_REMAP" Type="Self.TEMPLATE_SCHEMA_REMAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_REMAP">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_SANITIZE_FK1">
+          <End Role="TEMPLATE_SCHEMA" Type="Self.TEMPLATE_SCHEMA" Multiplicity="1" />
+          <End Role="TEMPLATE_SCHEMA_SANITIZE" Type="Self.TEMPLATE_SCHEMA_SANITIZE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE_SCHEMA">
+              <PropertyRef Name="TEMPLATE_SCHEMA_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_SANITIZE">
+              <PropertyRef Name="TEMPLATE_SCHEMA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_SANITIZE_FK2">
+          <End Role="REMAP_FUNCTION" Type="Self.REMAP_FUNCTION" Multiplicity="0..1" />
+          <End Role="TEMPLATE_SCHEMA_SANITIZE" Type="Self.TEMPLATE_SCHEMA_SANITIZE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REMAP_FUNCTION">
+              <PropertyRef Name="FUNCTION_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_SANITIZE">
+              <PropertyRef Name="FUNCTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_TABLE_FK1">
+          <End Role="TEMPLATE_SCHEMA" Type="Self.TEMPLATE_SCHEMA" Multiplicity="1" />
+          <End Role="TEMPLATE_SCHEMA_TABLE" Type="Self.TEMPLATE_SCHEMA_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE_SCHEMA">
+              <PropertyRef Name="TEMPLATE_SCHEMA_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_TABLE">
+              <PropertyRef Name="TEMPLATE_SCHEMA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATEPARM_FK1">
+          <End Role="PARM" Type="Self.PARM" Multiplicity="1" />
+          <End Role="TEMPLATE_PARM" Type="Self.TEMPLATE_PARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARM">
+              <PropertyRef Name="PARM_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_PARM">
+              <PropertyRef Name="PARM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATEPARM_FK2">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="1" />
+          <End Role="TEMPLATE_PARM" Type="Self.TEMPLATE_PARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Principal>
+            <Dependent Role="TEMPLATE_PARM">
+              <PropertyRef Name="TEMPLATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ODMModelStoreContainer">
+          <EntitySet Name="DATABASE_INFO" EntityType="Self.DATABASE_INFO" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="ODM_SETTING" EntityType="Self.ODM_SETTING" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="ORA_UTILITY" EntityType="Self.ORA_UTILITY" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="PARM" EntityType="Self.PARM" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="REMAP_FUNCTION" EntityType="Self.REMAP_FUNCTION" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_JOB_HISTORY" EntityType="Self.TEMPLATE_JOB_HISTORY" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_PARM" EntityType="Self.TEMPLATE_PARM" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_SCHEMA" EntityType="Self.TEMPLATE_SCHEMA" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_SCHEMA_REMAP" EntityType="Self.TEMPLATE_SCHEMA_REMAP" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_SCHEMA_SANITIZE" EntityType="Self.TEMPLATE_SCHEMA_SANITIZE" Schema="ODM" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE_SCHEMA_TABLE" EntityType="Self.TEMPLATE_SCHEMA_TABLE" Schema="ODM" store:Type="Tables" />
+          <AssociationSet Name="TEMPLATE_FK1" Association="Self.TEMPLATE_FK1">
+            <End Role="DATABASE_INFO" EntitySet="DATABASE_INFO" />
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_FK2" Association="Self.TEMPLATE_FK2">
+            <End Role="ORA_UTILITY" EntitySet="ORA_UTILITY" />
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_JOB_HISTORY_FK1" Association="Self.TEMPLATE_JOB_HISTORY_FK1">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="TEMPLATE_JOB_HISTORY" EntitySet="TEMPLATE_JOB_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_FK1" Association="Self.TEMPLATE_SCHEMA_FK1">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="TEMPLATE_SCHEMA" EntitySet="TEMPLATE_SCHEMA" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_REMAP_FK1" Association="Self.TEMPLATE_SCHEMA_REMAP_FK1">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="TEMPLATE_SCHEMA_REMAP" EntitySet="TEMPLATE_SCHEMA_REMAP" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_SANITIZE_FK1" Association="Self.TEMPLATE_SCHEMA_SANITIZE_FK1">
+            <End Role="TEMPLATE_SCHEMA" EntitySet="TEMPLATE_SCHEMA" />
+            <End Role="TEMPLATE_SCHEMA_SANITIZE" EntitySet="TEMPLATE_SCHEMA_SANITIZE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_SANITIZE_FK2" Association="Self.TEMPLATE_SCHEMA_SANITIZE_FK2">
+            <End Role="REMAP_FUNCTION" EntitySet="REMAP_FUNCTION" />
+            <End Role="TEMPLATE_SCHEMA_SANITIZE" EntitySet="TEMPLATE_SCHEMA_SANITIZE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_TABLE_FK1" Association="Self.TEMPLATE_SCHEMA_TABLE_FK1">
+            <End Role="TEMPLATE_SCHEMA" EntitySet="TEMPLATE_SCHEMA" />
+            <End Role="TEMPLATE_SCHEMA_TABLE" EntitySet="TEMPLATE_SCHEMA_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATEPARM_FK1" Association="Self.TEMPLATEPARM_FK1">
+            <End Role="PARM" EntitySet="PARM" />
+            <End Role="TEMPLATE_PARM" EntitySet="TEMPLATE_PARM" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATEPARM_FK2" Association="Self.TEMPLATEPARM_FK2">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="TEMPLATE_PARM" EntitySet="TEMPLATE_PARM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ODMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ODMEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Templates1" EntityType="ODMModel.Template" />
+          <EntitySet Name="PARMs" EntityType="ODMModel.PARM" />
+          <EntitySet Name="DATABASE_INFO" EntityType="ODMModel.DATABASE_INFO" />
+          <AssociationSet Name="TEMPLATE_FK1" Association="ODMModel.TEMPLATE_FK1">
+            <End Role="DATABASE_INFO" EntitySet="DATABASE_INFO" />
+            <End Role="TEMPLATE" EntitySet="Templates1" />
+          </AssociationSet>
+          <EntitySet Name="RemapFunctions" EntityType="ODMModel.RemapFunction" />
+          <EntitySet Name="TemplateSchemas" EntityType="ODMModel.TemplateSchema" />
+          <AssociationSet Name="TEMPLATE_SCHEMA_FK1" Association="ODMModel.TEMPLATE_SCHEMA_FK1">
+            <End Role="TEMPLATE" EntitySet="Templates1" />
+            <End Role="TEMPLATE_SCHEMA" EntitySet="TemplateSchemas" />
+          </AssociationSet>
+          <EntitySet Name="TemplateSchemaTables" EntityType="ODMModel.TemplateSchemaTable" />
+          <AssociationSet Name="TEMPLATE_SCHEMA_TABLE_FK1" Association="ODMModel.TEMPLATE_SCHEMA_TABLE_FK1">
+            <End Role="TemplateSchema" EntitySet="TemplateSchemas" />
+            <End Role="TEMPLATE_SCHEMA_TABLE" EntitySet="TemplateSchemaTables" />
+          </AssociationSet>
+          <EntitySet Name="TemplateSchemaSanitizes" EntityType="ODMModel.TemplateSchemaSanitize" />
+          <AssociationSet Name="TEMPLATE_SCHEMA_SANITIZE_FK2" Association="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK2">
+            <End Role="RemapFunction" EntitySet="RemapFunctions" />
+            <End Role="TEMPLATE_SCHEMA_SANITIZE" EntitySet="TemplateSchemaSanitizes" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATE_SCHEMA_SANITIZE_FK1" Association="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK1">
+            <End Role="TemplateSchema" EntitySet="TemplateSchemas" />
+            <End Role="TEMPLATE_SCHEMA_SANITIZE" EntitySet="TemplateSchemaSanitizes" />
+          </AssociationSet>
+          <EntitySet Name="TemplateParms" EntityType="ODMModel.TemplateParm" />
+          <AssociationSet Name="TEMPLATEPARM_FK1" Association="ODMModel.TEMPLATEPARM_FK1">
+            <End Role="PARM" EntitySet="PARMs" />
+            <End Role="TEMPLATE_PARM" EntitySet="TemplateParms" />
+          </AssociationSet>
+          <AssociationSet Name="TEMPLATEPARM_FK2" Association="ODMModel.TEMPLATEPARM_FK2">
+            <End Role="Template" EntitySet="Templates1" />
+            <End Role="TEMPLATE_PARM" EntitySet="TemplateParms" />
+          </AssociationSet>
+          <EntitySet Name="ODMSettings" EntityType="ODMModel.ODMSetting" />
+          <EntitySet Name="OraUtilities" EntityType="ODMModel.OraUtility" />
+          <AssociationSet Name="TEMPLATE_FK2" Association="ODMModel.TEMPLATE_FK2">
+            <End Role="ORA_UTILITY" EntitySet="OraUtilities" />
+            <End Role="Template" EntitySet="Templates1" />
+          </AssociationSet>
+          <EntitySet Name="TemplateSchemaRemaps" EntityType="ODMModel.TemplateSchemaRemap" />
+          <AssociationSet Name="TEMPLATE_SCHEMA_REMAP_FK1" Association="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1">
+            <End Role="Template" EntitySet="Templates1" />
+            <End Role="TEMPLATE_SCHEMA_REMAP" EntitySet="TemplateSchemaRemaps" />
+          </AssociationSet>
+          <EntitySet Name="TemplateJobHistories" EntityType="ODMModel.TemplateJobHistory" />
+          <AssociationSet Name="TEMPLATE_JOB_HISTORY_FK1" Association="ODMModel.TEMPLATE_JOB_HISTORY_FK1">
+            <End Role="Template" EntitySet="Templates1" />
+            <End Role="TEMPLATE_JOB_HISTORY" EntitySet="TemplateJobHistories" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATABASE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DATABASE_INFO" Relationship="ODMModel.TEMPLATE_FK1" FromRole="TEMPLATE" ToRole="DATABASE_INFO" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA" Relationship="ODMModel.TEMPLATE_SCHEMA_FK1" FromRole="TEMPLATE" ToRole="TEMPLATE_SCHEMA" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE_PARM" Relationship="ODMModel.TEMPLATEPARM_FK2" FromRole="Template" ToRole="TEMPLATE_PARM" />
+          <Property Name="PARFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BATFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORA_UTILITY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORA_UTILITY" Relationship="ODMModel.TEMPLATE_FK2" FromRole="Template" ToRole="ORA_UTILITY" />
+          <Property Name="DMPFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UtilJobname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA_REMAP" Relationship="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" FromRole="Template" ToRole="TEMPLATE_SCHEMA_REMAP" />
+          <NavigationProperty Name="TEMPLATE_JOB_HISTORY" Relationship="ODMModel.TEMPLATE_JOB_HISTORY_FK1" FromRole="Template" ToRole="TEMPLATE_JOB_HISTORY" />
+        </EntityType>
+        <EntityType Name="PARM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ParmName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="CreatedById" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TEMPLATE_PARM" Relationship="ODMModel.TEMPLATEPARM_FK1" FromRole="PARM" ToRole="TEMPLATE_PARM" />
+        </EntityType>
+        <EntityType Name="DATABASE_INFO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TnsName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATEs" Relationship="ODMModel.TEMPLATE_FK1" FromRole="DATABASE_INFO" ToRole="TEMPLATE" />
+        </EntityType>
+        <Association Name="TEMPLATE_FK1">
+          <End Type="ODMModel.DATABASE_INFO" Role="DATABASE_INFO" Multiplicity="0..1" />
+          <End Type="ODMModel.Template" Role="TEMPLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATABASE_INFO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE">
+              <PropertyRef Name="DATABASE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RemapFunction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SchemaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PackageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FunctionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA_SANITIZE" Relationship="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK2" FromRole="RemapFunction" ToRole="TEMPLATE_SCHEMA_SANITIZE" />
+        </EntityType>
+        <EntityType Name="TemplateSchema">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SchemaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE" Relationship="ODMModel.TEMPLATE_SCHEMA_FK1" FromRole="TEMPLATE_SCHEMA" ToRole="TEMPLATE" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA_TABLE" Relationship="ODMModel.TEMPLATE_SCHEMA_TABLE_FK1" FromRole="TemplateSchema" ToRole="TEMPLATE_SCHEMA_TABLE" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA_SANITIZE" Relationship="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK1" FromRole="TemplateSchema" ToRole="TEMPLATE_SCHEMA_SANITIZE" />
+        </EntityType>
+        <Association Name="TEMPLATE_SCHEMA_FK1">
+          <End Type="ODMModel.Template" Role="TEMPLATE" Multiplicity="0..1" />
+          <End Type="ODMModel.TemplateSchema" Role="TEMPLATE_SCHEMA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TemplateSchemaTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateSchemaId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SampleSize" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA" Relationship="ODMModel.TEMPLATE_SCHEMA_TABLE_FK1" FromRole="TEMPLATE_SCHEMA_TABLE" ToRole="TemplateSchema" />
+        </EntityType>
+        <Association Name="TEMPLATE_SCHEMA_TABLE_FK1">
+          <End Type="ODMModel.TemplateSchema" Role="TemplateSchema" Multiplicity="1" />
+          <End Type="ODMModel.TemplateSchemaTable" Role="TEMPLATE_SCHEMA_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateSchema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_TABLE">
+              <PropertyRef Name="TemplateSchemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TemplateSchemaSanitize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateSchemaId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColumnName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FunctionId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="REMAP_FUNCTION" Relationship="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK2" FromRole="TEMPLATE_SCHEMA_SANITIZE" ToRole="RemapFunction" />
+          <NavigationProperty Name="TEMPLATE_SCHEMA" Relationship="ODMModel.TEMPLATE_SCHEMA_SANITIZE_FK1" FromRole="TEMPLATE_SCHEMA_SANITIZE" ToRole="TemplateSchema" />
+        </EntityType>
+        <Association Name="TEMPLATE_SCHEMA_SANITIZE_FK2">
+          <End Type="ODMModel.RemapFunction" Role="RemapFunction" Multiplicity="0..1" />
+          <End Type="ODMModel.TemplateSchemaSanitize" Role="TEMPLATE_SCHEMA_SANITIZE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RemapFunction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_SANITIZE">
+              <PropertyRef Name="FunctionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATE_SCHEMA_SANITIZE_FK1">
+          <End Type="ODMModel.TemplateSchema" Role="TemplateSchema" Multiplicity="1" />
+          <End Type="ODMModel.TemplateSchemaSanitize" Role="TEMPLATE_SCHEMA_SANITIZE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateSchema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_SANITIZE">
+              <PropertyRef Name="TemplateSchemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TemplateParm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ParmId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ParmValue" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="PARM" Relationship="ODMModel.TEMPLATEPARM_FK1" FromRole="TEMPLATE_PARM" ToRole="PARM" />
+          <NavigationProperty Name="TEMPLATE" Relationship="ODMModel.TEMPLATEPARM_FK2" FromRole="TEMPLATE_PARM" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATEPARM_FK1">
+          <End Type="ODMModel.PARM" Role="PARM" Multiplicity="1" />
+          <End Type="ODMModel.TemplateParm" Role="TEMPLATE_PARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARM">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_PARM">
+              <PropertyRef Name="ParmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TEMPLATEPARM_FK2">
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="1" />
+          <End Type="ODMModel.TemplateParm" Role="TEMPLATE_PARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_PARM">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ODMSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SettingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="OraUtility">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UtilityName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATEs" Relationship="ODMModel.TEMPLATE_FK2" FromRole="ORA_UTILITY" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATE_FK2">
+          <End Type="ODMModel.OraUtility" Role="ORA_UTILITY" Multiplicity="0..1" />
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORA_UTILITY">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="ORA_UTILITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TemplateSchemaRemap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="OldSchema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NewSchema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE" Relationship="ODMModel.TEMPLATE_SCHEMA_REMAP_FK1" FromRole="TEMPLATE_SCHEMA_REMAP" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATE_SCHEMA_REMAP_FK1">
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="ODMModel.TemplateSchemaRemap" Role="TEMPLATE_SCHEMA_REMAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_SCHEMA_REMAP">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TemplateJobHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="UpdatedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+          <NavigationProperty Name="TEMPLATE" Relationship="ODMModel.TEMPLATE_JOB_HISTORY_FK1" FromRole="TEMPLATE_JOB_HISTORY" ToRole="Template" />
+        </EntityType>
+        <Association Name="TEMPLATE_JOB_HISTORY_FK1">
+          <End Type="ODMModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="ODMModel.TemplateJobHistory" Role="TEMPLATE_JOB_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TEMPLATE_JOB_HISTORY">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ODMModelStoreContainer" CdmEntityContainer="ODMEntities">
+          <EntitySetMapping Name="Templates1">
+            <EntityTypeMapping TypeName="ODMModel.Template">
+              <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="UtilJobname" ColumnName="UTIL_JOBNAME" />
+                <ScalarProperty Name="DMPFileName" ColumnName="DMP_FILENAME" />
+                <ScalarProperty Name="ORA_UTILITY_ID" ColumnName="ORA_UTILITY_ID" />
+                <ScalarProperty Name="BATFileName" ColumnName="BAT_FILENAME" />
+                <ScalarProperty Name="PARFileName" ColumnName="PAR_FILENAME" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="DATABASE_ID" ColumnName="DATABASE_ID" />
+                <ScalarProperty Name="Name" ColumnName="TEMPLATE_NAME" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARMs">
+            <EntityTypeMapping TypeName="ODMModel.PARM">
+              <MappingFragment StoreEntitySet="PARM">
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="ParmName" ColumnName="PARM_NAME" />
+                <ScalarProperty Name="Id" ColumnName="PARM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATABASE_INFO">
+            <EntityTypeMapping TypeName="ODMModel.DATABASE_INFO">
+              <MappingFragment StoreEntitySet="DATABASE_INFO">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="TnsName" ColumnName="TNSNAME" />
+                <ScalarProperty Name="Name" ColumnName="DATABASE_NAME" />
+                <ScalarProperty Name="Id" ColumnName="DATABASE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RemapFunctions">
+            <EntityTypeMapping TypeName="ODMModel.RemapFunction">
+              <MappingFragment StoreEntitySet="REMAP_FUNCTION">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="FunctionName" ColumnName="FUNCTION_NAME" />
+                <ScalarProperty Name="PackageName" ColumnName="PACKAGE_NAME" />
+                <ScalarProperty Name="SchemaName" ColumnName="SCHEMA_NAME" />
+                <ScalarProperty Name="Id" ColumnName="FUNCTION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSchemas">
+            <EntityTypeMapping TypeName="ODMModel.TemplateSchema">
+              <MappingFragment StoreEntitySet="TEMPLATE_SCHEMA">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="SchemaName" ColumnName="SCHEMA_NAME" />
+                <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_SCHEMA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSchemaTables">
+            <EntityTypeMapping TypeName="ODMModel.TemplateSchemaTable">
+              <MappingFragment StoreEntitySet="TEMPLATE_SCHEMA_TABLE">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="SampleSize" ColumnName="SAMPLE_SIZE" />
+                <ScalarProperty Name="TableName" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="TemplateSchemaId" ColumnName="TEMPLATE_SCHEMA_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_SCHEMA_TABLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSchemaSanitizes">
+            <EntityTypeMapping TypeName="ODMModel.TemplateSchemaSanitize">
+              <MappingFragment StoreEntitySet="TEMPLATE_SCHEMA_SANITIZE">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="FunctionId" ColumnName="FUNCTION_ID" />
+                <ScalarProperty Name="ColumnName" ColumnName="COLUMN_NAME" />
+                <ScalarProperty Name="TableName" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="TemplateSchemaId" ColumnName="TEMPLATE_SCHEMA_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_SCHEMA_SANITIZE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateParms">
+            <EntityTypeMapping TypeName="ODMModel.TemplateParm">
+              <MappingFragment StoreEntitySet="TEMPLATE_PARM">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="ParmValue" ColumnName="PARM_VALUE" />
+                <ScalarProperty Name="ParmId" ColumnName="PARM_ID" />
+                <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_PARM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ODMSettings">
+            <EntityTypeMapping TypeName="ODMModel.ODMSetting">
+              <MappingFragment StoreEntitySet="ODM_SETTING">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="SettingValue" ColumnName="SETTING_VALUE" />
+                <ScalarProperty Name="SettingName" ColumnName="SETTING_NAME" />
+                <ScalarProperty Name="Id" ColumnName="ODM_SETTING_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OraUtilities">
+            <EntityTypeMapping TypeName="ODMModel.OraUtility">
+              <MappingFragment StoreEntitySet="ORA_UTILITY">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="UtilityName" ColumnName="ORA_UTILITY_NAME" />
+                <ScalarProperty Name="Id" ColumnName="ORA_UTILITY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSchemaRemaps">
+            <EntityTypeMapping TypeName="ODMModel.TemplateSchemaRemap">
+              <MappingFragment StoreEntitySet="TEMPLATE_SCHEMA_REMAP">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedId" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="NewSchema" ColumnName="NEW_SCHEMA" />
+                <ScalarProperty Name="OldSchema" ColumnName="OLD_SCHEMA" />
+                <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_SCHEMA_REMAP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateJobHistories">
+            <EntityTypeMapping TypeName="ODMModel.TemplateJobHistory">
+              <MappingFragment StoreEntitySet="TEMPLATE_JOB_HISTORY">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UPDATEDDATE" />
+                <ScalarProperty Name="UpdatedById" ColumnName="UPDATEDBYID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="CreatedById" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IP_ADDRESS" />
+                <ScalarProperty Name="MachineName" ColumnName="MACHINE_NAME" />
+                <ScalarProperty Name="UserName" ColumnName="USER_NAME" />
+                <ScalarProperty Name="TemplateId" ColumnName="TEMPLATE_ID" />
+                <ScalarProperty Name="Id" ColumnName="TEMPLATE_JOB_HISTORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
